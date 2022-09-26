@@ -7,6 +7,18 @@
 
 <script>
 export default {
-  name: "home"
+  name: "home",
 };
 </script>
+
+<style scoped>
+#home {
+  background: #667eea;
+  background: -webkit-linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
+  background: linear-gradient(
+    to right,
+    rgba(102, 126, 234, 0.5),
+    rgba(118, 75, 162, 0.5)
+  );
+}
+</style>

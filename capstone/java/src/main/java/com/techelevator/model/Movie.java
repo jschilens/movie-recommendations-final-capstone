@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.title;
+//import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.title;
 
 public class Movie {
 
-    @JsonProperty("original_title")
-    private String title;
+
+    private String original_title;
 
     @JsonProperty("poster_path")
     private String poster;
@@ -21,12 +21,16 @@ public class Movie {
     @JsonProperty("vote_average")
     private double rating;
 
-    public Movie(String title, String poster, String overview, Date release_date, double rating) {
-        this.title = title;
+    public Movie(String original_title, String poster, String overview, Date release_date, double rating) {
+        this.original_title = original_title;
         this.poster = poster;
         this.overview = overview;
         this.release_date = release_date;
         this.rating = rating;
+    }
+
+    public Movie() {
+
     }
 
     public Date getRelease_date() {
@@ -46,7 +50,7 @@ public class Movie {
     }
 
     public String getTitle() {
-        return title;
+        return original_title;
     }
 
     public String getPoster() {
@@ -66,6 +70,6 @@ public class Movie {
     }
 
     public void setTitle(String Title) {
-        this.title = title;
+        this.original_title = original_title;
     }
 }

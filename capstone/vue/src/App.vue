@@ -7,3 +7,16 @@
     <router-view />
   </div>
 </template>
+
+
+<style>
+#nav {
+  background: #667eea;
+  background: -webkit-linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
+  background: linear-gradient(
+    to right,
+    rgba(102, 126, 234, 0.5),
+    rgba(118, 75, 162, 0.5)
+  );
+}
+</style>

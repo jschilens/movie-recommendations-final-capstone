@@ -20,9 +20,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+
 public class MovieController {
 
+
     MovieService movieService;
+    @Autowired
     private MovieDao movieDao;
     private UserDao userDao;
 
@@ -30,12 +33,15 @@ public class MovieController {
     public MovieController(MovieDao movieDao, UserDao userDao) {
         this.movieDao = movieDao;
         this.userDao = userDao;
+        movieService = new MovieService();
     }
+
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Movie> getAllMovies() {
+        System.out.println("in controller");
        List<Movie> movies = new ArrayList<>();
-       movies = Arrays.asList(movieService.listMovies());
+       movies = movieService.getAllMovies();
        return movies;
 
     }
