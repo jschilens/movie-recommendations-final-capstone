@@ -20,7 +20,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-
 public class MovieController {
 
 
@@ -37,7 +36,7 @@ public class MovieController {
     }
 
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "/movies", method = RequestMethod.GET)
     public List<Movie> getAllMovies() {
        System.out.println("in controller");
        List<Movie> movies = new ArrayList<>();

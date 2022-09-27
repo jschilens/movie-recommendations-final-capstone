@@ -1,17 +1,18 @@
 <template>
   <div> 
+    <div id="site-info" class="site-info">
     <div class="name">
-      <!-- <br><br>
+      <br><br>
       <h1>NAME</h1> 
-      <br> -->
+      <br>
     </div>
-    <!-- <div class="information">
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p> 
-      <p> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p> 
-      <p> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
-    </div> -->
-      
+    <div class="information">
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut  
+       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
+    </div>
+    </div>
     
   <div id="login" class="text-center">
     
@@ -97,25 +98,41 @@ export default {
 
 <style scoped>
 
-* {
+  * {
   margin: 0;
   padding: 0;
-  /* display: flex;
-  flex-direction: column; */
+  /* display: flex; */
+  /* flex-direction: column; */
   
 }
-/* .name {
-  flex-direction: column;
+ /* .name {
+  display: flexbox;
   background: #fcde67;
-  align-items: center;
-} */
+  margin-right: 150px;
+  justify-content: center;
+  
+}
 
-/* .information {
-  flex-direction: column;
-  margin-bottom: -169px;
-  align-items: center;
+ .information {
+  display: flexbox;
+  margin-bottom: -300px;
   background: #fcde67 ;
-} */
+  margin-right: 150px;
+  justify-content: center;
+  text-align: center;
+  
+  
+}  */
+
+#site-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -300px;
+  background: #fcde67 ;
+  margin-right: 150px;
+  justify-content: center;
+  text-align: center;
+}
 
 
 #login {
