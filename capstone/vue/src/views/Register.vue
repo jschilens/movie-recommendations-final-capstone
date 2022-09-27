@@ -5,7 +5,8 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username: </label>
+      <!-- removed >Username:< -->
+      <label for="username" class="sr-only"></label>
       <input
         type="text"
         id="username"
@@ -15,7 +16,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password: </label>
+      <!-- removed >Password:< -->
+      <label for="password" class="sr-only"></label>
       <input
         type="password"
         id="password"
@@ -36,7 +38,7 @@
         Create Account
       </button>
       <br />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }" class="have-an-account">Have an account?</router-link>
     </form>
   </div>
 </template>
@@ -92,26 +94,86 @@ export default {
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #register {
-  background: #667eea;
-  background: -webkit-linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
-  background: linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
-  margin-left: auto;
-  margin-right: auto;
+  /* box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* font-family: 'Times New Roman', Times, serif; */
+  color:black;
+  background: #fcde67 ;
+}
+
+.form-register{
+  /* box that has everything in it */
+  display: flex;  
+  flex-direction: column;
+  width:450px;
+  border-radius: 15px;
+  background: #fff;
+  padding: 20px;
+}
+
+.h3{
+  /* title that has "Please sign in" */
   text-align: center;
-  min-height: 100vh;
-  width: 100%;
+  font-size: 35px;
+  padding: 20px 20px 0;
+  margin: 0;
 }
 
-#username {
-  margin-right: 20px;
-} 
-
-#password {
-margin-right: 20px;
+.form-control{
+  /* forms to fill out username and password */
+  
+  padding: 23px 23px 2px;
+  margin: 20px 20px 0;	
+	border-radius: 3px;
+  font-size: 20px;
+  background-color: #E0E0E0;
+  border: black;
 }
 
-#confirmPassword {
-  margin-right: 20px;
+input {
+  border: 0;
+  color: black;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
 }
+
+.form-control[type=text]:focus{
+  outline: none;     
+  box-shadow: 0 0 0 2px #484848; 
+}
+
+.form-control[type=password]:focus{
+  outline: none;     
+  box-shadow: 0 0 0 2px #484848; 
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 23px 23px 0;
+  margin: 20px 20px 0;	
+	border-radius: 3px;
+  font-size: 20px;
+  background-color: #484848;
+  color: white;
+}
+
+.have-an-account{
+  font-size: 20px;
+  text-align: center;
+  color:black;
+}
+
 </style>

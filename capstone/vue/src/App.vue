@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }" class="home">Home </router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
@@ -10,13 +10,20 @@
 
 
 <style>
-#nav {
-  background: #667eea;
-  background: -webkit-linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
-  background: linear-gradient(
-    to right,
-    rgba(102, 126, 234, 0.5),
-    rgba(118, 75, 162, 0.5)
-  );
+*{
+  margin: 0;
+  padding: 0;
 }
+
+#nav {
+  background: #484848;
+  font-size: 25px;
+  text-align: center;
+  height: 35px
+}
+
+.home{
+  color: white;
+}
+
 </style>
