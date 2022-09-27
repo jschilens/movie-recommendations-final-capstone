@@ -39,7 +39,7 @@ public class MovieController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Movie> getAllMovies() {
-        System.out.println("in controller");
+//       System.out.println("in controller");
        List<Movie> movies = new ArrayList<>();
        movies = movieService.getAllMovies();
        return movies;

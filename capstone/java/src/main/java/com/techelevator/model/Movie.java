@@ -2,12 +2,16 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Date;
 
 //import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.title;
 
 public class Movie {
 
+    @JsonProperty("id")
+    private int movie_id;
 
     private String original_title;
 
@@ -16,28 +20,33 @@ public class Movie {
 
     private String overview;
 
-    private Date release_date;
+    private LocalDate release_date;
+
+    @JsonProperty("genre_ids")
+    private int[] genre_id;
 
     @JsonProperty("vote_average")
     private double rating;
 
-    public Movie(String original_title, String poster, String overview, Date release_date, double rating) {
+    public Movie(int movie_id, String original_title, String poster, String overview, LocalDate release_date, double rating, int[] genre_id) {
+        this.movie_id = movie_id;
         this.original_title = original_title;
         this.poster = poster;
         this.overview = overview;
         this.release_date = release_date;
         this.rating = rating;
+        this.genre_id = genre_id;
     }
 
     public Movie() {
 
     }
 
-    public Date getRelease_date() {
+    public LocalDate getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(Date release_date) {
+    public void setRelease_date(LocalDate release_date) {
         this.release_date = release_date;
     }
 
@@ -69,7 +78,36 @@ public class Movie {
         this.overview = overview;
     }
 
-    public void setTitle(String Title) {
+    public void setTitle(String original_title) {
         this.original_title = original_title;
+    }
+
+    public int getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
+    }
+
+    public int[] getGenre_id() {
+        return genre_id;
+    }
+
+    public void setGenre_id(int[] genre_id) {
+        this.genre_id = genre_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movie_id=" + movie_id +
+                ", original_title='" + original_title + '\'' +
+                ", poster='" + poster + '\'' +
+                ", overview='" + overview + '\'' +
+                ", release_date=" + release_date +
+                ", genre_id=" + Arrays.toString(genre_id) +
+                ", rating=" + rating +
+                '}';
     }
 }
