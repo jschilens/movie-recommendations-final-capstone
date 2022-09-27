@@ -1,7 +1,22 @@
 <template>
+  <div> 
+    <div class="name">
+      <!-- <br><br>
+      <h1>NAME</h1> 
+      <br> -->
+    </div>
+    <!-- <div class="information">
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p> 
+      <p> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p> 
+      <p> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
+    </div> -->
+      
+    
   <div id="login" class="text-center">
+    
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
       <div
         class="alert alert-danger"
         role="alert"
@@ -38,6 +53,7 @@
       <br />
       <router-link :to="{ name: 'register' }" class="need-account">Need an account?</router-link>      
     </form>
+    </div>
   </div>
 </template>
 
@@ -84,11 +100,28 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  /* display: flex;
+  flex-direction: column; */
+  
 }
+/* .name {
+  flex-direction: column;
+  background: #fcde67;
+  align-items: center;
+} */
+
+/* .information {
+  flex-direction: column;
+  margin-bottom: -169px;
+  align-items: center;
+  background: #fcde67 ;
+} */
+
 
 #login {
   /* box */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -98,6 +131,8 @@ export default {
   
 }
 
+
+
 .form-signin{
   /* box that has everything in it */
   display: flex;  
@@ -106,6 +141,7 @@ export default {
   border-radius: 15px;
   background: #fff;
   padding: 20px;
+  
 }
 
 .h3{

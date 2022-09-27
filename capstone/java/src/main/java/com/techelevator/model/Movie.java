@@ -58,7 +58,7 @@ public class Movie {
         this.rating = rating;
     }
 
-    public String getTitle() {
+    public String getOriginal_title() {
         return original_title;
     }
 
