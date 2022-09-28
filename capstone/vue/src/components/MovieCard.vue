@@ -2,9 +2,9 @@
     <div class="card"> 
         <!-- This needs to be changed so it is not always Orphan: First Kill. -->
     <div class="movie-details" v-for="movie in movies" v-bind:key="movie.id">
-        <h1> {{ movie.original_title }} </h1>
-        <p> {{ movie.overview }} </p>
-        <img v-bind:src="movie.poster_path" />
+        <h1 class="title"> {{ movie.original_title }} </h1>
+        <img v-bind:src="movie.poster_path" class="poster"/>
+        <p class="overview"> {{ movie.overview }} </p>
     </div>
     
     </div>
@@ -67,26 +67,42 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 20px;
-    
-    
 }
 
 .movie-details {
-    /* Card box */
-    display: block;
+    
+    display: flex;
+    flex-direction: column;
+    width: 22%;
+    margin: 5% 1% 0px 1% ;
+
+
     background-color: #484848;
     border: 2px solid black;
+    color: white;
     border-radius: 10px;
-    width: 250px;
-    height: 550px;
-    margin: 20px;
-    margin: 20 auto;
-    padding: 20px; 
-    justify-content: center;
-    flex-grow: 1;
-    
-    
-    
 }
+
+.title{
+    text-align: center;
+    margin: 5px;
+   
+}
+
+.poster{
+    width:  300px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+.overview {
+    text-align: center;
+    margin: 5px;
+}
+
+
 
 </style>

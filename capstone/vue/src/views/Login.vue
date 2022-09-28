@@ -1,12 +1,10 @@
 <template>
   <div> 
     <div id="site-info" class="site-info">
-    <div class="name">
-      <br><br>
+    <div class="name" id="flex">
       <h1>NAME</h1> 
-      <br>
     </div>
-    <div class="information">
+    <div class="information" id="flex">
       <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut  
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -16,7 +14,7 @@
     
   <div id="login" class="text-center">
     
-    <form class="form-signin" @submit.prevent="login">
+    <form class="form-signin" @submit.prevent="login" id="flex">
       <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
       <div
         class="alert alert-danger"
@@ -101,64 +99,45 @@ export default {
   * {
   margin: 0;
   padding: 0;
-  /* display: flex; */
-  /* flex-direction: column; */
   
 }
- /* .name {
-  display: flexbox;
-  background: #fcde67;
-  margin-right: 150px;
-  justify-content: center;
+
+  #flex {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+  }
   
+  .name {
+    background: #fcde67;
+    text-align: center;
+    margin-top: 1%;
 }
 
  .information {
-  display: flexbox;
-  margin-bottom: -300px;
   background: #fcde67 ;
-  margin-right: 150px;
-  justify-content: center;
   text-align: center;
+  margin: 1% 25% 3% 25%;
+  font-size: 25px;
   
-  
-}  */
-
-#site-info {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: -300px;
-  background: #fcde67 ;
-  margin-right: 150px;
-  justify-content: center;
-  text-align: center;
-}
-
+} 
 
 #login {
   /* box */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  /* font-family: 'Times New Roman', Times, serif; */
   color:black;
-  background: #fcde67 ;
-  
+  background: #fcde67;
+  display: flex;
+  justify-content: center;
 }
 
 
 
 .form-signin{
   /* box that has everything in it */
-  display: flex;  
-  flex-direction: column;
   width:450px;
   border-radius: 15px;
   background: #fff;
   padding: 20px;
-  
 }
 
 .h3{
@@ -171,7 +150,6 @@ export default {
 
 .form-control{
   /* forms to fill out username and password */
-  
   padding: 23px 23px 2px;
   margin: 20px 20px 0;	
 	border-radius: 3px;
