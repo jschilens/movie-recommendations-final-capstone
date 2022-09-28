@@ -22,6 +22,7 @@ export default {
 <style scoped>
 
 * {
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
 }

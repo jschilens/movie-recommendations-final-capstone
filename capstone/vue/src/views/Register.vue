@@ -93,7 +93,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 * {
   margin: 0;
   padding: 0;
@@ -107,7 +107,7 @@ export default {
   height: 100vh;
   /* font-family: 'Times New Roman', Times, serif; */
   color:black;
-  background: #fcde67 ;
+  background: #fcde67;
 }
 
 .form-register{
@@ -131,12 +131,15 @@ export default {
 .form-control{
   /* forms to fill out username and password */
   
-  padding: 23px 23px 2px;
-  margin: 20px 20px 0;	
+  padding: 15px 15px 2px;
+  margin: 15px 15px 0;	
 	border-radius: 3px;
   font-size: 20px;
   background-color: #E0E0E0;
   border: black;
+  text-align: center;
+  padding-bottom: 20px;
+
 }
 
 input {
@@ -168,6 +171,10 @@ input {
   font-size: 20px;
   background-color: #484848;
   color: white;
+  padding: 15px 15px 2px;
+  margin: 15px 15px 0;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .have-an-account{

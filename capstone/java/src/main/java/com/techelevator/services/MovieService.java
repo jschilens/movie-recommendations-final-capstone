@@ -24,6 +24,7 @@ public class MovieService {
     public Movie getMovie(int movieId) {
         Movie movie = new Movie();
         MovieGeneral movieGeneral = restTemplate.getForObject("https://developers.themoviedb.org/3/movies/get-movie-details", MovieGeneral.class);
+        movie = movieGeneral.getMovie();
 
         return movie;
     }

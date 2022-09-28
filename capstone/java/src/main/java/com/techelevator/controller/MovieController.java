@@ -55,7 +55,7 @@ public class MovieController {
 
     @RequestMapping(path = "/movie/{id}", method = RequestMethod.GET)
     public Movie getMovie(@Valid @RequestParam int movieId) {
-        Movie movie = movieDao.getMovie(movieId);
+        Movie movie = movieService.getMovie(movieId);
         return movie;
     }
 

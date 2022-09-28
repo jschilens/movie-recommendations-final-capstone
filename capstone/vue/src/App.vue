@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="background-image: url('/movie-poster-background.jpg')">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }" class="home"> Home </router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="logout"> Logout </router-link>
