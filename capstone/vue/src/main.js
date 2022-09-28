@@ -3,6 +3,22 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faFilm} from '@fortawesome/free-solid-svg-icons'
+//import { faaBeat } from '@fortawesome/font-awesome-animation'
+
+/* add icons to the library */
+library.add(faUserSecret)
+library.add(faHeart)
+library.add(faFilm)
+//library.add(faaBeat)
+
+/* add font awesome icon component */
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 
 Vue.config.productionTip = false
 
