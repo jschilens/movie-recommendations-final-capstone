@@ -42,7 +42,11 @@ public class MovieController {
         return movies;
     }
 
-
+    @RequestMapping(path="/now-playing", method = RequestMethod.GET)
+    public List<Movie> getCurrentMovies() {
+        List<Movie> movies = movieService.getNowPlaying();
+        return movies;
+    }
 
     @RequestMapping(path = "/movies", method = RequestMethod.GET)
     public List<Movie> getAllMovies() {

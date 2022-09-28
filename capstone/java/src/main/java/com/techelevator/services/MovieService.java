@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MovieService {
 
-    private final String API_BASE_URL = "https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
+    private final String API_BASE_URL = "https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate";
     private final RestTemplate restTemplate = new RestTemplate();
 
     public Movie getMovie(int movieId) {
@@ -61,5 +61,17 @@ public class MovieService {
             System.out.println(movies[i]);
         }
         return Arrays.asList(movies);
+    }
+
+    public List<Movie> getNowPlaying() {
+        Movie[] movies = null;
+        Movie[] currentFour = new Movie[4];
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/movie/now_playing?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&page=1", MovieGeneral.class);
+        movies = movieGeneral.getResults();
+        for (int i =0; i < 4; i++) {
+            movies[i].setPoster("https://image.tmdb.org/t/p/w200" + movies[i].getPoster());
+            currentFour[i] = movies[i];
+        }
+        return Arrays.asList(currentFour);
     }
 }
