@@ -2,7 +2,7 @@
   <div class="home">
     <div id="flex"> 
     
-    <h1 class="header">Hello 'USERNAME'</h1>
+    <h1 class="header">Hello {{$store.state.user.username}} </h1>
     
     <div class="information">
       <h4> Watch Later </h4>

@@ -55,7 +55,6 @@ export default {
 
 </script>
 
-
 <style>
 
 body {
@@ -66,17 +65,17 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 20px;
+    align-content: space-evenly;
+    justify-content: center;
+    
 }
 
 .movie-details {
-    
     display: flex;
     flex-direction: column;
     width: 22%;
-    margin: 5% 1% 0px 1% ;
-
-
+    margin: 2% 2% 0px 0%;
+    align-content: space-evenly;
     background-color: #484848;
     border: 2px solid black;
     color: white;
@@ -90,8 +89,8 @@ body {
 }
 
 .poster{
-    width:  300px;
-    height: 400px;
+    display: flex;
+    flex: 0 1 auto;
     object-fit: cover;
     display: block;
     margin: 0 auto;
@@ -100,9 +99,8 @@ body {
 
 .overview {
     text-align: center;
-    margin: 5px;
+    margin: 5% 5% 20px 5%;
+    text-overflow: ellipsis;
 }
-
-
 
 </style>

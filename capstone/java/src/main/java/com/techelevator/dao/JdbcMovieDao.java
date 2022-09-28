@@ -22,4 +22,9 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getAllMovies() {
         return null;
     }
+
+    @Override
+    public Movie getMovie(int movieId) {
+        return null;
+    }
 }

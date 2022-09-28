@@ -7,11 +7,9 @@ import com.techelevator.model.Movie;
 import com.techelevator.model.User;
 import com.techelevator.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +33,16 @@ public class MovieController {
         movieService = new MovieService();
     }
 
+    @RequestMapping(path ="/filter/{filters}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Movie> getMoviesWithFilters(@PathVariable String filters) {
+        System.out.println(filters);
+        List<Movie> movies = new ArrayList<>();
+        movies = movieService.getFilteredMovies(filters);
+        return movies;
+    }
+
+
 
     @RequestMapping(path = "/movies", method = RequestMethod.GET)
     public List<Movie> getAllMovies() {
@@ -43,6 +51,12 @@ public class MovieController {
        movies = movieService.getAllMovies();
        return movies;
 
+    }
+
+    @RequestMapping(path = "/movie/{id}", method = RequestMethod.GET)
+    public Movie getMovie(@Valid @RequestParam int movieId) {
+        Movie movie = movieDao.getMovie(movieId);
+        return movie;
     }
 
 

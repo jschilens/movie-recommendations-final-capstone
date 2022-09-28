@@ -10,5 +10,6 @@ public interface MovieDao {
 
 
     public List<Movie> getAllMovies();
+    public Movie getMovie(int movieId);
 
 }

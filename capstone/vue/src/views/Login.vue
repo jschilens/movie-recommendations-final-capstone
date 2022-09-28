@@ -151,12 +151,15 @@ export default {
 
 .form-control{
   /* forms to fill out username and password */
-  padding: 23px 23px 2px;
-  margin: 20px 20px 0;	
+  padding: 15px 15px 2px;
+  margin: 15px 15px 0;	
 	border-radius: 3px;
   font-size: 20px;
   background-color: #E0E0E0;
   border: black;
+  text-align: center;
+  padding-bottom: 20px;
+  
 }
 
 input {
@@ -170,7 +173,8 @@ input {
 
 .form-control[type=text]:focus{
   outline: none;     
-  box-shadow: 0 0 0 2px #484848; 
+  box-shadow: 0 0 0 2px #484848;
+  
 }
 
 .form-control[type=password]:focus{
@@ -182,12 +186,13 @@ input {
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 23px 23px 0;
-  margin: 20px 20px 0;	
+  padding: 15px 15px 2px;
+  margin: 15px 15px 0;	
 	border-radius: 3px;
   font-size: 20px;
   background-color: #484848;
   color: white;
+  padding-bottom: 20px;
 }
 
 .need-account{
