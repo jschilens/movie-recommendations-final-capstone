@@ -138,6 +138,7 @@ export default {
   border-radius: 15px;
   background: #fff;
   padding: 20px;
+  text-align: right;
 }
 
 .h3{
