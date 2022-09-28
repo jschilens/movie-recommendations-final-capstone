@@ -13,6 +13,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   name: "home",
@@ -27,10 +29,12 @@ export default {
   padding: 0;
 }
 
+
 #flex {
   display: flex;
   flex-direction: column;
   align-content: stretch;
+  height: 96vh;
 }
 
 .header{
