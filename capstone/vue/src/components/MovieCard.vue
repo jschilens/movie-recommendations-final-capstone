@@ -4,11 +4,12 @@
     v-on:click="retrieveMovie"
     v-bind:to="{ name: 'movie-details' }"
   >
-    <!-- This needs to be changed so it is not always Orphan: First Kill. -->
     <div class="movie-details" v-for="movie in movies" v-bind:key="movie.id">
       <h1 class="title">{{ movie.original_title }}</h1>
       <h2 class="date">{{ movie.release_date }}</h2>
       <img v-bind:src="movie.poster_path" class="poster" />
+      <font-awesome-icon icon="fa-solid fa-film" />
+      <font-awesome-icon icon="fa-solid fa-heart" />
       <p class="overview">{{ movie.overview }}</p>
     </div>
   </div>
@@ -55,10 +56,6 @@ export default {
 </script>
 
 <style scoped>
-body {
-  
-}
-
 .card {
   display: flex;
   flex-direction: row;

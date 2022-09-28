@@ -4,10 +4,10 @@
     
     <h1 class="header">Hello {{$store.state.user.username}} </h1>
     
-    <div class="information">
+    <!-- <div class="information">
       <h4> Watch Later </h4>
       <h4> Favorited movies </h4>
-    </div>
+    </div> -->
     
     </div>
   </div>
@@ -43,10 +43,10 @@ export default {
   margin: 1% ;
 }
 
-.information {
+/* .information {
   text-align: center;
   font-size: 30px;
   color: black;
-}
+} */
 
 </style>
