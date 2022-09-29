@@ -9,8 +9,12 @@
       <h2 class="date">{{ movie.release_date }}</h2>
       <img v-bind:src="movie.poster_path" class="poster" />
       <div id="icons">
+      <div class="fa-1x2">
       <font-awesome-icon id="film" class="icons" icon="fa-solid fa-film" />
+      </div>
+      <div class="fa-2x2 fa-beat">
       <font-awesome-icon id="heart" class="icons" icon="fa-solid fa-heart" />
+      </div>
       </div>
       <p class="overview">{{ movie.overview }}</p>
     </div>
@@ -92,12 +96,12 @@ export default {
   display: flex;
   justify-content: center;
 
+
 }
 
 
-
 #heart {
-  margin-left: 2%;
+  margin-left: 50%;
 }
 
 .title {
@@ -115,7 +119,6 @@ export default {
 }
 
 .overview {
-  font-display: ;
   text-align: center;
   margin: 5% 5% 20px 5%;
   text-overflow: ellipsis;
