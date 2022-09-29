@@ -1,5 +1,4 @@
 <template>
-  <nav>
       <div class="navbar">
         <div class="container nav-container">
             <input class="checkbox" type="checkbox" />
@@ -19,7 +18,6 @@
           </div>
         </div>
       </div>
-    </nav>
 </template>
 
 <script>
@@ -42,7 +40,7 @@ export default {
 }
 
 body {
-  /* font-family: */
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .container {
@@ -54,7 +52,7 @@ body {
 }
 
 .navbar {
-  width: 70%;
+  width: 100%;
 }
 
 .nav-container {
@@ -75,7 +73,7 @@ body {
 
 .navbar .nav-container #list {
   text-decoration: none;
-  color: black;
+  color: #ffa500;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;

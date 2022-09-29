@@ -1,14 +1,8 @@
 <template>
   <div class="home">
     <div id="flex"> 
-    
-    <h1 class="header">Hello {{$store.state.user.username}} </h1>
-    
-    <!-- <div class="information">
-      <h4> Watch Later </h4>
-      <h4> Favorited movies </h4>
-    </div> -->
-    
+    <h1 class="header">Hello {{$store.state.user.username}}!</h1>
+  
     </div>
   </div>
 </template>
@@ -24,7 +18,7 @@ export default {
 <style scoped>
 
 * {
-  font-family: sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
 }
@@ -42,11 +36,4 @@ export default {
   text-align: center;
   margin: 1% ;
 }
-
-/* .information {
-  text-align: center;
-  font-size: 30px;
-  color: black;
-} */
-
 </style>
