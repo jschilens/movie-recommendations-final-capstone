@@ -1,10 +1,10 @@
 <template>
   <div id="login-page">
     <div id="site-info" class="site-info">
-      <div class="name" id="flex">
-        <h1>TE NBD</h1>
+      <div class="name" id="name">
+        <h1>TBD</h1>
       </div>
-      <div class="information" id="flex">
+      <div class="information" id="information">
         <p id="description" class="description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -113,6 +113,10 @@ export default {
 }
 
 #login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 96vh;
   
 }
@@ -120,7 +124,7 @@ export default {
 #flex {
   display: flex;
   flex-direction: column;
-  align-content: stretch;
+  align-items: center;
 }
 
 .name {
@@ -128,17 +132,19 @@ export default {
   text-align: center;
   border-radius: 10px;
   max-width: 450px;
-  margin: 1% 0% 3% 32.2%;
+  margin: 1% 0% 3% 0%;
   
 }
 
 .information {
   background: #fcde67;
   text-align: center;
-  margin: 1% 0% 3% 32.2%;
+  margin: 1% 0% 3% 0%;
   font-size: 25px;
   border-radius: 10px;
   max-width: 450px;
+  
+
 }
 
 
@@ -156,6 +162,8 @@ export default {
   border-radius: 15px;
   background: #fff;
   padding: 20px;
+  margin: 0 auto;
+  
   
 }
 

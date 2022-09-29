@@ -8,8 +8,10 @@
       <h1 class="title">{{ movie.original_title }}</h1>
       <h2 class="date">{{ movie.release_date }}</h2>
       <img v-bind:src="movie.poster_path" class="poster" />
-      <font-awesome-icon icon="fa-solid fa-film" />
-      <font-awesome-icon icon="fa-solid fa-heart" />
+      <div id="icons">
+      <font-awesome-icon id="film" class="icons" icon="fa-solid fa-film" />
+      <font-awesome-icon id="heart" class="icons" icon="fa-solid fa-heart" />
+      </div>
       <p class="overview">{{ movie.overview }}</p>
     </div>
   </div>
@@ -68,6 +70,12 @@ export default {
   text-align: center;
 }
 
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .movie-details {
   display: flex;
   flex-direction: column;
@@ -78,6 +86,18 @@ export default {
   border: 2px solid black;
   color: white;
   border-radius: 10px;
+}
+
+#icons {
+  display: flex;
+  justify-content: center;
+
+}
+
+
+
+#heart {
+  margin-left: 2%;
 }
 
 .title {
