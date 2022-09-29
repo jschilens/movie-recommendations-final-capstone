@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <movie-card />
+  <div class="movie-container">
+    <movie-card v-bind:movie="movie" v-for="movie in $store.state.movies" v-bind:key="movie.id"/>
   </div>
 </template>
 
 
 <script>
-import MovieCard from "@/components/MovieCard";
+import MovieCard from "../components/MovieCard.vue"
 import MovieService from "../services/MovieService";
 
 
 export default {
   name: "movie-list",
-
   components: {
-    MovieCard,
+    MovieCard
   },
 
   methods: {
@@ -25,13 +24,23 @@ export default {
         }
       });
     },
+    retrieveMovie() {
+      MovieService.getMovie(this.$route.params.id);
+    },
   },
   created() {
-    this.getMovies;
+    this.getMovies();
   },
 };
 </script>
 
-<style>
+<style scoped>
+div.movie-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+
+}
 
 </style>

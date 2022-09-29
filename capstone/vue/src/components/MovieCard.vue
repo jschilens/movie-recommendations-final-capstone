@@ -1,21 +1,9 @@
 <template>
-  <div
-    class="card"
-    v-on:click="retrieveMovie"
-    v-bind:to="{ name: 'movie-details' }"
-  >
-    <div class="movie-details" v-for="movie in movies" v-bind:key="movie.id">
-      <h1 class="title">{{ movie.original_title }}</h1>
-      <h2 class="date">{{ movie.release_date }}</h2>
+  <div class="card">
+    <div class="container">
+      <h1 class="title" id="title">{{ movie.original_title }}</h1>
+      <h2 class="date" id="date">{{ movie.release_date }}</h2>
       <img v-bind:src="movie.poster_path" class="poster" />
-      <div id="icons">
-      <div class="fa-1x2">
-      <font-awesome-icon id="film" class="icons" icon="fa-solid fa-film" />
-      </div>
-      <div class="fa-2x2 fa-beat">
-      <font-awesome-icon id="heart" class="icons" icon="fa-solid fa-heart" />
-      </div>
-      </div>
       <p class="overview">{{ movie.overview }}</p>
     </div>
   </div>
@@ -27,20 +15,23 @@ import MovieService from "../services/MovieService";
 
 export default {
   name: "movie-card",
-  data() {
-    return {
-      movie: {
-        original_title: "",
-        overview: "",
-        release_date: "",
-        id: this.id,
-        poster_path: "",
-        genre_ids: "",
-        vote_average: "",
-      },
-      movies: [],
-    };
+  props: {
+    movie: Object,
   },
+  // data
+  //   // return
+  //   //   movie:
+  //   //     original_title: "",
+  //   //     overview: "",
+  //   //     release_date: "",
+  //   //     id: this.id,
+  //   //     poster_path: "",
+  //   //     genre_ids: "",
+  //   //     vote_average: "",
+  //   //   ,
+  //   //   movies: ,
+  //   // ;
+  // ,
 
   methods: {
     getMovies() {
@@ -54,73 +45,78 @@ export default {
       MovieService.getMovie(this.$route.params.id);
     },
   },
-
-  created() {
-    this.getMovies();
-  },
 };
 </script>
 
 <style scoped>
-.card {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: space-evenly;
-  justify-content: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Allerta Stencil';
 }
 
-.date {
-  text-align: center;
-}
-
-.icons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.movie-details {
+div.container {
   display: flex;
   flex-direction: column;
-  width: 22%;
-  margin: 2% 2% 0px 0%;
-  align-content: space-evenly;
-  background-color: #484848;
+  align-items: center;
+  
+}
+
+div.card {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: lavender;
   border: 2px solid black;
-  color: white;
   border-radius: 10px;
-}
-
-#icons {
-  display: flex;
+  width: 350px;
+  height: 550px;
+  margin: 20px;
   justify-content: center;
-
-
+  align-items: center;
+  
+  
+  
 }
 
-#heart {
-  margin-left: 50%;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-}
-
-.poster {
+p.overview {
+  
   display: flex;
-  flex: 0 1 auto;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 5%;
+  display: -webkit-box;
+  width: 300px;
+  height: 74px;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  
+  
+  /* display: block;
+  width: 475px;
+  line-break: auto;
+  padding-bottom: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+ */
+
+  
 }
 
-.overview {
+h1#title.title {
   text-align: center;
-  margin: 5% 5% 20px 5%;
-  text-overflow: ellipsis;
-  font-size: larger;
+  width: 200px;
+margin-top: -50px;
+
+}
+
+h2#date.date {
+  text-align: center;
+  width: 150px;
+
 }
 </style>
