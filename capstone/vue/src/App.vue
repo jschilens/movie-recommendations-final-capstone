@@ -27,9 +27,11 @@ import Burgermenu from './components/burgermenu.vue';
 }
 
 #nav {
-  display: flex;
+  /* display: flex; */
   background: #484848;
-  height: 60px;
+  /* height: 60px; */
 }
+
+
 
 </style>
