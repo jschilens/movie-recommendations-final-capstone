@@ -13,8 +13,9 @@
           <div class="menu-list">
             <li><router-link id="list" v-bind:to="{ name: 'home' }" >Home</router-link></li>
             <li><router-link id="list" v-bind:to="{ name: 'movies' }" >Browse</router-link></li>
+            <li><router-link id="list" v-bind:to="{ name: 'favorites' }" >My Movies</router-link></li>
+            <li><router-link id="list" v-bind:to="{ name: 'favorites' }" >Account</router-link></li>
             <li> <router-link id="list" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" >Logout</router-link></li>
-           
           </div>
         </div>
       </div>
@@ -26,9 +27,6 @@
 export default {
     // name: 'sidemenu__item',
     
-    data() {
-        
-    }
     
 };
 
