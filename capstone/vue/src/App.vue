@@ -1,7 +1,7 @@
 <template>
   <div id="app" style="background-image: url('/movie-poster-background.jpg')">
     <div id="nav">
-      <burgermenu id="menu"/>
+      <burger-menu id="menu"/>
       
     </div>
     <router-view />
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import Burgermenu from './components/burgermenu.vue';
+import BurgerMenu from './components/BurgerMenu.vue';
 
   export default { 
     components: { 
-        Burgermenu
+        BurgerMenu
     }
   }
 
