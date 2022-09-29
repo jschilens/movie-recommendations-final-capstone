@@ -7,14 +7,17 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faFilm} from '@fortawesome/free-solid-svg-icons'
-//import { faaBeat } from '@fortawesome/font-awesome-animation'
+import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
+
 
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faHeart)
 library.add(faFilm)
-//library.add(faaBeat)
+library.add(faHeartOutline)
+
+
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
