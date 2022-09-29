@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Component
 public class MovieService {
 
     private final String API_BASE_URL = "https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate";
@@ -23,9 +23,7 @@ public class MovieService {
 
     public Movie getMovie(int movieId) {
         Movie movie = new Movie();
-        MovieGeneral movieGeneral = restTemplate.getForObject("https://developers.themoviedb.org/3/movies/get-movie-details", MovieGeneral.class);
-        movie = movieGeneral.getMovie();
-
+        movie = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US/", Movie.class);
         return movie;
     }
 

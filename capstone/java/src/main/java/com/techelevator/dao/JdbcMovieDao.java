@@ -3,6 +3,8 @@ package com.techelevator.dao;
 
 import com.techelevator.controller.UserController;
 import com.techelevator.model.Movie;
+import com.techelevator.services.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,8 @@ public class JdbcMovieDao implements MovieDao {
     private UserDao userDao;
     private JdbcTemplate jdbcTemplate;
     private UserController userController;
+    @Autowired
+    private MovieService movieService;
 
     public JdbcMovieDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -33,16 +37,22 @@ public class JdbcMovieDao implements MovieDao {
     @Override
     public void addMovie(Movie movie) {
 
-        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path, genre_name, isFavorited, isSaved)\n" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path, genre_name)\n" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster(), movie.getGenre_name(), movie.isFavorited(), movie.isSaved());
+        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster(), movie.getGenre_name());
 
     }
 
     @Override
-    public void favoriteMovie(int id) {
-
+    public void favoriteMovie(int id, int userId) {
+        System.out.println("in favoriteMovie");
+        Movie movie = movieService.getMovie(id);
+        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
+        "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
+        String sql1 = "INSERT INTO movie_lists (user_id, favorite_movie_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
+        jdbcTemplate.update(sql1, userId,movie.getMovie_id());
     }
 
     @Override
@@ -87,9 +97,6 @@ public class JdbcMovieDao implements MovieDao {
         movie.setRelease_date(rowSet.getDate("release_date").toLocalDate());
         movie.setRating(rowSet.getDouble("vote_average"));
         movie.setPoster(rowSet.getString("poster_path"));
-        movie.setGenre_name(rowSet.getString("genre_name"));
-        movie.setFavorited(rowSet.getBoolean("isFavorited"));
-        movie.setSaved(rowSet.getBoolean("isSaved"));
         return movie;
     }
 }

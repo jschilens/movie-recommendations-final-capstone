@@ -11,7 +11,7 @@ public interface MovieDao {
 
     public List<Movie> getAllMovies();
     public void addMovie(Movie movie);
-    public void favoriteMovie(int id);
+    public void favoriteMovie(int id, int userId);
     public void saveMovie(int id);
     public List<Movie> getFavoritedMovies(int userId);
     public List<Movie> getSavedMovies(int userId);

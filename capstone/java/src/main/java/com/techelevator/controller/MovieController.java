@@ -8,6 +8,7 @@ import com.techelevator.model.Movie;
 import com.techelevator.model.User;
 import com.techelevator.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -27,6 +28,7 @@ public class MovieController {
     @Autowired
     private MovieDao movieDao;
     private UserDao userDao;
+    @Autowired
     private JdbcMovieDao jdbcMovieDao;
 
 
@@ -66,15 +68,17 @@ public class MovieController {
         return movie;
     }
 
-//    @RequestMapping(path = "/movies/favorited/{id}", method = RequestMethod.PUT)
-//    public void favoriteMovie(@Valid @PathVariable int id) {
-//
-//    }
-//
-//    @RequestMapping(path = "/movies/unfavorited/{id}", method = RequestMethod.DELETE)
-//    public void unfavoriteMovie(@Valid @PathVariable int id) {
-//
-//    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/movies/favorited/{id}", method = RequestMethod.PUT)
+    public void favoriteMovie(Principal principal, @Valid @PathVariable int id) {
+        System.out.println("test");
+        jdbcMovieDao.favoriteMovie(id, 4);
+    }
+
+    @RequestMapping(path = "/movies/unfavorited/{id}", method = RequestMethod.DELETE)
+    public void unfavoriteMovie(@Valid @PathVariable int id) {
+
+    }
 
     @RequestMapping(path = "/movies/{userId}/favorites", method = RequestMethod.GET)
     public List<Movie> getFavoriteMovies(@Valid @PathVariable int userId, Principal principal) {
