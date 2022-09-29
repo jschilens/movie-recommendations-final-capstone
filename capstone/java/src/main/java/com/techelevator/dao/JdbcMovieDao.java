@@ -3,8 +3,11 @@ package com.techelevator.dao;
 
 import com.techelevator.controller.UserController;
 import com.techelevator.model.Movie;
+
 import com.techelevator.services.MovieService;
+
 import com.techelevator.model.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -28,8 +31,10 @@ public class JdbcMovieDao implements MovieDao {
     private UserController userController;
     @Autowired
     private MovieService movieService;
+
     private JdbcUserDao jdbcUserDao;
     private User user;
+
 
     public JdbcMovieDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -43,10 +48,13 @@ public class JdbcMovieDao implements MovieDao {
     @Override
     public void addMovie(Movie movie) {
 
+
         String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster());
+
+
 
     }
 
