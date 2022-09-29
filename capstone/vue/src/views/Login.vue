@@ -2,7 +2,6 @@
   <div id="login-page">
     <div id="site-info" class="site-info">
       <div class="name" id="name">
-        <h1>TBD</h1>
       </div>
       <div class="information" id="information">
         <p id="description" class="description">
@@ -105,11 +104,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 
 * {
-
   font-weight: 540;
   margin: 0;
   padding: 0;
-
 }
 
 #login-page {
@@ -127,24 +124,15 @@ export default {
   align-items: center;
 }
 
-.name {
-  font-family: 'Bungee Spice';
-  text-align: center;
-  border-radius: 10px;
-  max-width: 450px;
-  margin: 1% 0% 3% 0%;
-  
-}
-
 .information {
-  background: #fcde67;
+  /* background: #ffa500;
+  opacity: 75%; */
   text-align: center;
   margin: 1% 0% 3% 0%;
   font-size: 25px;
   border-radius: 10px;
   max-width: 450px;
-  
-
+  font-family: 'Courier New', Courier, monospace;
 }
 
 
