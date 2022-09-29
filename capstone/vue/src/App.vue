@@ -1,15 +1,15 @@
 <template>
   <div id="app" style="background-image: url('/movie-poster-background.jpg')">
-    <div id="nav">
+    <div id="sidebar">
       <burger-menu id="menu"/>
-      
+      <h1 id="site-title">Movie Site</h1>
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
-import BurgerMenu from './components/BurgerMenu.vue';
+import BurgerMenu from '../src/components/burgermenu.vue';
 
   export default { 
     components: { 
@@ -26,12 +26,25 @@ import BurgerMenu from './components/BurgerMenu.vue';
   padding: 0;
 }
 
-#nav {
-  /* display: flex; */
+#sidebar {
+  font-family: 'Bungee Spice';
+  
   background: #484848;
-  /* height: 60px; */
 }
 
+#menu {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #484848;
+  
+}
+#site-title {
+  display: flex;
+  justify-content: center;
+  margin-top: -50px;
+  padding-bottom: 20px;
+  padding-top: 10px;
 
+}
 
 </style>
