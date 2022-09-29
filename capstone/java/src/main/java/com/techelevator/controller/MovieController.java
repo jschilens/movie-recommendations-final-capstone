@@ -27,6 +27,7 @@ public class MovieController {
     @Autowired
     private MovieDao movieDao;
     private UserDao userDao;
+    @Autowired
     private JdbcMovieDao jdbcMovieDao;
 
 
@@ -57,7 +58,6 @@ public class MovieController {
        List<Movie> movies = new ArrayList<>();
        movies = movieService.getAllMovies();
        return movies;
-
     }
 
     @RequestMapping(path = "/movies/{id}", method = RequestMethod.GET)
@@ -76,16 +76,14 @@ public class MovieController {
 //
 //    }
 
-    @RequestMapping(path = "/movies/{userId}/favorites", method = RequestMethod.GET)
-    public List<Movie> getFavoriteMovies(@Valid @PathVariable int userId, Principal principal) {
-        List<Movie> favoriteMovies = new ArrayList<>();
-        System.out.println("before if");
+    @RequestMapping(path = "/movies/favorites/{userId}", method = RequestMethod.GET)
+    public List<Movie> getFavoritedMovies(Principal principal, @PathVariable int userId) {
+        List<Movie> favoritedMovies = new ArrayList<>();
         if(userId == userDao.findIdByUsername(principal.getName())) {
-            favoriteMovies = jdbcMovieDao.getFavoritedMovies(userId);
-            System.out.println("made it to if");
+            favoritedMovies = jdbcMovieDao.getFavoritedMovies(userId);
         }
-        System.out.println("after if");
-        return favoriteMovies;
+        return favoritedMovies;
+
     }
 
 //    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.PUT)

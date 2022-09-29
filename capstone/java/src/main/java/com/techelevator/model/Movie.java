@@ -96,37 +96,37 @@ public class Movie {
         this.movie_id = movie_id;
     }
 
-    public boolean isFavorited() {
-        return isFavorited;
-    }
-
-    public void setFavorited(boolean favorited) {
-        isFavorited = favorited;
-    }
-
-    public boolean isSaved() {
-        return isSaved;
-    }
-
-    public void setSaved(boolean saved) {
-        isSaved = saved;
-    }
-
-    public int[] getGenre_id() {
-        return genre_id;
-    }
-
-    public void setGenre_id(int[] genre_id) {
-        this.genre_id = genre_id;
-    }
-
-    public String getGenre_name() {
-        return genre_name;
-    }
-
-    public void setGenre_name(String genre_name) {
-        this.genre_name = genre_name;
-    }
+//    public boolean isFavorited() {
+//        return isFavorited;
+//    }
+//
+//    public void setFavorited(boolean favorited) {
+//        isFavorited = favorited;
+//    }
+//
+//    public boolean isSaved() {
+//        return isSaved;
+//    }
+//
+//    public void setSaved(boolean saved) {
+//        isSaved = saved;
+//    }
+//
+//    public int[] getGenre_id() {
+//        return genre_id;
+//    }
+//
+//    public void setGenre_id(int[] genre_id) {
+//        this.genre_id = genre_id;
+//    }
+//
+//    public String getGenre_name() {
+//        return genre_name;
+//    }
+//
+//    public void setGenre_name(String genre_name) {
+//        this.genre_name = genre_name;
+//    }
 
     @Override
     public String toString() {
