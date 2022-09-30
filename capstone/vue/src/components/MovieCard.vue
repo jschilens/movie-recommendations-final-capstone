@@ -5,6 +5,23 @@
       <h2 class="date" id="date">{{ movie.release_date }}</h2>
       <img v-bind:src="movie.poster_path" class="poster" />
       <p class="overview">{{ movie.overview }}</p>
+      
+    <div class="icon">
+      <button v-on:click="watch = !watch">
+        <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" />
+        <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
+      </button>
+    
+
+    
+      <button v-on:click="heart = !heart">
+        <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
+        <font-awesome-icon v-else icon="fa-regular fa-heart" />
+      </button>
+    </div>
+
+
+
     </div>
   </div>
 </template>
@@ -18,20 +35,12 @@ export default {
   props: {
     movie: Object,
   },
-  // data
-  //   // return
-  //   //   movie:
-  //   //     original_title: "",
-  //   //     overview: "",
-  //   //     release_date: "",
-  //   //     id: this.id,
-  //   //     poster_path: "",
-  //   //     genre_ids: "",
-  //   //     vote_average: "",
-  //   //   ,
-  //   //   movies: ,
-  //   // ;
-  // ,
+  data() {
+      return {
+        heart: true,
+        watch: true,
+      }
+  },
 
   methods: {
     getMovies() {
@@ -59,6 +68,8 @@ div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* might not need this */
+  margin-inline: auto;
   
 }
 
@@ -80,7 +91,6 @@ div.card {
 }
 
 p.overview {
-  
   display: flex;
   display: -webkit-box;
   width: 300px;
@@ -92,19 +102,7 @@ p.overview {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 15px;
-  
-  
-  /* display: block;
-  width: 475px;
-  line-break: auto;
-  padding-bottom: 1rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
- */
-
-  
+  margin-bottom: 5px;
 }
 
 h1#title.title {
@@ -117,6 +115,18 @@ margin-top: -50px;
 h2#date.date {
   text-align: center;
   width: 150px;
-
 }
+
+.icon {
+  display: flex;
+  /* margin-inline: auto; */
+  height: 6%;
+  margin-top: 5px;
+  border: 3px solid red;
+  width: 90px;
+  justify-content: space-around;
+}
+
+
+
 </style>
