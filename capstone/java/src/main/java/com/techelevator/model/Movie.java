@@ -96,22 +96,22 @@ public class Movie {
         this.movie_id = movie_id;
     }
 
-//    public boolean isFavorited() {
-//        return isFavorited;
-//    }
-//
-//    public void setFavorited(boolean favorited) {
-//        isFavorited = favorited;
-//    }
-//
-//    public boolean isSaved() {
-//        return isSaved;
-//    }
-//
-//    public void setSaved(boolean saved) {
-//        isSaved = saved;
-//    }
-//
+    public boolean isFavorited() {
+        return isFavorited;
+    }
+
+    public void setFavorited(boolean favorited) {
+        isFavorited = favorited;
+    }
+
+    public boolean isSaved() {
+        return isSaved;
+    }
+
+    public void setSaved(boolean saved) {
+        isSaved = saved;
+    }
+
 //    public int[] getGenre_id() {
 //        return genre_id;
 //    }
