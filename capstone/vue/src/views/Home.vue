@@ -2,7 +2,7 @@
   <div class="home">
     <div id="flex"> 
     <h1 class="header">Hello {{$store.state.user.username}}!</h1>
-  
+    <movie-details class="movieDetails"/>
     </div>
   </div>
 </template>
@@ -10,7 +10,15 @@
 
 
 <script>
+import MovieDetails from '../components/MovieDetails.vue';
+
+
 export default {
+
+  components: { 
+    MovieDetails 
+    },
+
   name: "home",
 };
 </script>
@@ -35,5 +43,13 @@ export default {
   color: black;
   text-align: center;
   margin: 1% ;
+  border: 3px solid red;
+  background: white;
+}
+
+.movieDetails{
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
 }
 </style>

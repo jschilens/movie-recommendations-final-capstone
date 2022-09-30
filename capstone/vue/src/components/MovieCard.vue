@@ -7,14 +7,14 @@
       <p class="overview">{{ movie.overview }}</p>
       
     <div class="icon">
-      <button v-on:click="saveFunction()">
+      <button v-on:click="saveFunction()" class="watch-button">
         <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" />
         <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
       </button>
     
 
     
-      <button v-on:click="favoriteFunction()">
+      <button v-on:click="favoriteFunction()" class="heart-button">
         <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
         <font-awesome-icon v-else icon="fa-regular fa-heart" />
       </button>
@@ -151,6 +151,13 @@ h2#date.date {
   justify-content: space-around;
 }
 
+.watch-button {
+  cursor: pointer;
+}
+
+.heart-button {
+  cursor: pointer;
+}
 
 
 </style>
