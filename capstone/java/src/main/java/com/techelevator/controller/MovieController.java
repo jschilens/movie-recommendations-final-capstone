@@ -86,7 +86,6 @@ public class MovieController {
             favoritedMovies = jdbcMovieDao.getFavoritedMovies(userId);
         }
         return favoritedMovies;
-
     }
 
 //    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.PUT)
