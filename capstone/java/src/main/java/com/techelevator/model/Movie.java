@@ -112,14 +112,14 @@ public class Movie {
         isSaved = saved;
     }
 
-//    public int[] getGenre_id() {
-//        return genre_id;
-//    }
-//
-//    public void setGenre_id(int[] genre_id) {
-//        this.genre_id = genre_id;
-//    }
-//
+    public int[] getGenre_id() {
+        return genre_id;
+    }
+
+    public void setGenre_id(int[] genre_id) {
+        this.genre_id = genre_id;
+    }
+
 //    public String getGenre_name() {
 //        return genre_name;
 //    }

@@ -7,14 +7,14 @@
       <p class="overview">{{ movie.overview }}</p>
       
     <div class="icon">
-      <button v-on:click="watch = !watch">
+      <button v-on:click="saveFunction()">
         <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" />
         <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
       </button>
     
 
     
-      <button v-on:click="heart = !heart">
+      <button v-on:click="favoriteFunction()">
         <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
         <font-awesome-icon v-else icon="fa-regular fa-heart" />
       </button>
@@ -29,6 +29,7 @@
 
 <script>
 import MovieService from "../services/MovieService";
+import DbService from "../services/DbService"
 
 export default {
   name: "movie-card",
@@ -37,8 +38,8 @@ export default {
   },
   data() {
       return {
-        heart: true,
-        watch: true,
+        heart: this.movie.favorited,
+        watch: this.movie.saved,
       }
   },
 
@@ -53,6 +54,29 @@ export default {
     retrieveMovie() {
       MovieService.getMovie(this.$route.params.id);
     },
+    reloadPage() {
+      window.location.reload();
+    },
+    favoriteFunction() {
+      if (this.heart === true) {
+        DbService.unFavorite(this.movie.id);
+        this.heart = false;
+      } else {
+        DbService.favorite(this.movie.id);
+        this.heart = true;
+      }
+    },
+    saveFunction() {
+      if (this.watch === true) {
+        DbService.unsave(this.movie.id);
+        this.watch = false;
+      } else {
+        DbService.save(this.movie.id);
+        this.watch = true;
+      }
+    },
+
+
   },
 };
 </script>

@@ -109,7 +109,7 @@ public class MovieController {
         jdbcMovieDao.favoriteMovie(id, userDao.findIdByUsername(principal.getName()));
     }
 
-    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+
     @RequestMapping(path = "/movies/unfavorited/{id}", method = RequestMethod.DELETE)
     public void unfavoriteMovie(Principal principal, @Valid @PathVariable int id) {
         jdbcMovieDao.unFavoriteMovie(id, userDao.findIdByUsername(principal.getName()));

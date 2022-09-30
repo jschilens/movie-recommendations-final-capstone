@@ -47,6 +47,11 @@ public class JdbcMovieDao implements MovieDao {
         String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster());
+        String genres = "INSERT INTO genres (genre_ids, movie_id)" +
+                "VALUES (?, ?) ON CONFLICT DO NOTHING";
+//        for (Integer genreId: movie.getGenre_id()) {
+//            jdbcTemplate.update(genres, genreId, movie.getMovie_id());
+//        }
     }
 
     @Override
