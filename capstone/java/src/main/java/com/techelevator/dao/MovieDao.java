@@ -12,11 +12,11 @@ public interface MovieDao {
     public List<Movie> getAllMovies();
     public void addMovie(Movie movie);
     public void favoriteMovie(int id, int userId);
-    public void saveMovie(int id);
+    public void saveMovie(int id, int userId);
     public List<Movie> getFavoritedMovies(int userId);
     public List<Movie> getSavedMovies(int userId);
-    public void unFavoriteMovie(int id);
-    public void unSaveMovie(int id);
+    public void unFavoriteMovie(int id, int userId);
+    public void unSaveMovie(int id, int userId);
 
 
 

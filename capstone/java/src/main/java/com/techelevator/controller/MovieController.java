@@ -27,6 +27,7 @@ public class MovieController {
     MovieService movieService;
     @Autowired
     private MovieDao movieDao;
+    @Autowired
     private UserDao userDao;
     @Autowired
     private JdbcMovieDao jdbcMovieDao;
@@ -70,16 +71,16 @@ public class MovieController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/movies/favorited/{id}", method = RequestMethod.PUT)
     public void favoriteMovie(Principal principal, @Valid @PathVariable int id) {
-        System.out.println("test");
-        jdbcMovieDao.favoriteMovie(id, 4);
+        jdbcMovieDao.favoriteMovie(id, userDao.findIdByUsername(principal.getName()));
     }
 
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     @RequestMapping(path = "/movies/unfavorited/{id}", method = RequestMethod.DELETE)
-    public void unfavoriteMovie(@Valid @PathVariable int id) {
-
+    public void unfavoriteMovie(Principal principal, @Valid @PathVariable int id) {
+        jdbcMovieDao.unFavoriteMovie(id, userDao.findIdByUsername(principal.getName()));
     }
 
-    @RequestMapping(path = "/movies/favorites/{userId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/favorited/{userId}", method = RequestMethod.GET)
     public List<Movie> getFavoritedMovies(Principal principal, @PathVariable int userId) {
         List<Movie> favoritedMovies = new ArrayList<>();
         if(userId == userDao.findIdByUsername(principal.getName())) {
@@ -88,15 +89,25 @@ public class MovieController {
         return favoritedMovies;
     }
 
-//    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.PUT)
-//    public void saveMovie(@Valid @PathVariable int id) {
-//
-//    }
-//
-//    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.DELETE)
-//    public void unSaveMovie(@Valid @PathVariable int id) {
-//
-//    }
+    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.PUT)
+    public void saveMovie(Principal principal, @Valid @PathVariable int id) {
+        jdbcMovieDao.saveMovie(id, userDao.findIdByUsername(principal.getName()));
+    }
+
+    @RequestMapping(path = "/movies/unsaved/{id}", method = RequestMethod.DELETE)
+    public void unSaveMovie(Principal principal, @Valid @PathVariable int id) {
+        jdbcMovieDao.unSaveMovie(id, userDao.findIdByUsername(principal.getName()));
+    }
+
+    @RequestMapping(path = "/saved/{userId}", method = RequestMethod.GET)
+    public List<Movie> getSavedMovies(Principal principal, @PathVariable int userId) {
+        List<Movie> savedMovies = new ArrayList<>();
+        if(userId == userDao.findIdByUsername(principal.getName())) {
+            savedMovies = jdbcMovieDao.getSavedMovies(userId);
+        }
+        return savedMovies;
+
+    }
 //
 //    @RequestMapping(path = "/movies/{userId}/favorites", method = RequestMethod.GET)
 //    public List<Movie> getSavedMovies(@Valid @PathVariable int userId, Principal principal) {

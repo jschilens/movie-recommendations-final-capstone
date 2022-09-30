@@ -27,11 +27,13 @@ public class JdbcMovieDao implements MovieDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
     private UserDao userDao;
+    @Autowired
     private UserController userController;
     @Autowired
     private MovieService movieService;
-
+    @Autowired
     private JdbcUserDao jdbcUserDao;
     private User user;
 
@@ -47,39 +49,51 @@ public class JdbcMovieDao implements MovieDao {
 
     @Override
     public void addMovie(Movie movie) {
-
-
         String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
+                "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster());
-
-
-
     }
 
     @Override
     public void favoriteMovie(int id, int userId) {
-        System.out.println("in favoriteMovie");
         Movie movie = movieService.getMovie(id);
-        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
-        "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
-        String sql1 = "INSERT INTO movie_lists (user_id, favorite_movie_id) VALUES (?, ?)";
-        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
-        jdbcTemplate.update(sql1, userId,movie.getMovie_id());
+        addMovie(movie);
+//        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
+//        "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
+        String sql = "INSERT INTO movie_favorited (user_id, favorite_movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
+//        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
+        jdbcTemplate.update(sql, userId,movie.getMovie_id());
     }
 
     @Override
-    public void saveMovie(int id) {
+    public void unFavoriteMovie(int id, int userId) {
+        String sql = "DELETE FROM movie_favorited WHERE user_id = ? AND favorite_movie_id = ?";
+        jdbcTemplate.update(sql, userId, id);
+    }
 
+    @Override
+    public void saveMovie(int id, int userId) {
+        Movie movie = movieService.getMovie(id);
+        addMovie(movie);
+//        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
+//                "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
+        String sql = "INSERT INTO movie_saved (user_id, saved_movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
+//        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
+        jdbcTemplate.update(sql, userId,movie.getMovie_id());
+    }
+
+    @Override
+    public void unSaveMovie(int id, int userId) {
+        String sql = "DELETE FROM movie_saved WHERE user_id = ? AND saved_movie_id = ?";
+        jdbcTemplate.update(sql, userId, id);
     }
 
     @Override
     public List<Movie> getFavoritedMovies(int userId) {
         List<Movie> favoriteMovies = new ArrayList<>();
         String sql = "SELECT movies.id, movies.original_title, movies.overview, movies.release_date, movies.vote_average, movies.poster_path\n"
-                + "FROM movies JOIN movie_lists ON movies.id = movie_lists.favorite_movie_id\n" +
-                "JOIN users ON movie_lists.user_id = users.user_id WHERE movie_lists.user_id = ?;";
+                + "FROM movies JOIN movie_favorited ON movies.id = movie_favorited.favorite_movie_id\n" +
+                "JOIN users ON movie_favorited.user_id = users.user_id WHERE movie_favorited.user_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
         while(rowSet.next()) {
             favoriteMovies.add(mapRowToMovie(rowSet));
@@ -89,18 +103,19 @@ public class JdbcMovieDao implements MovieDao {
 
     @Override
     public List<Movie> getSavedMovies(int userId) {
-        return null;
+        List<Movie> savedMovies = new ArrayList<>();
+        String sql = "SELECT movies.id, movies.original_title, movies.overview, movies.release_date, movies.vote_average, movies.poster_path\n"
+                + "FROM movies JOIN movie_saved ON movies.id = movie_saved.saved_movie_id\n" +
+                "JOIN users ON movie_saved.user_id = users.user_id WHERE movie_saved.user_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while(rowSet.next()) {
+            savedMovies.add(mapRowToMovie(rowSet));
+        }
+        return savedMovies;
     }
 
-    @Override
-    public void unFavoriteMovie(int id) {
 
-    }
 
-    @Override
-    public void unSaveMovie(int id) {
-
-    }
 
 
     public Movie mapRowToMovie(SqlRowSet rowSet) {
