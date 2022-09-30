@@ -2,7 +2,7 @@
   <div class="home">
     <div id="flex"> 
     <h1 class="header">Hello {{$store.state.user.username}}!</h1>
-    <movie-details class="movieDetails"/>
+    <now-playing class="movieDetails"/>
     </div>
   </div>
 </template>
@@ -10,13 +10,13 @@
 
 
 <script>
-import MovieDetails from '../components/MovieDetails.vue';
+import NowPlaying from '../components/NowPlaying.vue';
 
 
 export default {
 
   components: { 
-    MovieDetails 
+    NowPlaying 
     },
 
   name: "home",

@@ -12,15 +12,11 @@
         <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
       </button>
     
-
-    
       <button v-on:click="favoriteFunction()" class="heart-button">
         <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
         <font-awesome-icon v-else icon="fa-regular fa-heart" />
       </button>
     </div>
-
-
 
     </div>
   </div>
