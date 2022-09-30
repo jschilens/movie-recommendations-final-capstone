@@ -3,7 +3,7 @@
     <div class="container">
       <h1 class="title" id="title">{{ movie.original_title }}</h1>
       <h2 class="date" id="date">{{ movie.release_date }}</h2>
-      <img v-bind:src="movie.poster_path" class="poster" />
+      <img v-on:click.prevent="openDetails()" v-bind:src="movie.poster_path" class="poster" />
       <p class="overview">{{ movie.overview }}</p>
       
     <div class="icon">
@@ -71,6 +71,11 @@ export default {
         this.watch = true;
       }
     },
+
+    // may not be passing in the correct parameters to Movie Details
+    openDetails() {
+      {this.$router.push(`/movies/${this.movie.id}`)}
+    }
 
 
   },

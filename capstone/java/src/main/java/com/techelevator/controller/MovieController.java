@@ -98,8 +98,18 @@ public class MovieController {
     }
 
     @RequestMapping(path = "/movies/{id}", method = RequestMethod.GET)
-    public Movie getMovie(@Valid @RequestParam int movieId) {
+    public Movie getMovie(Principal principal, @Valid @RequestParam int movieId) {
         Movie movie = movieService.getMovie(movieId);
+        if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+            movie.setSaved(true);
+        } else {
+            movie.setSaved(false);
+        }
+        if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+            movie.setFavorited(true);
+        } else {
+            movie.setFavorited(false);
+        }
         return movie;
     }
 
