@@ -12,7 +12,6 @@ import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 
-
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faHeart)
@@ -21,10 +20,8 @@ library.add(faHeartOutline)
 library.add(faEyeSlash)
 
 
-
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 
 Vue.config.productionTip = false
 

@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import BrowseMovies from '../views/BrowseMovies'
 import Favorites from '../views/Favorites'
+import MovieDetails from '../views/MovieDetails'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/favorites",
       name: "favorites",
       component: Favorites,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/movies/:id",
+      name: "details",
+      component: MovieDetails,
       meta: {
         requiresAuth: false
       }

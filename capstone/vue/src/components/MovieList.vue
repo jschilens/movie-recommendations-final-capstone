@@ -6,7 +6,7 @@
 
 
 <script>
-import MovieCard from "../components/MovieCard.vue"
+import MovieCard from "../components/MovieCard.vue";
 import MovieService from "../services/MovieService";
 
 
@@ -26,7 +26,7 @@ export default {
     },
     retrieveMovie() {
       MovieService.getMovie(this.$route.params.id);
-    },
+    }
   },
   created() {
     this.getMovies();
