@@ -8,6 +8,10 @@ export default {
 
     getMovie(id) {
         return axios.get(`/movies/${id}`)
+    },
+
+    getFavoritedMovies() {
+        return axios.get('/favorited')
     }
 
 }

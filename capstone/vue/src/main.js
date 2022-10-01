@@ -7,17 +7,18 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
-
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 
 
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faHeart)
-library.add(faFilm)
+library.add(faEye)
 library.add(faHeartOutline)
+library.add(faEyeSlash)
 
 
 

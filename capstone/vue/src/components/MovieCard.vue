@@ -5,6 +5,20 @@
       <h2 class="date" id="date">{{ movie.release_date }}</h2>
       <img v-bind:src="movie.poster_path" class="poster" />
       <p class="overview">{{ movie.overview }}</p>
+      <div class="icons">
+      <div class="favorite">
+        <font-awesome-icon icon="fa-solid fa-heart" />
+      </div>
+      <div class="favorite">
+        <font-awesome-icon icon="fa-regular fa-heart" />
+      </div>
+      <div class="save">
+        <font-awesome-icon icon="fa-solid fa-eye" />
+      </div>
+      <div class="save">
+        <font-awesome-icon icon="fa-solid fa-eye-slash" />
+      </div>
+      </div>
     </div>
   </div>
 </template>
@@ -18,20 +32,7 @@ export default {
   props: {
     movie: Object,
   },
-  // data
-  //   // return
-  //   //   movie:
-  //   //     original_title: "",
-  //   //     overview: "",
-  //   //     release_date: "",
-  //   //     id: this.id,
-  //   //     poster_path: "",
-  //   //     genre_ids: "",
-  //   //     vote_average: "",
-  //   //   ,
-  //   //   movies: ,
-  //   // ;
-  // ,
+  
 
   methods: {
     getMovies() {
@@ -119,4 +120,12 @@ h2#date.date {
   width: 150px;
 
 }
+
+.icons {
+  display: flex;
+}
+
+
+
+
 </style>

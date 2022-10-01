@@ -3,8 +3,9 @@
 </template>
 
 <script>
-import MovieFavorites from '../components/MovieFavorites.vue'
+import MovieFavorites from '@/components/MovieFavorites.vue'
 export default {
+  name: "favorites",
   components: { MovieFavorites },
 
 }
