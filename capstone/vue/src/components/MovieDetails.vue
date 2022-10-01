@@ -1,40 +1,33 @@
 <template>
-  <div class="selected-movie">
-    <div class="selected-movie-details">
-      <h1 class="title">{{ movie.original_title }}</h1>
-      <img v-bind:src="movie.poster_path" class="poster" />
-      <p class="overview">{{ movie.overview }}</p>
-    </div>
+  <div>
+    <movie-card v-bind:movie="loadMovie()"/>
   </div>
 </template>
 
-<script>
+// not displaying, loadMovie undefined
 
-import MovieService from '../services/MovieService'
+<script>
+import MovieCard from "../components/MovieCard.vue"
+import MovieService from "../services/MovieService";
 
 export default {
-  data() {
-    return {
-      movie: {
-        original_title: "",
-        overview: "",
-        release_date: "",
-        id: this.id,
-        poster_path: "",
-        genre_ids: "",
-        vote_average: "",
-      },
-    };
+    components: {
+        MovieCard
+    },
+    methods: {
+    retrieveMovie() {
+      MovieService.getMovie(this.$route.params.id);
+    }
   },
-  created() {
-      MovieService.getMovie(this.movie.id).then(response => {
-          if(response.status == 200) {
-              this.movie = response.data;
-          }
-      })
+  computed: {
+      loadMovie() {
+          return this.retrieveMovie();
+      }
   }
-};
+
+}
 </script>
 
 <style>
+
 </style>

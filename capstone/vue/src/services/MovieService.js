@@ -8,6 +8,10 @@ export default {
 
     getMovie(id) {
         return axios.get(`/movies/${id}`)
-    }
+    },
 
+    getNowPlaying() {
+        return axios.get('/now-playing')
+    }
+    
 }

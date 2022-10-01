@@ -3,8 +3,21 @@
     <div class="container">
       <h1 class="title" id="title">{{ movie.original_title }}</h1>
       <h2 class="date" id="date">{{ movie.release_date }}</h2>
-      <img v-bind:src="movie.poster_path" class="poster" />
+      <img v-on:click.prevent="openDetails()" v-bind:src="movie.poster_path" class="poster" />
       <p class="overview">{{ movie.overview }}</p>
+      
+    <div class="icon">
+      <button v-on:click="saveFunction()" class="watch-button">
+        <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" />
+        <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
+      </button>
+    
+      <button v-on:click="favoriteFunction()" class="heart-button">
+        <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
+        <font-awesome-icon v-else icon="fa-regular fa-heart" />
+      </button>
+    </div>
+
     </div>
   </div>
 </template>
@@ -12,26 +25,19 @@
 
 <script>
 import MovieService from "../services/MovieService";
+import DbService from "../services/DbService"
 
 export default {
   name: "movie-card",
   props: {
     movie: Object,
   },
-  // data
-  //   // return
-  //   //   movie:
-  //   //     original_title: "",
-  //   //     overview: "",
-  //   //     release_date: "",
-  //   //     id: this.id,
-  //   //     poster_path: "",
-  //   //     genre_ids: "",
-  //   //     vote_average: "",
-  //   //   ,
-  //   //   movies: ,
-  //   // ;
-  // ,
+  data() {
+      return {
+        heart: this.movie.favorited,
+        watch: this.movie.saved,
+      }
+  },
 
   methods: {
     getMovies() {
@@ -44,6 +50,34 @@ export default {
     retrieveMovie() {
       MovieService.getMovie(this.$route.params.id);
     },
+    reloadPage() {
+      window.location.reload();
+    },
+    favoriteFunction() {
+      if (this.heart === true) {
+        DbService.unFavorite(this.movie.id);
+        this.heart = false;
+      } else {
+        DbService.favorite(this.movie.id);
+        this.heart = true;
+      }
+    },
+    saveFunction() {
+      if (this.watch === true) {
+        DbService.unsave(this.movie.id);
+        this.watch = false;
+      } else {
+        DbService.save(this.movie.id);
+        this.watch = true;
+      }
+    },
+
+    // may not be passing in the correct parameters to Movie Details
+    openDetails() {
+      {this.$router.push(`/movies/${this.movie.id}`)}
+    }
+
+
   },
 };
 </script>
@@ -59,6 +93,8 @@ div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* might not need this */
+  margin-inline: auto;
   
 }
 
@@ -80,7 +116,6 @@ div.card {
 }
 
 p.overview {
-  
   display: flex;
   display: -webkit-box;
   width: 300px;
@@ -92,19 +127,7 @@ p.overview {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 15px;
-  
-  
-  /* display: block;
-  width: 475px;
-  line-break: auto;
-  padding-bottom: 1rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
- */
-
-  
+  margin-bottom: 5px;
 }
 
 h1#title.title {
@@ -117,6 +140,25 @@ margin-top: -50px;
 h2#date.date {
   text-align: center;
   width: 150px;
-
 }
+
+.icon {
+  display: flex;
+  /* margin-inline: auto; */
+  height: 6%;
+  margin-top: 5px;
+  border: 3px solid red;
+  width: 90px;
+  justify-content: space-around;
+}
+
+.watch-button {
+  cursor: pointer;
+}
+
+.heart-button {
+  cursor: pointer;
+}
+
+
 </style>

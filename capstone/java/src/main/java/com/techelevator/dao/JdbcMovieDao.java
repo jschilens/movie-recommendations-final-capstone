@@ -12,13 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.stereotype.Repository;
 
-import javax.management.remote.JMXPrincipal;
 import javax.sql.DataSource;
-import java.security.Principal;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +47,27 @@ public class JdbcMovieDao implements MovieDao {
         String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster());
+        String genres = "INSERT INTO genres (genre_ids, movie_id)" +
+                "VALUES (?, ?) ON CONFLICT DO NOTHING";
+//        for (Integer genreId: movie.getGenre_id()) {
+//            jdbcTemplate.update(genres, genreId, movie.getMovie_id());
+//        }
+    }
+
+    @Override
+    public boolean isFavorited(int movieId, int userId) {
+        Boolean favorited = false;
+        String sql = "SELECT EXISTS (SELECT user_id FROM movie_favorited WHERE favorite_movie_id = ? AND user_id = ?)";
+        favorited = jdbcTemplate.queryForObject(sql, Boolean.class, movieId, userId);
+        return favorited;
+    }
+
+    @Override
+    public boolean isSaved(int movieId, int userId) {
+        Boolean saved = false;
+        String sql = "SELECT EXISTS (SELECT user_id FROM movie_saved WHERE saved_movie_id = ? AND user_id = ?)";
+        saved = jdbcTemplate.queryForObject(sql, Boolean.class, movieId, userId);
+        return saved;
     }
 
     @Override
