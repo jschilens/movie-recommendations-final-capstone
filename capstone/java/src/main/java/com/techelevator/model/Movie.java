@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -23,7 +24,9 @@ public class Movie {
     private LocalDate release_date;
 
     @JsonProperty("genre_ids")
-    private int[] genre_id;
+    private int[] genre_ids;
+
+    private Genre[] genres;
 
     @JsonProperty("vote_average")
     private double rating;
@@ -34,14 +37,14 @@ public class Movie {
 
     private String genre_name;
 
-    public Movie(int movie_id, String original_title, String poster, String overview, LocalDate release_date, double rating, int[] genre_id) {
+    public Movie(int movie_id, String original_title, String poster, String overview, LocalDate release_date, double rating, int[] genre_ids) {
         this.movie_id = movie_id;
         this.original_title = original_title;
         this.poster = poster;
         this.overview = overview;
         this.release_date = release_date;
         this.rating = rating;
-        this.genre_id = genre_id;
+        this.genre_ids = genre_ids;
     }
 
     public Movie() {
@@ -112,15 +115,23 @@ public class Movie {
         isSaved = saved;
     }
 
-    public int[] getGenre_id() {
-        return genre_id;
+    public int[] getGenre_ids() {
+        return genre_ids;
     }
 
-    public void setGenre_id(int[] genre_id) {
-        this.genre_id = genre_id;
+    public void setGenre_ids(int[] genre_ids) {
+        this.genre_ids = genre_ids;
     }
 
-//    public String getGenre_name() {
+    public Genre[] getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Genre[] genres) {
+        this.genres = genres;
+    }
+
+    //    public String getGenre_name() {
 //        return genre_name;
 //    }
 //
@@ -136,7 +147,7 @@ public class Movie {
                 ", poster='" + poster + '\'' +
                 ", overview='" + overview + '\'' +
                 ", release_date=" + release_date +
-                ", genre_id=" + Arrays.toString(genre_id) +
+                ", genre_ids=" + Arrays.toString(genre_ids) +
                 ", rating=" + rating +
                 '}';
     }

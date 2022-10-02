@@ -2,6 +2,7 @@ package com.techelevator.services;
 
 
 import com.techelevator.dao.MovieDao;
+import com.techelevator.model.Genre;
 import com.techelevator.model.Movie;
 import com.techelevator.model.MovieGeneral;
 import org.springframework.http.HttpEntity;
@@ -24,7 +25,13 @@ public class MovieService {
     public Movie getMovie(int movieId) {
         Movie movie = new Movie();
         movie = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US/", Movie.class);
-
+        movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+        int[] genreIds = new int[movie.getGenres().length];
+        Genre[] genres = movie.getGenres();
+        for (int i = 0; i < movie.getGenres().length; i++) {
+            genreIds[i] = genres[i].getGenreId();
+        }
+        movie.setGenre_ids(genreIds);
         return movie;
     }
 
@@ -56,7 +63,7 @@ public class MovieService {
         movies = movieGeneral.getResults();
         for (int i = 0; i < movies.length; i++) {
             movies[i].setPoster("https://image.tmdb.org/t/p/w200" + movies[i].getPoster());
-//            System.out.println(movies[i]);
+
         }
         return Arrays.asList(movies);
     }

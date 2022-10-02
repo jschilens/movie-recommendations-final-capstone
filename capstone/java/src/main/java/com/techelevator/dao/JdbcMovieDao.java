@@ -79,6 +79,16 @@ public class JdbcMovieDao implements MovieDao {
         String sql = "INSERT INTO movie_favorited (user_id, favorite_movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
 //        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
         jdbcTemplate.update(sql, userId,movie.getMovie_id());
+//        System.out.println(movie);
+//        int[] genres = movie.getGenre_ids();
+        for (int genreId: movie.getGenre_ids()) {
+            addGenreId(genreId, movie.getMovie_id());
+        }
+    }
+
+    private void addGenreId(int genreId, int movie_id) {
+        String sql = "INSERT INTO genres (genre_ids, movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
+        jdbcTemplate.update(sql, genreId,movie_id);
     }
 
     @Override
@@ -96,6 +106,9 @@ public class JdbcMovieDao implements MovieDao {
         String sql = "INSERT INTO movie_saved (user_id, saved_movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
 //        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
         jdbcTemplate.update(sql, userId,movie.getMovie_id());
+        for (int genreId: movie.getGenre_ids()) {
+            addGenreId(genreId, movie.getMovie_id());
+        }
     }
 
     @Override
