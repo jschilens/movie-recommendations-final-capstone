@@ -28,8 +28,8 @@ import BurgerMenu from '../src/components/burgermenu.vue';
 
 #sidebar {
   font-family: 'Bungee Spice';
-  
   background: #484848;
+  
 }
 
 #menu {
@@ -44,7 +44,10 @@ import BurgerMenu from '../src/components/burgermenu.vue';
   margin-top: -50px;
   padding-bottom: 20px;
   padding-top: 10px;
+}
 
+#app {
+  height: 100%;
 }
 
 </style>

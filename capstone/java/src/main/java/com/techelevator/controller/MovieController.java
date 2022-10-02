@@ -80,8 +80,8 @@ public class MovieController {
 
     @RequestMapping(path = "/movies", method = RequestMethod.GET)
     public List<Movie> getAllMovies(Principal principal) {
-       List<Movie> movies = new ArrayList<>();
-       movies = movieService.getAllMovies();
+        List<Movie> movies = new ArrayList<>();
+        movies = movieService.getAllMovies();
         for (Movie movie: movies){
             if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
                 movie.setSaved(true);
@@ -94,7 +94,7 @@ public class MovieController {
                 movie.setFavorited(false);
             }
         }
-       return movies;
+        return movies;
     }
 
     @RequestMapping(path = "/movies/{id}", method = RequestMethod.GET)
@@ -162,6 +162,7 @@ public class MovieController {
                 movie.setFavorited(false);
             }
         }
+
         return savedMovies;
 
     }
