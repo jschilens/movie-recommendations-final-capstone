@@ -22,8 +22,10 @@ public class MovieService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public Movie getMovie(int movieId) {
+        System.out.println("movie service");
         Movie movie = new Movie();
         movie = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US/", Movie.class);
+        System.out.println("movie");
         return movie;
     }
 

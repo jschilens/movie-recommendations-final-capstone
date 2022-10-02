@@ -30,6 +30,7 @@ public class JdbcMovieDao implements MovieDao {
     private MovieService movieService;
     @Autowired
     private JdbcUserDao jdbcUserDao;
+
     private User user;
 
 

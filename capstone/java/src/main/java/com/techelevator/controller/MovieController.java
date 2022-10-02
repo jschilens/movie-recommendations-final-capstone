@@ -24,6 +24,7 @@ import java.util.List;
 public class MovieController {
 
 
+
     MovieService movieService;
     @Autowired
     private MovieDao movieDao;
@@ -97,8 +98,8 @@ public class MovieController {
        return movies;
     }
 
-    @RequestMapping(path = "/movies/{id}", method = RequestMethod.GET)
-    public Movie getMovie(Principal principal, @Valid @RequestParam int movieId) {
+    @RequestMapping(path = "/movies/{movieId}", method = RequestMethod.GET)
+    public Movie getMovie(Principal principal, @Valid @PathVariable int movieId) {
         Movie movie = movieService.getMovie(movieId);
         if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
             movie.setSaved(true);
@@ -127,12 +128,12 @@ public class MovieController {
 
 
 
-    @RequestMapping(path = "/movies/favorited/{id}", method = RequestMethod.GET)
-    public List<Movie> getFavoritedMovies(@Valid @PathVariable int id, Principal principal) {
+    @RequestMapping(path = "/favorited", method = RequestMethod.GET)
+    public List<Movie> getFavoritedMovies(Principal principal) {
         List<Movie> favoritedMovies = new ArrayList<>();
-        if(id == userDao.findIdByUsername(principal.getName())) {
+
             favoritedMovies = jdbcMovieDao.getFavoritedMovies(userDao.findIdByUsername(principal.getName()));
-        }
+
 
 //        for (Movie movie: favoritedMovies){
 //            movie.setFavorited(true);
@@ -145,7 +146,7 @@ public class MovieController {
         return favoritedMovies;
     }
 
-    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+
     @RequestMapping(path = "/movies/unfavorited/{id}", method = RequestMethod.DELETE)
     public void unfavoriteMovie(Principal principal, @Valid @PathVariable int id) {
         jdbcMovieDao.unFavoriteMovie(id, userDao.findIdByUsername(principal.getName()));
@@ -156,7 +157,7 @@ public class MovieController {
         jdbcMovieDao.unSaveMovie(id, userDao.findIdByUsername(principal.getName()));
     }
 
-    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/saved", method = RequestMethod.GET)
     public List<Movie> getSavedMovies(Principal principal) {
         List<Movie> savedMovies = new ArrayList<>();
         savedMovies = jdbcMovieDao.getSavedMovies(userDao.findIdByUsername(principal.getName()));

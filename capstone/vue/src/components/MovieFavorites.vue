@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import MovieCard from "../components/MovieCard.vue";
-import MovieService from "../services/MovieService";
-import UserService from "../services/UserService";
+
+import DbService from '../services/DbService'
+import MovieCard from '../components/MovieCard.vue'
 
 export default {
 name: "favorite-movies",
@@ -16,27 +16,19 @@ components: {
 },
 data() {
   return {
-    user: {
-      id: "",
-      username: ""
-    },
     favoritedMovies: []
   }
 },
-methods: {
-  getFavoritedMovies() {
-  MovieService.getFavoritedMovies().then(response => {
-      this.favoritedMovies = response.data
-})
-  }
-  },
 created() {
-  UserService.getCurrentUser().then(response => {
-    this.user = response.data;
+  DbService.getFavoritedMovies().then(response => {
+    
+      this.favoritedMovies = response.data
+    
   })
-  
 }
+
 }
+
 
 </script>
 
