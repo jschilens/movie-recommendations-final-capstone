@@ -5,7 +5,7 @@
 <script>
 import MovieFavorites from '@/components/MovieFavorites.vue'
 export default {
-  name: "favorites",
+  name: "my-movies",
   components: { MovieFavorites },
 
 }

@@ -21,6 +21,7 @@
     "react-draggable": "^4.4.5",
     "vue": "^2.6.12",
     "vue-burger-menu": "^2.0.5",
+    "vue-flickity": "^1.2.1",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
   },

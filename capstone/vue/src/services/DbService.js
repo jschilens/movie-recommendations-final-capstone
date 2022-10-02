@@ -2,15 +2,7 @@ import axios from 'axios';
 
 export default {
     favorite(id) {
-        return axios.post(`/movies/favorited/${id}`)
-    },
-
-    getFavoritedMovies() {
-        return axios.get(`/favorited`)
-    },
-
-    getSavedMovies() {
-        return axios.get(`/saved`)
+        return axios.put(`/movies/favorited/${id}`)
     },
 
     unFavorite(id) {
@@ -24,4 +16,16 @@ export default {
     unsave(id) {
         return axios.delete(`/movies/unsaved/${id}`)
     },
+
+    getFavoritedMovies() {
+        return axios.get(`/favorited`)
+    },
+
+    getSavedMovies() {
+        return axios.get(`/saved`)
+    },
+
+
+
+    
 }

@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import BrowseMovies from '../views/BrowseMovies'
-import Favorites from '../views/Favorites'
+import MyMovies from '../views/MyMovies'
 import MovieDetails from '../views/MovieDetails'
 
 Vue.use(Router)
@@ -65,9 +65,9 @@ const router = new Router({
       }
     },
     {
-      path: "/favorites",
-      name: "favorites",
-      component: Favorites,
+      path: "/my-movies",
+      name: "my-movies",
+      component: MyMovies,
       meta: {
         requiresAuth: false
       }

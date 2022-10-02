@@ -114,6 +114,9 @@ public class JdbcMovieDao implements MovieDao {
         while(rowSet.next()) {
             favoriteMovies.add(mapRowToMovie(rowSet));
         }
+        for(Movie movie : favoriteMovies) {
+            movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+        }
         return favoriteMovies;
     }
 
