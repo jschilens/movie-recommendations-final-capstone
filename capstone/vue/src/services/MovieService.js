@@ -11,7 +11,7 @@ export default {
     },
 
     getNowPlaying() {
-        return axios.get('/now-playing')
+        return axios.get('/movies/now-playing')
     }
     
 }

@@ -23,6 +23,10 @@ export default {
       loadMovie() {
           return this.retrieveMovie();
       }
+  },
+
+  created() {
+    this.loadMovie()
   }
 
 }
