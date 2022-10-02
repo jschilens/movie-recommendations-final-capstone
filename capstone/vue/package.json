@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.8",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "flickity": "^3.0.0",
     "font-awesome-animation": "^1.1.1",
     "react-draggable": "^4.4.5",
     "vue": "^2.6.12",

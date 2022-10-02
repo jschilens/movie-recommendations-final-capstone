@@ -13,6 +13,8 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import Flickity from 'vue-flickity'
 
 
+
+
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faHeart)
