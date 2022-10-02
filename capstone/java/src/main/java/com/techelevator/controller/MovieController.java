@@ -24,7 +24,6 @@ import java.util.List;
 public class MovieController {
 
 
-
     MovieService movieService;
     @Autowired
     private MovieDao movieDao;
@@ -81,8 +80,8 @@ public class MovieController {
 
     @RequestMapping(path = "/movies", method = RequestMethod.GET)
     public List<Movie> getAllMovies(Principal principal) {
-       List<Movie> movies = new ArrayList<>();
-       movies = movieService.getAllMovies();
+        List<Movie> movies = new ArrayList<>();
+        movies = movieService.getAllMovies();
         for (Movie movie: movies){
             if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
                 movie.setSaved(true);
@@ -95,11 +94,11 @@ public class MovieController {
                 movie.setFavorited(false);
             }
         }
-       return movies;
+        return movies;
     }
 
-    @RequestMapping(path = "/movies/{movieId}", method = RequestMethod.GET)
-    public Movie getMovie(Principal principal, @Valid @PathVariable int movieId) {
+    @RequestMapping(path = "/movies/{id}", method = RequestMethod.GET)
+    public Movie getMovie(Principal principal, @PathVariable("id") int movieId) {
         Movie movie = movieService.getMovie(movieId);
         if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
             movie.setSaved(true);
@@ -115,41 +114,35 @@ public class MovieController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/movies/favorite/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/movies/favorited/{id}", method = RequestMethod.PUT)
     public void favoriteMovie(Principal principal, @Valid @PathVariable int id) {
         jdbcMovieDao.favoriteMovie(id, userDao.findIdByUsername(principal.getName()));
-    }
-
-
-    @RequestMapping(path = "/movies/save/{id}", method = RequestMethod.POST)
-    public void saveMovie(Principal principal, @Valid @PathVariable int id) {
-        jdbcMovieDao.saveMovie(id, userDao.findIdByUsername(principal.getName()));
-    }
-
-
-
-    @RequestMapping(path = "/favorited", method = RequestMethod.GET)
-    public List<Movie> getFavoritedMovies(Principal principal) {
-        List<Movie> favoritedMovies = new ArrayList<>();
-
-            favoritedMovies = jdbcMovieDao.getFavoritedMovies(userDao.findIdByUsername(principal.getName()));
-
-
-//        for (Movie movie: favoritedMovies){
-//            movie.setFavorited(true);
-//            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-//                movie.setSaved(true);
-//            } else {
-//                movie.setSaved(false);
-//            }
-//        }
-        return favoritedMovies;
     }
 
 
     @RequestMapping(path = "/movies/unfavorited/{id}", method = RequestMethod.DELETE)
     public void unfavoriteMovie(Principal principal, @Valid @PathVariable int id) {
         jdbcMovieDao.unFavoriteMovie(id, userDao.findIdByUsername(principal.getName()));
+    }
+
+    @RequestMapping(path = "/favorited", method = RequestMethod.GET)
+    public List<Movie> getFavoritedMovies(Principal principal) {
+        List<Movie> favoritedMovies = new ArrayList<>();
+        favoritedMovies = jdbcMovieDao.getFavoritedMovies(userDao.findIdByUsername(principal.getName()));
+        for (Movie movie: favoritedMovies){
+            movie.setFavorited(true);
+            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+                movie.setSaved(true);
+            } else {
+                movie.setSaved(false);
+            }
+        }
+        return favoritedMovies;
+    }
+
+    @RequestMapping(path = "/movies/saved/{id}", method = RequestMethod.PUT)
+    public void saveMovie(Principal principal, @Valid @PathVariable int id) {
+        jdbcMovieDao.saveMovie(id, userDao.findIdByUsername(principal.getName()));
     }
 
     @RequestMapping(path = "/movies/unsaved/{id}", method = RequestMethod.DELETE)
@@ -169,6 +162,7 @@ public class MovieController {
                 movie.setFavorited(false);
             }
         }
+
         return savedMovies;
 
     }

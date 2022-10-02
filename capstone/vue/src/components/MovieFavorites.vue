@@ -1,6 +1,6 @@
 <template>
   <div class="movie-container">
-  <movie-card v-bind:movie="movie" v-for="movie in favoritedMovies" v-bind:key="movie.id" />
+  <movie-card v-bind:movie="movie" v-for="movie in savedMovies" v-bind:key="movie.id" />
   </div>
 </template>
 
@@ -16,13 +16,13 @@ components: {
 },
 data() {
   return {
-    favoritedMovies: []
+    savedMovies: []
   }
 },
 created() {
-  DbService.getFavoritedMovies().then(response => {
+  DbService.getSavedMovies().then(response => {
     
-      this.favoritedMovies = response.data
+      this.savedMovies = response.data
     
   })
 }

@@ -30,7 +30,6 @@ public class JdbcMovieDao implements MovieDao {
     private MovieService movieService;
     @Autowired
     private JdbcUserDao jdbcUserDao;
-
     private User user;
 
 
@@ -127,6 +126,9 @@ public class JdbcMovieDao implements MovieDao {
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
         while(rowSet.next()) {
             savedMovies.add(mapRowToMovie(rowSet));
+        }
+        for(Movie movie : savedMovies) {
+                movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
         }
         return savedMovies;
     }

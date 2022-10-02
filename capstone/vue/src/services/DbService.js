@@ -18,7 +18,7 @@ export default {
     },
 
     save(id) {
-        return axios.post(`/movies/saved/${id}`)
+        return axios.put(`/movies/saved/${id}`)
     },
 
     unsave(id) {
