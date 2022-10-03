@@ -21,6 +21,7 @@
     "font-awesome-animation": "^1.1.1",
     "react-draggable": "^4.4.5",
     "vue": "^2.6.12",
+    "vue-agile": "^2.0.0",
     "vue-burger-menu": "^2.0.5",
     "vue-flickity": "^1.2.1",
     "vue-router": "^3.5.1",
