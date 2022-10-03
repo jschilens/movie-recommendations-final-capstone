@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.lang.reflect.Array;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -39,25 +40,45 @@ public class MovieController {
         movieService = new MovieService();
     }
 
-    @RequestMapping(path ="/movies/filters/{filters}", method = RequestMethod.GET)
+    @RequestMapping(path ="/movies/filter", method = RequestMethod.GET)
     @ResponseBody
-    public List<Movie> getMoviesWithFilters(Principal principal, @PathVariable String filters) {
-        System.out.println(filters);
+    public List<Movie> getMoviesWithFilters(@RequestParam String original_title, @RequestParam(required = false) String genre_name, @RequestParam(required = false) LocalDate min_release_date, @RequestParam(required = false) LocalDate max_release_date) {
+
         List<Movie> movies = new ArrayList<>();
-        movies = movieService.getFilteredMovies(new String[]{filters});
+        movies = movieService.getAllMovies();
+        List<Movie> filteredMovies = new ArrayList<>();
         for (Movie movie: movies){
-            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-                movie.setSaved(true);
-            } else {
-                movie.setSaved(false);
+            if(genre_name != null) {
+                if(movie.getGenre_name().equalsIgnoreCase(genre_name)) {
+                    filteredMovies.add(movie);
+                }
             }
-            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-                movie.setFavorited(true);
-            } else {
-                movie.setFavorited(false);
+            else if(min_release_date != null) {
+                if(movie.getRelease_date().equals(min_release_date)) {
+                    filteredMovies.add(movie);
+                }
             }
+            else if(max_release_date != null) {
+                if(movie.getRelease_date().equals(max_release_date)) {
+                    filteredMovies.add(movie);
+                }
+            } else {
+                if(movie.getOriginal_title().equalsIgnoreCase(original_title)) {
+                   filteredMovies.add(movie);
+                }
+            }
+//            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+//                movie.setSaved(true);
+//            } else {
+//                movie.setSaved(false);
+//            }
+//            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+//                movie.setFavorited(true);
+//            } else {
+//                movie.setFavorited(false);
+//            }
         }
-        return movies;
+        return filteredMovies;
     }
 
     @RequestMapping(path="/now-playing", method = RequestMethod.GET)

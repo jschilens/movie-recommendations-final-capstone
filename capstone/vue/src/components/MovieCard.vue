@@ -93,6 +93,9 @@ div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* might not need this */
+  margin-inline: auto;
+  
 }
 
 div.card {
@@ -107,7 +110,7 @@ div.card {
   margin: 20px;
   justify-content: center;
   align-items: center;
-  margin-inline: auto;
+  filter: drop-shadow(0.50rem 0 0.75rem orangered);
   
   
 }
@@ -125,6 +128,7 @@ p.overview {
   text-overflow: ellipsis;
   font-size: 15px;
   margin-bottom: 5px;
+  
 }
 
 h1#title.title {

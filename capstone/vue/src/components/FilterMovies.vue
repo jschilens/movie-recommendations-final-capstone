@@ -64,8 +64,9 @@ export default {
   computed: {},
 
   methods: {
-    filterMovies() {
-      return MovieService.getMoviesWithFilters(this.filters);
+    async filterMovies() {
+      const response=await MovieService.getMoviesWithFilters();
+      this.filters=response.data;
     },
   },
 
