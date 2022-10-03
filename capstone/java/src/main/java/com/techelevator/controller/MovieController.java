@@ -39,12 +39,12 @@ public class MovieController {
         movieService = new MovieService();
     }
 
-    @RequestMapping(path ="/filter/{filters}", method = RequestMethod.GET)
+    @RequestMapping(path ="/movies/{filters}", method = RequestMethod.GET)
     @ResponseBody
     public List<Movie> getMoviesWithFilters(Principal principal, @PathVariable String filters) {
         System.out.println(filters);
         List<Movie> movies = new ArrayList<>();
-        movies = movieService.getFilteredMovies(filters);
+        movies = movieService.getFilteredMovies(new String[]{filters});
         for (Movie movie: movies){
             if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
                 movie.setSaved(true);

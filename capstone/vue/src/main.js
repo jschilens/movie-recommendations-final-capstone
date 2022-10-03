@@ -10,7 +10,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import Flickity from 'vue-flickity'
+
 
 
 
@@ -23,9 +23,13 @@ library.add(faHeartOutline)
 library.add(faEyeSlash)
 
 
+
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.component('vue-flickity', Flickity)
+
+
+
+
 
 Vue.config.productionTip = false
 

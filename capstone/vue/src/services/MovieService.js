@@ -14,6 +14,10 @@ export default {
         return axios.get('/now-playing')
     },
 
+    getMoviesWithFilters(filters) {
+        return axios.get(`/movies/${filters}`)
+    }
+
     
     
 }

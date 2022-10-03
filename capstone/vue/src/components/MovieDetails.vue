@@ -17,6 +17,7 @@
 <script>
 import MovieService from "../services/MovieService";
 
+
 export default {
   data() {
     return {

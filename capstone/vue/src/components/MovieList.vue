@@ -26,7 +26,10 @@ export default {
     },
     retrieveMovie() {
       MovieService.getMovie(this.$route.params.id);
-    }
+    },
+    getFilteredMovies() {
+    
+    } 
   },
   created() {
     this.getMovies();

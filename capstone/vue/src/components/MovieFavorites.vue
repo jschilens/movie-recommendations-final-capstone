@@ -16,7 +16,7 @@
     <h1 class="favorited-title"> Favorited Movies </h1>
       <movie-card
         v-bind:movie="movie"
-        v-for="movie in favoritedMovies"
+        v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
    
@@ -41,13 +41,7 @@ export default {
     return {
       savedMovies: [],
       favoritedMovies: [],
-      flickityOptions: {
-        prevNextButtons: true,
-        pageDots: false,
-        wrapAround: true,
-        
-        
-      }
+      
     };
   },
   methods: {
@@ -87,37 +81,7 @@ display: flex;
 flex-wrap: wrap;
 }
 
-.flickity-button {
-  background: transparent;
-}
-/* big previous & next buttons */
-.flickity-prev-next-button {
-  width: 100px;
-  height: 100px;
-}
-/* icon color */
-.flickity-button-icon {
-  fill: white;
-}
-/* hide disabled button */
-.flickity-button:disabled {
-  display: none;
-}
-.carousel-cell {
-  width: 50%; /* half-width */
-  height: 160px;
-  margin-right: 10px;
-  justify-content: center;
-}
 
-.carousel-cell.is-selected {
-  background: #ED2;
-}
-
-.flickity-enabled:focus .flickity-viewport {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
 
 
 </style>
