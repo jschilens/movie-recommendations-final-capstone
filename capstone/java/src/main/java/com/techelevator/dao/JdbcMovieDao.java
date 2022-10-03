@@ -14,6 +14,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import javax.sql.RowSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,6 +130,7 @@ public class JdbcMovieDao implements MovieDao {
         }
         for(Movie movie : favoriteMovies) {
             movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+            setGenreIds(movie);
         }
         return favoriteMovies;
     }
@@ -145,11 +147,26 @@ public class JdbcMovieDao implements MovieDao {
         }
         for(Movie movie : savedMovies) {
                 movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+                setGenreIds(movie);
         }
         return savedMovies;
     }
 
-
+    public void setGenreIds (Movie movie) {
+        String sql = "SELECT genre_ids FROM genres WHERE movie_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, movie.getMovie_id());
+        List<Integer> genreIdsArray = new ArrayList<>();
+        while (rowSet.next()) {
+            genreIdsArray.add(rowSet.getInt("genre_ids"));
+        }
+        Integer[] genreInts = new Integer[genreIdsArray.size()];
+        genreInts = genreIdsArray.toArray(genreInts);
+        int[] genreIds = new int[genreInts.length];
+        for (int i = 0; i < genreInts.length; i++){
+            genreIds[i] = genreInts[i];
+        }
+        movie.setGenre_ids(genreIds);
+    }
 
 
 

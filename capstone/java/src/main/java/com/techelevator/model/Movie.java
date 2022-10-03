@@ -35,6 +35,8 @@ public class Movie {
 
     private boolean isSaved;
 
+    private int runtime;
+
     private String genre_name;
 
     public Movie(int movie_id, String original_title, String poster, String overview, LocalDate release_date, double rating, int[] genre_ids) {
@@ -129,6 +131,14 @@ public class Movie {
 
     public void setGenres(Genre[] genres) {
         this.genres = genres;
+    }
+
+    public int getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
     }
 
     //    public String getGenre_name() {

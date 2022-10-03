@@ -25,7 +25,7 @@ public class MovieService {
     public Movie getMovie(int movieId) {
         Movie movie = new Movie();
         movie = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US/", Movie.class);
-        movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+        movie.setPoster("https://image.tmdb.org/t/p/w500" + movie.getPoster());
         int[] genreIds = new int[movie.getGenres().length];
         Genre[] genres = movie.getGenres();
         for (int i = 0; i < movie.getGenres().length; i++) {
