@@ -141,13 +141,13 @@ public class Movie {
         this.runtime = runtime;
     }
 
-    //    public String getGenre_name() {
-//        return genre_name;
-//    }
-//
-//    public void setGenre_name(String genre_name) {
-//        this.genre_name = genre_name;
-//    }
+        public String getGenre_name() {
+        return genre_name;
+    }
+
+    public void setGenre_name(String genre_name) {
+        this.genre_name = genre_name;
+    }
 
     @Override
     public String toString() {

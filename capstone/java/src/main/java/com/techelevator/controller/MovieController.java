@@ -99,7 +99,7 @@ public class MovieController {
         return movies;
     }
 
-    @RequestMapping(path = "/movies/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/movie/{id}", method = RequestMethod.GET)
     public Movie getMovie(Principal principal, @PathVariable("id") int movieId) {
         Movie movie = movieService.getMovie(movieId);
         if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){

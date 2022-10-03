@@ -28,11 +28,16 @@ public class MovieService {
         movie.setPoster("https://image.tmdb.org/t/p/w500" + movie.getPoster());
         int[] genreIds = new int[movie.getGenres().length];
         Genre[] genres = movie.getGenres();
+        String genreNames = "";
         for (int i = 0; i < movie.getGenres().length; i++) {
             genreIds[i] = genres[i].getGenreId();
+            genreNames += genres[i].getGenreName() + ", ";
+        }
+        if (genreNames.length() > 2) {
+            genreNames = genreNames.substring(0, genreNames.length() - 2);
         }
         movie.setGenre_ids(genreIds);
-
+        movie.setGenre_name(genreNames);
         return movie;
     }
 
