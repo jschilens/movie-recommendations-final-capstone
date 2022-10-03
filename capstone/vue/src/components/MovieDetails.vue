@@ -1,12 +1,16 @@
 <template>
   <div class="movie-card">
-    <img class="poster" v-bind:src="movie.poster_path" />
+    <div class="gradient">
+      <img class="poster" v-bind:src="movie.poster_path" />
+    </div>
+    
   <div class="information-section">
     <h1 class="title">{{ movie.original_title }}</h1>
     <div class="info-additional">
       <p class="date"> {{movie.release_date}}</p>
-    <span class="runtime">ADD MINUTES HERE</span>
-    <p class="genre">ADD GENRE HERE</p>
+    <span class="runtime">Runtime: {{movie.runtime}} minutes</span>
+    <!-- <p>{{movie.vote_average}}</p> -->
+    <p class="genre"> ADD GENRE</p>
     </div>
     <p class="text">{{ movie.overview }}</p>
   </div>
@@ -28,6 +32,7 @@ export default {
         poster_path: "",
         genre_ids: "",
         vote_average: "",
+        runtime: "",
       },
     };
   },
@@ -54,10 +59,6 @@ export default {
   color: white;
 }
 
-#app {
-    height: 100vh !Important;
-}
-
 .movie-card {
   display: flex;
   background: black;
@@ -77,7 +78,6 @@ export default {
 .poster{
   height: 450px;
 }
-
 
 
 .title{
