@@ -10,7 +10,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import VueAgile from 'vue-agile'
+
 
 
 
@@ -21,11 +21,15 @@ library.add(faHeart)
 library.add(faEye)
 library.add(faHeartOutline)
 library.add(faEyeSlash)
-Vue.use(VueAgile)
+
 
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
+
+
 
 Vue.config.productionTip = false
 

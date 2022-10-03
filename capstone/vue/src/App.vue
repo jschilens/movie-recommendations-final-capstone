@@ -2,7 +2,7 @@
   <div id="app" style="background-image: url('/movie-poster-background.jpg')">
     <div id="sidebar">
       <burger-menu id="menu"/>
-      <h1 id="site-title">Movie Site</h1>
+      <h1 id="site-title">ReelDB</h1>
     </div>
     <router-view />
   </div>

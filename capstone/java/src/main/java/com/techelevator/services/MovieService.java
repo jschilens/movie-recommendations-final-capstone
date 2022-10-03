@@ -35,10 +35,10 @@ public class MovieService {
         return movie;
     }
 
-    public List<Movie> getFilteredMovies(String filters) {
+    public List<Movie> getFilteredMovies(String[] filters) {
         Movie[] movies = null;
 //        System.out.println("list movies");
-        MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL + filters, MovieGeneral.class);
+        MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL + Arrays.toString(filters), MovieGeneral.class);
 //        System.out.println(movieGeneral);
         movies = movieGeneral.getResults();
         for (int i = 0; i < movies.length; i++) {

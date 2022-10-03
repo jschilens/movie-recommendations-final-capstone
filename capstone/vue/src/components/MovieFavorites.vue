@@ -1,44 +1,42 @@
 <template>
   <div class="movie-container">
-
-    <h1 class="saved-title"> Saved Movies </h1>
-    <agile>
-      <div class="slide">
+   <div class="favorites">
+     <h1 class="saved-title"> Saved Movies </h1>
       <movie-card
         v-bind:movie="movie"
         v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
-      </div>
-    </agile>
+   </div>  
+    <div class="saved">
     <h1 class="favorited-title"> Favorited Movies </h1>
-    <div class="slide">
-      <movie-card
+       <movie-card
         v-bind:movie="movie"
-        v-for="movie in favoritedMovies"
+        v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
     </div>
-  </div>
+      
+    </div>
+
 </template>
 
 <script>
 import DbService from "../services/DbService";
 import MovieCard from "../components/MovieCard.vue";
-import { VueAgile } from 'vue-agile';
+
 
 export default {
   name: "favorite-movies",
   components: {
-    agile: VueAgile,
     MovieCard,
-    
-    
+  
   },
   data() {
     return {
       savedMovies: [],
       favoritedMovies: [],
+      
     };
   },
   methods: {
@@ -77,6 +75,7 @@ flex-wrap: wrap;
 display: flex;
 flex-wrap: wrap;
 }
+
 
 
 
