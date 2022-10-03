@@ -1,6 +1,9 @@
 <template>
   <div class="movie-card">
-    <img class="poster" v-bind:src="movie.poster_path" />
+    <div class="gradient">
+      <img class="poster" v-bind:src="movie.poster_path" />
+    </div>
+    
   <div class="information-section">
 
     <h1 class="title">{{ movie.original_title }}</h1>
@@ -121,7 +124,6 @@ export default {
 .voting-average {
   display: flex;
 }
-
 
 
 
