@@ -15,7 +15,7 @@ export default {
     },
 
     getMoviesWithFilters(filters) {
-        return axios.get(`/movies/${filters}`)
+        return axios.get(`/movies/filters/${filters}`)
     }
 
     
