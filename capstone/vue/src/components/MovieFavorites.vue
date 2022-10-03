@@ -3,16 +3,17 @@
 
     
     <h1 class="saved-title"> Saved Movies </h1>
-    <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
+   
     <div id="saved-movies" class="saved-movies">
-      <movie-card class="gallery-cell"
+      <movie-card
         v-bind:movie="movie"
         v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
+    </div>
 
-    </div>
-    </div>
+
+
     <h1 class="favorited-title"> Favorited Movies </h1>
     <div id="favorited-movies" class="favorited-movies">
       <movie-card
@@ -21,17 +22,22 @@
         v-bind:key="movie.id"
       />
     </div>
+
+
+
   </div>
 </template>
 
 <script>
 import DbService from "../services/DbService";
 import MovieCard from "../components/MovieCard.vue";
+// import Flickty from "vue-flickity"
 
 export default {
   name: "favorite-movies",
   components: {
     MovieCard,
+    // Flickty
   },
   data() {
     return {

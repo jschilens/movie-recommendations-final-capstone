@@ -12,6 +12,8 @@ import MovieList from '@/components/MovieList';
   }
 </script>
 
-<style scoped>
-
+<style >
+ #app {
+    height: 100% !important;
+}
 </style>
