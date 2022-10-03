@@ -42,12 +42,14 @@ import BurgerMenu from '../src/components/burgermenu.vue';
   display: flex;
   justify-content: center;
   margin-top: -50px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   padding-top: 10px;
+  margin-inline: auto;
+  
 }
 
 #app {
-  height: 100%;
+  height: 100vh;
 }
 
 </style>

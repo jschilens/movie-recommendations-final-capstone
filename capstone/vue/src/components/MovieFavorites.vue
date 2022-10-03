@@ -1,36 +1,41 @@
 <template>
   <div class="movie-container">
-   <div class="favorites">
-     <h1 class="saved-title"> Saved Movies </h1>
+
+    <h1 class="saved-title"> Saved Movies </h1>
+   
+    <div id="saved-movies" class="saved-movies">
       <movie-card
         v-bind:movie="movie"
         v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
-   </div>  
-    <div class="saved">
+    </div>
+
+
+
     <h1 class="favorited-title"> Favorited Movies </h1>
-       <movie-card
+      <movie-card
         v-bind:movie="movie"
         v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
-    </div>
-      
-    </div>
+   
 
+
+
+  </div>
 </template>
 
 <script>
 import DbService from "../services/DbService";
 import MovieCard from "../components/MovieCard.vue";
-
+// import Flickty from "vue-flickity"
 
 export default {
   name: "favorite-movies",
   components: {
     MovieCard,
-  
+    // Flickty
   },
   data() {
     return {

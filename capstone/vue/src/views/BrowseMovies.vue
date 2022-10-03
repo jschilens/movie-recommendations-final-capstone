@@ -19,6 +19,8 @@ import FilterMovies from '../components/FilterMovies.vue';
   }
 </script>
 
-<style scoped>
-
+<style >
+ #app {
+    height: 100% !important;
+}
 </style>
