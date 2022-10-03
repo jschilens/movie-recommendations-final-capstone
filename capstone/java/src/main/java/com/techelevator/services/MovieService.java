@@ -32,6 +32,7 @@ public class MovieService {
             genreIds[i] = genres[i].getGenreId();
         }
         movie.setGenre_ids(genreIds);
+
         return movie;
     }
 

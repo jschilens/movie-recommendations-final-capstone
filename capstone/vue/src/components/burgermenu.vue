@@ -149,6 +149,7 @@ body {
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
+  border: 3px solid hotpink;
 }
 
 .menu-list li {

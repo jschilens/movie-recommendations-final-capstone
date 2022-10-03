@@ -2,42 +2,40 @@
   <div class="movie-container">
 
     <h1 class="saved-title"> Saved Movies </h1>
-    <div class="main-carousel" data-flickity='{ "contain": true }'>
-    <flickity class="flickity" ref="flickity" :options="flickityOptions">
-      <div class="carousel-cell">
+   
+    <div id="saved-movies" class="saved-movies">
       <movie-card
         v-bind:movie="movie"
         v-for="movie in savedMovies"
         v-bind:key="movie.id"
       />
-      </div>
-    </flickity>
     </div>
+
+
+
     <h1 class="favorited-title"> Favorited Movies </h1>
-    <div class="carousel">
-      <flickity v-if="favoritedMovies.length > 0" class="flickity" ref="flickity" :options="flickityOptions">
-    <div class="carousel-cell">
       <movie-card
         v-bind:movie="movie"
         v-for="movie in favoritedMovies"
         v-bind:key="movie.id"
       />
-    </div>
-      </flickity>
-    </div>
+   
+
+
+
   </div>
 </template>
 
 <script>
 import DbService from "../services/DbService";
 import MovieCard from "../components/MovieCard.vue";
-import Flickity from 'vue-flickity'
+// import Flickty from "vue-flickity"
 
 export default {
   name: "favorite-movies",
   components: {
     MovieCard,
-    Flickity
+    // Flickty
   },
   data() {
     return {
