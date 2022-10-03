@@ -93,7 +93,9 @@ public class MovieController {
             } else {
                 movie.setFavorited(false);
             }
+
         }
+
         return movies;
     }
 
