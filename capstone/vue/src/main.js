@@ -10,6 +10,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import {faStar} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -21,7 +22,7 @@ library.add(faHeart)
 library.add(faEye)
 library.add(faHeartOutline)
 library.add(faEyeSlash)
-
+library.add(faStar)
 
 
 /* add font awesome icon component */
