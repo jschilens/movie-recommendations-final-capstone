@@ -39,7 +39,7 @@ public class MovieController {
         movieService = new MovieService();
     }
 
-    @RequestMapping(path ="/movies/filter/{filters}", method = RequestMethod.GET)
+    @RequestMapping(path ="/movies/filters/{filters}", method = RequestMethod.GET)
     @ResponseBody
     public List<Movie> getMoviesWithFilters(Principal principal, @PathVariable String filters) {
         System.out.println(filters);
