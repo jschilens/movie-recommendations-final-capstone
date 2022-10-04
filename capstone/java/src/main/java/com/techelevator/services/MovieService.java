@@ -52,7 +52,6 @@ public class MovieService {
         movies = movieGeneral.getResults();
         for (int i = 0; i < movies.length; i++) {
             movies[i].setPoster("https://image.tmdb.org/t/p/w200" + movies[i].getPoster());
-            System.out.println(movies[i]);
         }
         return Arrays.asList(movies);
     }
@@ -67,7 +66,6 @@ public class MovieService {
 
     public List<Movie> getAllMovies() {
         Movie[] movies = null;
-//        System.out.println("list movies");
         MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL, MovieGeneral.class);
         movies = movieGeneral.getResults();
         for (int i = 0; i < movies.length; i++) {

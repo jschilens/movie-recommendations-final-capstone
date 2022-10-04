@@ -60,7 +60,7 @@ export default {
   methods: {
     filterMovies() {
       MovieService.getMoviesWithFilters(this.filters).then(response => {
-        this.$store.commit("SET_FILTERED_MOVIES", response.data)
+        this.$store.commit("SET_MOVIES", response.data)
       })
     },
   }
