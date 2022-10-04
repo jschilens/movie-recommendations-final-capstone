@@ -11,13 +11,52 @@
         />
       </div>
       <div class="form-element">
-        <p class="genre-search">Movie Genre:</p>
-        <input
-          class="genre-search"
-          type="text"
-          v-model="filters.genre"
-          placeholder="Search movie genres"
-        />
+        <drop-down-menu menu-title="">
+          <section class="option">
+            <input type="checkbox" id="action" class="action" value="28" v-model="selectedGenreIDs" />
+            <label for="action"> Action </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="adventure" class="adventure" value="12" v-model="selectedGenreIDs" />
+            <label for="adventure"> Adventure </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="animation" class="animation" value="16" v-model="selectedGenreIDs" />
+            <label for="animation"> Animation </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="comedy" class="comedy" value="35" v-model="selectedGenreIDs" />
+            <label for="comedy"> Comedy </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="family" class="family" value="10751" v-model="selectedGenreIDs" />
+            <label for="family"> Family </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="fantasy" class="fantasy" value="14" v-model="selectedGenreIDs" />
+            <label for="fantasy"> Fantasy </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="horror" class="horror" value="27" v-model="selectedGenreIDs" />
+            <label for="horror"> Horror </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="mystery" class="mystery" value="9648" v-model="selectedGenreIDs" />
+            <label for="mystery"> Mystery </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="romance" class="romance" value="10749" v-model="selectedGenreIDs" />
+            <label for="romance"> Romance </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="science-fiction" class="science-fiction" value="878" v-model="selectedGenreIDs" />
+            <label for="science-fiction"> Science Fiction </label>
+          </section>
+          <section class="option">
+            <input type="checkbox" id="thriller" class="thriller" value="53" v-model="selectedGenreIDs" />
+            <label for="thriller"> Thriller </label>
+          </section>
+        </drop-down-menu>
       </div>
       <div class="form-element">
         <p class="min-date-search">
@@ -34,64 +73,111 @@
           Max Release Date: {{ filters.max_release_date }}
         </p>
         <input
-          class="max-date=search"
+          class="max-date-search"
           type="date"
           v-model="filters.max_release_date"
         />
       </div>
     </form>
-    <button input="submit" type="submit" v-on:click.prevent="filterMovies()">Submit</button>
+    <button input="submit" type="submit" v-on:click.prevent="filterMovies()">
+      Submit
+    </button>
   </div>
 </template>
 
 <script>
 import MovieService from "../services/MovieService";
+import DropDownMenu from "../components/DropDownMenu.vue";
 
 export default {
   name: "search",
+  components: {
+    DropDownMenu,
+  },
   data() {
     return {
-      filteredMovies: [],
-      filters: 
-        { original_title: "" },
+      filters: {
+        original_title: "",
+        selectedGenreIDs: [],
+      },
+      genre_name: "",
     };
   },
 
   methods: {
     filterMovies() {
-      MovieService.getMoviesWithFilters(this.filters).then(response => {
-        this.$store.commit("SET_MOVIES", response.data)
-      })
+      MovieService.getMoviesWithFilters(this.filters).then((response) => {
+        this.$store.commit("SET_MOVIES", response.data);
+      });
     },
-  }
+    selectGenre(event) {
+      if (event.target.id) {
+        this.selectedGenreIDs.push(parseInt(event.target.id));
+      }
+    },
+    clearSelectedGenres() {
+      this.selectedGenreIDs = [];
+    },
+  },
 };
 </script>
 
 <style scoped>
 div.search-container {
+  width: 50% !important;
+  white-space: normal;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: blanchedalmond;
+  margin-inline: auto;
+  background-color: grey;
   width: 30%;
+  justify-content: center;
+  justify-content: space-evenly;
+  border: 3px solid hotpink;
+}
+
+form#search-form {
+  display: flex;
   justify-content: space-between;
-
 }
 
-h1.title-search {
+p.title-search {
   font-size: smaller;
-  color: red;
+  font-weight: bold;
+  border: 3px solid hotpink;
 }
-h1.genre-search {
+p.genre-search {
   font-size: smaller;
-  color: red;
+  font-weight: bold;
+  border: 3px solid hotpink;
 }
-h1.min-date-search {
+p.min-date-search {
   font-size: smaller;
-  color: red;
+  font-weight: bold;
+  border: 3px solid hotpink;
 }
-h1.max-date-search {
+p.max-date-search {
   font-size: smaller;
-  color: red;
+  font-weight: bold;
+  border: 3px solid hotpink;
+}
+input.title-search {
+  font-size: smaller;
+  font-weight: bold;
+  border: 3px solid hotpink;
+}
+input.genre-search {
+  font-size: smaller;
+  font-weight: bold;
+  border: 3px solid hotpink;
+}
+input.min-date-search {
+  font-size: smaller;
+  font-weight: bold;
+  border: 3px solid hotpink;
+}
+input.max-date-search {
+  font-size: smaller;
+  font-weight: bold;
+  border: 3px solid hotpink;
 }
 </style>

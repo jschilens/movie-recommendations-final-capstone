@@ -1,6 +1,5 @@
 <template>
   <div class="movie-container">
-    
     <movie-card v-bind:movie="movie" v-for="movie in $store.state.movies" v-bind:key="movie.id"/>
   </div>
 </template>
@@ -43,9 +42,7 @@ div.movie-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  
+  flex-shrink: 2;
+  width: 100% !important;
 }
-
-
-
 </style>
