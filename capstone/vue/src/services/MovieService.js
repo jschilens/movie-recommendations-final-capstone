@@ -7,15 +7,15 @@ export default {
     },
 
     getMovie(id) {
-        return axios.get(`/movie/${id}`)
+        return axios.get(`/movies/${id}`)
     },
 
     getNowPlaying() {
         return axios.get('/now-playing')
     },
 
-    getMoviesWithFilters(filters) {
-        return axios.get(`/movies/filters/${filters}`)
+    getMoviesWithFilters() {
+        return axios.get(`/movies/filter`)
     }
 
     
