@@ -24,6 +24,7 @@ import BurgerMenu from '../src/components/burgermenu.vue';
 *{
   margin: 0;
   padding: 0;
+  
 }
 
 #sidebar {

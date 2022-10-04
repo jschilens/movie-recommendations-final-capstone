@@ -22,7 +22,6 @@
    
 
 
-
   </div>
 </template>
 
@@ -80,6 +79,7 @@ flex-wrap: wrap;
 display: flex;
 flex-wrap: wrap;
 }
+
 
 
 

@@ -65,6 +65,8 @@ body {
 .menu-list {
   display: flex;
   background: white;
+  font-family: 'Allerta Stencil';
+  
 }
 
 .navbar .nav-container li {
@@ -73,7 +75,7 @@ body {
 
 .navbar .nav-container #list {
   text-decoration: none;
-  color: #ffa500;
+  color: black;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;

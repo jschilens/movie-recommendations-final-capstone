@@ -1,9 +1,17 @@
 <template>
   <div class="card">
     <div class="container">
-      <h1 class="title" id="title">{{ movie.original_title }}</h1>
+      <h1 class="title" id="title" v-on:click.prevent="openDetails()" >{{ movie.original_title }}</h1>
       <h2 class="date" id="date">{{ movie.release_date }}</h2>
-      <img v-on:click.prevent="openDetails()" v-bind:src="movie.poster_path" class="poster" />
+          <img v-bind:src="movie.poster_path" class="poster" />
+          
+      <div class="vote-average">
+      <font-awesome-icon  icon="fa-solid fa-star" class="star"/>
+      <p class="vote-number">{{movie.vote_average}}</p>
+      </div>
+     
+
+
       <p class="overview">{{ movie.overview }}</p>
       
     <div class="icon">
@@ -93,6 +101,9 @@ div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* might not need this */
+  margin-inline: auto;
+  
 }
 
 div.card {
@@ -108,8 +119,27 @@ div.card {
   justify-content: center;
   align-items: center;
   margin-inline: auto;
-  
-  
+}
+
+.vote-average {
+    display: flex;
+   /* border: 3px solid hotpink; */
+   margin-top: 5px;
+   margin-bottom: 5px;
+   justify-content: center;
+}
+
+.star{
+  color: gold;
+  height: 25px;
+  background: black;
+  /* border: 3px solid pink; */
+  margin: 5% 20% 5% 10%;
+}
+
+.vote-number{
+  font-size: 20px;
+  margin-top: 2px;
 }
 
 p.overview {
@@ -125,13 +155,21 @@ p.overview {
   text-overflow: ellipsis;
   font-size: 15px;
   margin-bottom: 5px;
+  
 }
 
-h1#title.title {
+h1#title{
   text-align: center;
   width: 200px;
-margin-top: -50px;
+  margin-top: -50px;
+}
 
+.title{
+  cursor: pointer;
+}
+
+.title:hover {
+  color: blue;
 }
 
 h2#date.date {
@@ -141,10 +179,9 @@ h2#date.date {
 
 .icon {
   display: flex;
-  /* margin-inline: auto; */
-  height: 6%;
-  margin-top: 5px;
-  border: 3px solid red;
+  height: 5%;
+  /* margin-top: 8px; */
+  margin-bottom: -10px;
   width: 90px;
   justify-content: space-around;
 }
