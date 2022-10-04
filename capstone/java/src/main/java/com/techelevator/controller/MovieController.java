@@ -42,42 +42,22 @@ public class MovieController {
 
     @RequestMapping(path ="/movies/filter", method = RequestMethod.GET)
     @ResponseBody
-    public List<Movie> getMoviesWithFilters(@RequestParam String original_title, @RequestParam(required = false) String genre_name, @RequestParam(required = false) LocalDate min_release_date, @RequestParam(required = false) LocalDate max_release_date) {
+    public List<Movie> getMoviesWithFilters(@Valid @RequestBody Movie movie) {
 
         List<Movie> movies = new ArrayList<>();
         movies = movieService.getAllMovies();
         List<Movie> filteredMovies = new ArrayList<>();
-        for (Movie movie: movies){
-            if(genre_name != null) {
-                if(movie.getGenre_name().equalsIgnoreCase(genre_name)) {
-                    filteredMovies.add(movie);
-                }
-            }
-            else if(min_release_date != null) {
-                if(movie.getRelease_date().equals(min_release_date)) {
-                    filteredMovies.add(movie);
-                }
-            }
-            else if(max_release_date != null) {
-                if(movie.getRelease_date().equals(max_release_date)) {
-                    filteredMovies.add(movie);
-                }
+
+            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+                movie.setSaved(true);
             } else {
-                if(movie.getOriginal_title().equalsIgnoreCase(original_title)) {
-                   filteredMovies.add(movie);
-                }
+                movie.setSaved(false);
             }
-//            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-//                movie.setSaved(true);
-//            } else {
-//                movie.setSaved(false);
-//            }
-//            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-//                movie.setFavorited(true);
-//            } else {
-//                movie.setFavorited(false);
-//            }
-        }
+            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+                movie.setFavorited(true);
+            } else {
+                movie.setFavorited(false);
+            }
         return filteredMovies;
     }
 
