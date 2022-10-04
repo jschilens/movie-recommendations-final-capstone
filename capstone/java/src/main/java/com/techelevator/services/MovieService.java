@@ -32,6 +32,7 @@ public class MovieService {
         Genre[] genres = movie.getGenres();
         String genreNames = "";
         for (int i = 0; i < movie.getGenres().length; i++) {
+
             genreIds[i] = genres[i].getGenreId();
             genreNames += genres[i].getGenreName() + ", ";
         }
