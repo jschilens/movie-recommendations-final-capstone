@@ -51,11 +51,9 @@ export default {
   name: "search",
   data() {
     return {
+      filteredMovies: [],
       filters: 
-        {
-          original_title: "",
-          
-        },
+        { original_title: "" },
     };
   },
 
