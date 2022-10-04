@@ -18,6 +18,6 @@ export default {
         return axios.post(`/movies/filter`, filter)
     }
 
-    
+
     
 }

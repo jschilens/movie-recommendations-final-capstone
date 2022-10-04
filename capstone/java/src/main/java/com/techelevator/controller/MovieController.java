@@ -44,7 +44,7 @@ public class MovieController {
         List<Movie> movies = movieService.getFilteredMovies(filterForm.getOriginal_title());
         List<Movie> filteredMovies = new ArrayList<>();
         for(Movie movie : movies) {
-            if(movie.getOriginal_title().equalsIgnoreCase(filterForm.getOriginal_title())) {
+            if(movie.getOriginal_title().toLowerCase().contains(filterForm.getOriginal_title().toLowerCase())) {
                 filteredMovies.add(movie);
             }
         }

@@ -1,7 +1,7 @@
 <template>
 <div>
 <filter-movies />
-  <movie-list />
+<movie-list />
 </div>
 </template>
 
@@ -22,5 +22,14 @@ import FilterMovies from '../components/FilterForm.vue';
 <style >
  #app {
     height: 100% !important;
+    width: 100% !important;
 }
+body {
+    width: 100%;
+    background-image: url('/movie-poster-background.jpg');
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+
+}
+
 </style>
