@@ -44,10 +44,10 @@ public class MovieService {
         return movie;
     }
 
-    public List<Movie> getFilteredMovies(String original_title, String movie_genre, LocalDate min_release_date, LocalDate max_release_date) {
+    public List<Movie> getFilteredMovies(String original_title) {
         Movie[] movies = null;
 //        System.out.println("list movies");
-        MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL + original_title + movie_genre + min_release_date + max_release_date, MovieGeneral.class);
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&query=" + original_title , MovieGeneral.class);
 //        System.out.println(movieGeneral);
         movies = movieGeneral.getResults();
         for (int i = 0; i < movies.length; i++) {

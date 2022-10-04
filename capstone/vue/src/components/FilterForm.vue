@@ -1,12 +1,12 @@
 <template>
   <div class="search-container">
-    <form id="search-form" v-on:submit="filterMovies">
+    <form id="search-form">
       <div class="form-element">
         <p class="title-search">Movie Title:</p>
         <input
           class="title-search"
           type="text"
-          v-model="filters.title"
+          v-model="filters.original_title"
           placeholder="Search movie titles"
         />
       </div>
@@ -40,7 +40,7 @@
         />
       </div>
     </form>
-    <button input="submit" type="submit">Submit</button>
+    <button input="submit" type="submit" v-on:click.prevent="filterMovies()">Submit</button>
   </div>
 </template>
 
@@ -51,27 +51,20 @@ export default {
   name: "search",
   data() {
     return {
-      filters: [
+      filters: 
         {
-          title: "",
-          genre: "",
-          min_release_date: "",
-          max_release_date: "",
+          original_title: "",
         },
-      ],
     };
   },
-  computed: {},
 
   methods: {
-    async filterMovies() {
-      const response=await MovieService.getMoviesWithFilters();
-      this.filters=response.data;
+    filterMovies() {
+      MovieService.getMoviesWithFilters(this.filters).then(response => {
+      this.$store.commit("SET_MOVIES", response.data)
+      })
+      
     },
-  },
-
-  created() {
-      this.filterMovies
   }
 };
 </script>

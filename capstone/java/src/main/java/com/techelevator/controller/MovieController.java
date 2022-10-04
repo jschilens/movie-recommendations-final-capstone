@@ -4,25 +4,23 @@ package com.techelevator.controller;
 import com.techelevator.dao.JdbcMovieDao;
 import com.techelevator.dao.MovieDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.FilterForm;
 import com.techelevator.model.Movie;
-import com.techelevator.model.User;
 import com.techelevator.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.Array;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
 @CrossOrigin
 public class MovieController {
+
 
 
     MovieService movieService;
@@ -40,24 +38,23 @@ public class MovieController {
         movieService = new MovieService();
     }
 
-    @RequestMapping(path ="/movies/filter", method = RequestMethod.GET)
+    @RequestMapping(path ="/movies/filter", method = RequestMethod.POST)
     @ResponseBody
-    public List<Movie> getMoviesWithFilters(@Valid @RequestBody Movie movie) {
-
-        List<Movie> movies = new ArrayList<>();
-        movies = movieService.getAllMovies();
+    public List<Movie> getMoviesWithFilters(@Valid @RequestBody(required = false) FilterForm filterForm, Principal principal) {
+        List<Movie> movies = movieService.getFilteredMovies(filterForm.getOriginal_title());
         List<Movie> filteredMovies = new ArrayList<>();
-
-            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-                movie.setSaved(true);
-            } else {
-                movie.setSaved(false);
+        for(Movie movie : movies) {
+            if(movie.getOriginal_title().equalsIgnoreCase(filterForm.getOriginal_title())) {
+                filteredMovies.add(movie);
             }
-            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
-                movie.setFavorited(true);
-            } else {
-                movie.setFavorited(false);
-            }
+        }
+        //        for(Movie movie : movies) {
+//            if (movie.getGenre_name().equalsIgnoreCase(filterForm.getGenre_name()) || movie.getOriginal_title().equalsIgnoreCase(filterForm.getOriginal_title()) || (movie.getRelease_date().isEqual(filterForm.getMin_release_date()) && movie.getRelease_date().isAfter(filterForm.getMin_release_date())) || (movie.getRelease_date().isEqual(filterForm.getMax_release_date()) && movie.getRelease_date().isBefore(filterForm.getMax_release_date()))) {
+//                moviesWithFilters.add(movie);
+//            } else {
+//                System.out.println("No matching movies");
+//            }
+//        }
         return filteredMovies;
     }
 

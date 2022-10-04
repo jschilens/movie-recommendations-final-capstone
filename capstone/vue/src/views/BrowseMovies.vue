@@ -8,7 +8,7 @@
 <script>
 import MovieList from '@/components/MovieList';
 
-import FilterMovies from '../components/FilterMovies.vue';
+import FilterMovies from '../components/FilterForm.vue';
   export default { 
     name: "browse-movies",
     components: { 
