@@ -11,7 +11,8 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
-import Vuetify from 'vuetify'
+import vuetify from './plugins/vuetify'
+
 
 
 
@@ -23,7 +24,7 @@ library.add(faEye)
 library.add(faHeartOutline)
 library.add(faEyeSlash)
 library.add(faStar)
-Vue.use(Vuetify)
+
 
 
 /* add font awesome icon component */
@@ -40,5 +41,6 @@ axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')

@@ -5,9 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -26,7 +26,7 @@
     "vue-flickity": "^1.2.1",
     "vue-router": "^3.5.1",
     "vueperslides": "^3.4.2",
-    "vuetify": "^2.6.10",
+    "vuetify": "^2.6.0",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -40,7 +40,11 @@
     "chai": "^4.3.3",
     "eslint": "^7.21.0",
     "eslint-plugin-vue": "^7.7.0",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-loader-v16": "npm:vue-loader@16.1.2",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "vuetify-loader": "^1.7.0"
   }
 }

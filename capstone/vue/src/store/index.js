@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+
 Vue.use(Vuex)
 
 /*
@@ -21,7 +22,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     movies: [],
-    filters: []
+    filteredMovies: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -42,6 +43,10 @@ export default new Vuex.Store({
     },
     SET_MOVIES(state, data) {
       state.movies = data;
+    },
+    SET_FILTERED_MOVIES(state, data) {
+      state.filteredMovies = data;
     }
+    
   }
 })
