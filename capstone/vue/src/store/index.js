@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+
 Vue.use(Vuex)
 
 /*
@@ -42,6 +43,10 @@ export default new Vuex.Store({
     },
     SET_MOVIES(state, data) {
       state.movies = data;
+    },
+    SET_FILTERED_MOVIES(state, data) {
+      state.filters = data
     }
+    
   }
 })

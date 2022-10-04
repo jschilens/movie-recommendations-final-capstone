@@ -53,10 +53,8 @@ export default {
     return {
       filters: [
         {
-          title: "",
-          genre: "",
-          min_release_date: "",
-          max_release_date: "",
+          original_title: "",
+          
         },
       ],
     };
@@ -64,9 +62,10 @@ export default {
   computed: {},
 
   methods: {
-    async filterMovies() {
-      const response=await MovieService.getMoviesWithFilters();
-      this.filters=response.data;
+    filterMovies() {
+      MovieService.getMoviesWithFilters(this.filters).then(response => {
+        this.$store.commit("SET_FILTERED_MOVIES", response.data)
+      })
     },
   },
 
