@@ -14,7 +14,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import javax.sql.RowSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,12 +43,24 @@ public class JdbcMovieDao implements MovieDao {
     }
 
     @Override
+    public List<Integer> getAcceptableGenreIds() {
+        List<Integer> genreIdList = new ArrayList<>();
+        String sql = "SELECT genre_ids FROM genre_names";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while(rowSet.next()) {
+            genreIdList.add(rowSet.getInt("genre_ids"));
+        }
+        return genreIdList;
+    }
+
+
+    @Override
     public void addMovie(Movie movie) {
         String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster());
-        String genres = "INSERT INTO genres (genre_ids, movie_id)" +
-                "VALUES (?, ?) ON CONFLICT DO NOTHING";
+//        String genres = "INSERT INTO genres (genre_ids, movie_id)" +
+//                "VALUES (?, ?) ON CONFLICT DO NOTHING";
 //        for (Integer genreId: movie.getGenre_id()) {
 //            jdbcTemplate.update(genres, genreId, movie.getMovie_id());
 //        }
@@ -74,6 +85,7 @@ public class JdbcMovieDao implements MovieDao {
     @Override
     public void favoriteMovie(int id, int userId) {
         Movie movie = movieService.getMovie(id);
+        List<Integer> acceptableGenreIds = getAcceptableGenreIds();
         addMovie(movie);
 //        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
 //        "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
@@ -83,7 +95,9 @@ public class JdbcMovieDao implements MovieDao {
 //        System.out.println(movie);
 //        int[] genres = movie.getGenre_ids();
         for (int genreId: movie.getGenre_ids()) {
-            addGenreId(genreId, movie.getMovie_id());
+            if (acceptableGenreIds.contains(genreId)) {
+                addGenreId(genreId, movie.getMovie_id());
+            }
         }
     }
 
@@ -101,6 +115,7 @@ public class JdbcMovieDao implements MovieDao {
     @Override
     public void saveMovie(int id, int userId) {
         Movie movie = movieService.getMovie(id);
+        List<Integer> acceptableGenreIds = getAcceptableGenreIds();
         addMovie(movie);
 //        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
 //                "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
@@ -108,7 +123,9 @@ public class JdbcMovieDao implements MovieDao {
 //        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
         jdbcTemplate.update(sql, userId,movie.getMovie_id());
         for (int genreId: movie.getGenre_ids()) {
-            addGenreId(genreId, movie.getMovie_id());
+            if (acceptableGenreIds.contains(genreId)) {
+                addGenreId(genreId, movie.getMovie_id());
+            }
         }
     }
 

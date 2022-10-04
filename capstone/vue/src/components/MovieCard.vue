@@ -101,6 +101,9 @@ div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* might not need this */
+  margin-inline: auto;
+  
 }
 
 div.card {
@@ -152,6 +155,7 @@ p.overview {
   text-overflow: ellipsis;
   font-size: 15px;
   margin-bottom: 5px;
+  
 }
 
 h1#title{

@@ -10,9 +10,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class MovieService {
         Genre[] genres = movie.getGenres();
         String genreNames = "";
         for (int i = 0; i < movie.getGenres().length; i++) {
+
             genreIds[i] = genres[i].getGenreId();
             genreNames += genres[i].getGenreName() + ", ";
         }
@@ -41,10 +44,10 @@ public class MovieService {
         return movie;
     }
 
-    public List<Movie> getFilteredMovies(String[] filters) {
+    public List<Movie> getFilteredMovies(String original_title, String movie_genre, LocalDate min_release_date, LocalDate max_release_date) {
         Movie[] movies = null;
 //        System.out.println("list movies");
-        MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL + Arrays.toString(filters), MovieGeneral.class);
+        MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL + original_title + movie_genre + min_release_date + max_release_date, MovieGeneral.class);
 //        System.out.println(movieGeneral);
         movies = movieGeneral.getResults();
         for (int i = 0; i < movies.length; i++) {
