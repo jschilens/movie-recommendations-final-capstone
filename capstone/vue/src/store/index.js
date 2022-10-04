@@ -22,7 +22,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     movies: [],
-    filters: []
+    filteredMovies: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -45,7 +45,7 @@ export default new Vuex.Store({
       state.movies = data;
     },
     SET_FILTERED_MOVIES(state, data) {
-      state.filters = data
+      state.filteredMovies = data;
     }
     
   }
