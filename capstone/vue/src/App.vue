@@ -26,6 +26,13 @@ import BurgerMenu from '../src/components/burgermenu.vue';
   padding: 0;
 }
 
+body {
+    width: 100%;
+    background-image: url('/movie-poster-background.jpg');
+  background-repeat: repeat-y;
+
+}
+
 #sidebar {
   font-family: 'Bungee Spice';
   background: #484848;
@@ -50,6 +57,7 @@ import BurgerMenu from '../src/components/burgermenu.vue';
 
 #app {
   height: 100vh;
+  width: 200vh;
 }
 
 </style>
