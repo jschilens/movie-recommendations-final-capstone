@@ -16,7 +16,7 @@
     <h1 class="favorited-title"> Favorited Movies </h1>
       <movie-card
         v-bind:movie="movie"
-        v-for="movie in savedMovies"
+        v-for="movie in favoritedMovies"
         v-bind:key="movie.id"
       />
    

@@ -10,6 +10,9 @@ public interface MovieDao {
 
 
     public List<Movie> getAllMovies();
+
+    List<Integer> getAcceptableGenreIds();
+
     public void addMovie(Movie movie);
     public boolean isFavorited(int movieId, int userId);
     public boolean isSaved(int movieId, int userId);
