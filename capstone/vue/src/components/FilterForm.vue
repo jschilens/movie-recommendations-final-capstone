@@ -1,6 +1,6 @@
 <template>
 <div>
-  <button v-on:click="showForm = !showForm" class="button-dropdown">Search Movies</button>
+  <img src="../assets/pngegg.png" v-on:click="showForm = !showForm" class="button-dropdown"/>
 <div class="search-container" v-show="showForm === true">
     <form id="search-form">
       <div class="form-element">
@@ -187,12 +187,15 @@ export default {
 <style scoped>
 
 .button-dropdown{
+  height: 50px;
   /* display: flex; */
-  background: white;
-  font-size: 20px;
+  /* background: white; */
+  /* font-size: 20px; */
   /* justify-content: center; */
   /* align-content: center; */
-
+  /* margin-inline: auto; */
+  /* text-align: center; */
+  /* transform: left 50%; */
 }
 
 div.search-container {
