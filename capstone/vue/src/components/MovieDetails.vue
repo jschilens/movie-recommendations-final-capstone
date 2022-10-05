@@ -10,7 +10,7 @@
     <div class="info-additional">
       <div class="voting-average">
         <font-awesome-icon  icon="fa-solid fa-star" class="star"/>
-        <p class="vote-number">{{movie.vote_average}}</p>
+        <p class="vote-number">{{movie.vote_average.toFixed(2)}}</p>
         </div> <br>
     <p class="date"> Release Date: {{movie.release_date}}</p>
     <p class="runtime">Runtime: {{movie.runtime}} minutes</p >
@@ -77,14 +77,14 @@ export default {
   padding: 0;
   display: block;
   /* color: white; */
+
 }
 
 .star{
   color: gold;
   height: 25px;
-  background: rgb(0, 0, 0);
-  /* border: 3px solid pink; */
-  margin: 5% 20% 10% 10%;
+  background: #1B1B1B;
+  /* margin: 5% 20% 10% 10%; */
   
 }
 
@@ -95,13 +95,13 @@ export default {
 
 .movie-card {
   display: flex;
-  background: black;
+  background: #1B1B1B;
   margin-top: 5%;
   border-radius:10px;
   width: 100vh;
   /* max-width: 90vh; */
   margin-inline: auto;
-  /* border: 3px solid rgb(255, 1, 1); */
+  border: 8px solid #1B1B1B
 }
 
 .information-section{
@@ -172,14 +172,14 @@ export default {
 .watch-button{
   width: 20px;
   margin-right: 5px;
-  background: black;
+  background: #1B1B1B;
   color: white;
 }
 
 .heart-button{
   width: 20px;
   margin-left: 5px;
-  background: black;
+  background: #1B1B1B;
   color: white;
 }
 
