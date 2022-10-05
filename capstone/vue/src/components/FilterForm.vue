@@ -100,7 +100,51 @@ export default {
         original_title: "",
         selectedGenreIDs: [],
       },
-      genre_name: "",
+      genres: [
+      {
+        genre_id: 12,
+        genre_name: "Adventure"
+      },
+      {
+        genre_id: 14,
+        genre_name: "Fantasy"
+      },
+      {
+        genre_id: 16,
+        genre_name: "Animation"
+      },
+      {
+        genre_id: 27,
+        genre_name: "Horror"
+      },
+      {
+        genre_id: 28,
+        genre_name: "Action"
+      },
+      {
+        genre_id: 35,
+        genre_name: "Comedy"
+      },
+      {
+        genre_id: 53,
+        genre_name: "Thriller"
+      },
+      {
+        genre_id: 878,
+        genre_name: "Science Fiction"
+      },
+      {
+        genre_id: 9648,
+        genre_name: "Mystery"
+      },
+      {
+        genre_id: 10749,
+        genre_name: "Romance"
+      },
+      {
+        genre_id: 10751,
+        genre_name: "Family"
+      } ]
     };
   },
 
