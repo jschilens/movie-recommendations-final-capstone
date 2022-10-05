@@ -16,7 +16,7 @@
       
     <div class="icon">
       <button v-on:click="saveFunction()" class="watch-button">
-        <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" />
+        <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" class="watch-filled" />
         <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
       </button>
     
@@ -199,6 +199,10 @@ h2#date.date {
 
 .heart-filled{
   color: red;
+}
+
+.watch-filled{
+  color: aqua;
 }
 
 
