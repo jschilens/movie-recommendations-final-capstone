@@ -1,7 +1,7 @@
 <template>
   <section class="dropDownMenuWrapper">
     <button class="dropDownMenuButton" ref="menu" @click.prevent="openClose">
-      Genre Names: 
+      Genre Names:
     </button>
     <div class="iconWrapper">
       <div class="bar1"></div>
@@ -26,39 +26,36 @@
 
 <script>
 export default {
-    name: "drop-down-menu",
-      props: [ "menuTitle" ], // Menu title from the parent
+  name: "drop-down-menu",
+  props: ["menuTitle"], // Menu title from the parent
   data() {
     return {
-      isOpen: false // Variable if the menu is open or closed
-    }
+      isOpen: false, // Variable if the menu is open or closed
+    };
   },
   methods: {
-      openClose() {
-          var _this = this
+    openClose() {
+      // var _this = this;
 
-  const closeListerner = (e) => {
+      // const closeListener = (e) => {
+      //   if (_this.catchOutsideClick(e, _this.$refs.menu))
+      //     window.removeEventListener("click", closeListener),
+      //       (_this.isOpen = false);
+      // };
 
-    if ( _this.catchOutsideClick(e, _this.$refs.menu ) )
-      window.removeEventListener('click', closeListerner) , _this.isOpen = false
+      // window.addEventListener("click", closeListener);
 
-   }
+      this.isOpen = !this.isOpen;
+    },
 
-   window.addEventListener('click', closeListerner)
+    catchOutsideClick(event, dropdown) {
+      if (dropdown == event.target) return false;
 
-   this.isOpen = !this.isOpen
-      },
-
-      catchOutsideClick(event, dropdown) {
-          if( dropdown == event.target )
-    return false
-
-  // When user clicks outside of the menu — close the menu
-  if( this.isOpen && dropdown != event.target )
-    return true
-      }
-  }
-}
+      // When user clicks outside of the menu — close the menu
+      if (this.isOpen && dropdown != event.target) return true;
+    },
+  },
+};
 </script>
 
 <style>

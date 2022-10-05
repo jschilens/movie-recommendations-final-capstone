@@ -7,7 +7,7 @@ export default {
     },
 
     getMovie(id) {
-        return axios.get(`/movies/${id}`)
+        return axios.get(`/movie/${id}`)
     },
 
     getNowPlaying() {

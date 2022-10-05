@@ -26,7 +26,7 @@ import FilterMovies from '../components/FilterForm.vue';
 }
 body {
     width: 100%;
-    background-image: url('/movie-poster-background.jpg');
+  
   background-repeat: repeat-x;
   background-repeat: repeat-y;
 

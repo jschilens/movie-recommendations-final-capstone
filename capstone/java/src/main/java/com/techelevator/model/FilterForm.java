@@ -8,7 +8,7 @@ public class FilterForm {
     private String genre_name;
     private LocalDate min_release_date;
     private LocalDate max_release_date;
-
+    private int[] genre_ids;
     public FilterForm(String original_title, String genre_name, LocalDate min_release_date, LocalDate max_release_date) {
         this.original_title = original_title;
         this.genre_name = genre_name;
@@ -49,5 +49,13 @@ public class FilterForm {
 
     public void setOriginal_title(String original_title) {
         this.original_title = original_title;
+    }
+
+    public int[] getGenre_ids() {
+        return genre_ids;
+    }
+
+    public void setGenre_ids(int[] genre_ids) {
+        this.genre_ids = genre_ids;
     }
 }
