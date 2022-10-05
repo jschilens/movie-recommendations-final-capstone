@@ -1,17 +1,17 @@
 package com.techelevator.model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class FilterForm {
 
     private String original_title;
-    private String genre_name;
     private LocalDate min_release_date;
     private LocalDate max_release_date;
     private int[] genre_ids;
-    public FilterForm(String original_title, String genre_name, LocalDate min_release_date, LocalDate max_release_date) {
+    public FilterForm(String original_title, int[] genre_ids, LocalDate min_release_date, LocalDate max_release_date) {
         this.original_title = original_title;
-        this.genre_name = genre_name;
+        this.genre_ids = genre_ids;
         this.min_release_date = min_release_date;
         this.max_release_date = max_release_date;
     }
@@ -19,13 +19,6 @@ public class FilterForm {
     public FilterForm() {
     }
 
-    public String getGenre_name() {
-        return genre_name;
-    }
-
-    public void setGenre_name(String genre_name) {
-        this.genre_name = genre_name;
-    }
 
     public LocalDate getMin_release_date() {
         return min_release_date;
@@ -53,6 +46,16 @@ public class FilterForm {
 
     public int[] getGenre_ids() {
         return genre_ids;
+    }
+
+    @Override
+    public String toString() {
+        return "FilterForm{" +
+                "original_title='" + original_title + '\'' +
+                ", min_release_date=" + min_release_date +
+                ", max_release_date=" + max_release_date +
+                ", genre_ids=" + Arrays.toString(genre_ids) +
+                '}';
     }
 
     public void setGenre_ids(int[] genre_ids) {

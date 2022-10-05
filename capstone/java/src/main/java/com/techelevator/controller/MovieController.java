@@ -22,7 +22,6 @@ import java.util.List;
 public class MovieController {
 
 
-
     MovieService movieService;
     @Autowired
     private MovieDao movieDao;
@@ -38,21 +37,18 @@ public class MovieController {
         movieService = new MovieService();
     }
 
-    @RequestMapping(path ="/movies/filter", method = RequestMethod.POST)
+    @RequestMapping(path = "/movies/filter", method = RequestMethod.POST)
     @ResponseBody
-    public List<Movie> getMoviesWithFilters(@Valid @RequestBody(required = false) FilterForm filterForm, Principal principal) {
-        List<Movie> movieTitles = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
-        List<Movie> movieMinDates = movieService.getMinYearFilteredMovies(filterForm.getMin_release_date());
-        List<Movie> movieMaxDates = movieService.getMaxYearFilteredMovies(filterForm.getMax_release_date());
-        List<Movie> movieGenres = movieService.getGenreFilteredMovies(filterForm.getGenre_ids());
+    public List<Movie> getMoviesWithFilters(@RequestBody(required = false) FilterForm filterForm) {
+        System.out.println(filterForm.toString());
         List<Movie> filteredMovies = new ArrayList<>();
+        List<Movie> unfilteredMovies = movieService.getAllMovies();
+        if (filterForm.getGenre_ids() != null && filterForm.getMin_release_date() != null && filterForm.getMax_release_date() != null) {
 
-        for(Movie movie : movieTitles) {
-            for(Movie movie1 : movieMinDates) {
-                if(movie.getMovie_id() == movie1.getMovie_id()) {
-                    filteredMovies.add(movie);
-                }
-            }
+            filteredMovies = movieService.getGenreAndDateFilteredMovies(filterForm.getGenre_ids(), filterForm.getMin_release_date(), filterForm.getMax_release_date());
+
+        } else if (filterForm.getGenre_ids() != null) {
+            filteredMovies = movieService.getGenreFilteredMovies(filterForm.getGenre_ids());
         }
 
 
@@ -70,16 +66,16 @@ public class MovieController {
         return filteredMovies;
     }
 
-    @RequestMapping(path="/now-playing", method = RequestMethod.GET)
+    @RequestMapping(path = "/now-playing", method = RequestMethod.GET)
     public List<Movie> getCurrentMovies(Principal principal) {
         List<Movie> movies = movieService.getNowPlaying();
-        for (Movie movie: movies){
-            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+        for (Movie movie : movies) {
+            if (jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
                 movie.setSaved(true);
             } else {
                 movie.setSaved(false);
             }
-            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+            if (jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
                 movie.setFavorited(true);
             } else {
                 movie.setFavorited(false);
@@ -92,13 +88,13 @@ public class MovieController {
     public List<Movie> getAllMovies(Principal principal) {
         List<Movie> movies = new ArrayList<>();
         movies = movieService.getAllMovies();
-        for (Movie movie: movies){
-            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+        for (Movie movie : movies) {
+            if (jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
                 movie.setSaved(true);
             } else {
                 movie.setSaved(false);
             }
-            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+            if (jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
                 movie.setFavorited(true);
             } else {
                 movie.setFavorited(false);
@@ -112,12 +108,12 @@ public class MovieController {
     @RequestMapping(path = "/movie/{id}", method = RequestMethod.GET)
     public Movie getMovie(Principal principal, @PathVariable("id") int movieId) {
         Movie movie = movieService.getMovie(movieId);
-        if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+        if (jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
             movie.setSaved(true);
         } else {
             movie.setSaved(false);
         }
-        if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+        if (jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
             movie.setFavorited(true);
         } else {
             movie.setFavorited(false);
@@ -141,9 +137,9 @@ public class MovieController {
     public List<Movie> getFavoritedMovies(Principal principal) {
         List<Movie> favoritedMovies = new ArrayList<>();
         favoritedMovies = jdbcMovieDao.getFavoritedMovies(userDao.findIdByUsername(principal.getName()));
-        for (Movie movie: favoritedMovies){
+        for (Movie movie : favoritedMovies) {
             movie.setFavorited(true);
-            if(jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+            if (jdbcMovieDao.isSaved(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
                 movie.setSaved(true);
             } else {
                 movie.setSaved(false);
@@ -166,9 +162,9 @@ public class MovieController {
     public List<Movie> getSavedMovies(Principal principal) {
         List<Movie> savedMovies = new ArrayList<>();
         savedMovies = jdbcMovieDao.getSavedMovies(userDao.findIdByUsername(principal.getName()));
-        for (Movie movie: savedMovies){
+        for (Movie movie : savedMovies) {
             movie.setSaved(true);
-            if(jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))){
+            if (jdbcMovieDao.isFavorited(movie.getMovie_id(), userDao.findIdByUsername(principal.getName()))) {
                 movie.setFavorited(true);
             } else {
                 movie.setFavorited(false);
@@ -187,7 +183,6 @@ public class MovieController {
 //        }
 //        return savedMovies;
 //    }
-
 
 
 }

@@ -64,10 +64,11 @@ export default {
   width: 150px;
   height: 30px;
   border-radius: 8px;
-  background: white;
+  background: #1B1B1B;
   border: 1px solid #eee;
-  box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.03);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin-top: 8px;
+  /* box-shadow: 10px 10px 0 0 rgba(255, 255, 255, 0.03); */
+  -webkit-tap-highlight-color: rgba(255, 6, 6, 0.945);
 }
 .dropDownMenuWrapper * {
   box-sizing: border-box;
@@ -75,7 +76,7 @@ export default {
 }
 .dropDownMenuWrapper .dropDownMenuButton {
   border: none;
-  font-size: inherit;
+  font-size: 14px;
   background: none;
   outline: none;
   border-radius: 4px;
@@ -108,7 +109,7 @@ export default {
   width: 100%;
   max-width: 28px;
   height: 3px;
-  background: blue;
+  background: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -128,7 +129,7 @@ export default {
   width: 100%;
   max-width: 28px;
   height: 3px;
-  background: blue;
+  background:white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -147,7 +148,7 @@ export default {
   width: 100%;
   max-width: 28px;
   height: 3px;
-  background: blue;
+  background: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -179,9 +180,9 @@ export default {
   min-width: 300px;
   min-height: 10px;
   border-radius: 8px;
-  border: 1px solid #eee;
+  border: 3px solid white;
   box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.03);
-  background: white;
+  background: #1B1B1B;
   padding: 10px 30px;
   animation: menu 0.3s ease forwards;
 }
@@ -191,9 +192,9 @@ export default {
   position: absolute;
   top: -10px;
   left: 20px;
-  border-left: 1px solid #eee;
-  border-top: 1px solid #eee;
-  background: white;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
+  background: #1B1B1B;
   transform: rotate(45deg);
   border-radius: 4px 0 0 0;
 }
@@ -237,7 +238,7 @@ export default {
   border-bottom: 1px solid #888;
 }
 .dropDownMenuWrapper .dropdownMenu--dark * {
-  color: #eee;
+  color: rgb(0, 0, 0);
 }
 @keyframes menu {
   from {
