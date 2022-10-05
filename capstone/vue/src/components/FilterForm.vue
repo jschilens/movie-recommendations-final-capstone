@@ -13,47 +13,47 @@
       <div class="form-element">
         <drop-down-menu menu-title="">
           <section class="option">
-            <input type="checkbox" id="action" class="action" value="28" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="action" class="action" v-model="selectedGenreIDs" />
             <label for="action"> Action </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="adventure" class="adventure" value="12" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="adventure" class="adventure" v-model="selectedGenreIDs" />
             <label for="adventure"> Adventure </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="animation" class="animation" value="16" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="animation" class="animation" v-model="selectedGenreIDs" />
             <label for="animation"> Animation </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="comedy" class="comedy" value="35" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="comedy" class="comedy" v-model="selectedGenreIDs" />
             <label for="comedy"> Comedy </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="family" class="family" value="10751" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="family" class="family" v-model="selectedGenreIDs" />
             <label for="family"> Family </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="fantasy" class="fantasy" value="14" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="fantasy" class="fantasy" v-model="selectedGenreIDs" />
             <label for="fantasy"> Fantasy </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="horror" class="horror" value="27" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="horror" class="horror" v-model="selectedGenreIDs" />
             <label for="horror"> Horror </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="mystery" class="mystery" value="9648" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="mystery" class="mystery" v-model="selectedGenreIDs" />
             <label for="mystery"> Mystery </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="romance" class="romance" value="10749" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="romance" class="romance" v-model="selectedGenreIDs" />
             <label for="romance"> Romance </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="science-fiction" class="science-fiction" value="878" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="science-fiction" class="science-fiction" v-model="selectedGenreIDs" />
             <label for="science-fiction"> Science Fiction </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="thriller" class="thriller" value="53" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="thriller" class="thriller" v-model="selectedGenreIDs" />
             <label for="thriller"> Thriller </label>
           </section>
         </drop-down-menu>
@@ -96,9 +96,12 @@ export default {
   },
   data() {
     return {
+      selectedGenreIDs: [],
       filters: {
         original_title: "",
-        selectedGenreIDs: [],
+        genre_name: "",
+        min_release_date: "",
+        max_release_date: ""
       },
       genres: [
       {
@@ -157,6 +160,10 @@ export default {
     selectGenre(event) {
       if (event.target.id) {
         this.selectedGenreIDs.push(parseInt(event.target.id));
+      } else {
+        this.selectedGenreIDs = this.selectedGenreIDs.filter((genre) => {
+          return genre !== parseInt(event.target.id)
+        })
       }
     },
     clearSelectedGenres() {
