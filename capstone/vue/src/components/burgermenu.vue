@@ -13,7 +13,6 @@
             <li><router-link id="list" v-bind:to="{ name: 'home' }" >Home</router-link></li>
             <li><router-link id="list" v-bind:to="{ name: 'movies' }" >Browse</router-link></li>
             <li><router-link id="list" v-bind:to="{ name: 'my-movies' }" >My Movies</router-link></li>
-            
             <li> <router-link id="list" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" >Logout</router-link></li>
           </div>
         </div>
@@ -179,5 +178,9 @@ body {
 .nav-container input[type="checkbox"]:checked ~ .hamburger #line-three {
   transform: rotate(-45deg);
 }
+.watch-filled{
+  color: aqua;
+}
+
 
 </style>
