@@ -13,47 +13,47 @@
       <div class="form-element">
         <drop-down-menu menu-title="">
           <section class="option">
-            <input type="checkbox" id="action" class="action" value="28" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="action" class="action" value="28" v-model="filters.selectedGenreIDs" />
             <label for="action"> Action </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="adventure" class="adventure" value="12" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="adventure" class="adventure" value="12" v-model="filters.selectedGenreIDs" />
             <label for="adventure"> Adventure </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="animation" class="animation" value="16" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="animation" class="animation" value="16" v-model="filters.selectedGenreIDs" />
             <label for="animation"> Animation </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="comedy" class="comedy" value="35" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="comedy" class="comedy" value="35" v-model="filters.selectedGenreIDs" />
             <label for="comedy"> Comedy </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="family" class="family" value="10751" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="family" class="family" value="10751" v-model="filters.selectedGenreIDs" />
             <label for="family"> Family </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="fantasy" class="fantasy" value="14" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="fantasy" class="fantasy" value="14" v-model="filters.selectedGenreIDs" />
             <label for="fantasy"> Fantasy </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="horror" class="horror" value="27" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="horror" class="horror" value="27" v-model="filters.selectedGenreIDs" />
             <label for="horror"> Horror </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="mystery" class="mystery" value="9648" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="mystery" class="mystery" value="9648" v-model="filters.selectedGenreIDs" />
             <label for="mystery"> Mystery </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="romance" class="romance" value="10749" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="romance" class="romance" value="10749" v-model="filters.selectedGenreIDs" />
             <label for="romance"> Romance </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="science-fiction" class="science-fiction" value="878" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="science-fiction" class="science-fiction" value="878" v-model="filters.selectedGenreIDs" />
             <label for="science-fiction"> Science Fiction </label>
           </section>
           <section class="option">
-            <input type="checkbox" id="thriller" class="thriller" value="53" v-model="selectedGenreIDs" />
+            <input type="checkbox" id="thriller" class="thriller" value="53" v-model="filters.selectedGenreIDs" />
             <label for="thriller"> Thriller </label>
           </section>
         </drop-down-menu>
@@ -96,11 +96,58 @@ export default {
   },
   data() {
     return {
+      
       filters: {
         original_title: "",
         selectedGenreIDs: [],
+        min_release_date: "",
+        max_release_date: ""
       },
-      genre_name: "",
+      // genres: [
+      // {
+      //   genre_id: 12,
+      //   genre_name: "Adventure"
+      // },
+      // {
+      //   genre_id: 14,
+      //   genre_name: "Fantasy"
+      // },
+      // {
+      //   genre_id: 16,
+      //   genre_name: "Animation"
+      // },
+      // {
+      //   genre_id: 27,
+      //   genre_name: "Horror"
+      // },
+      // {
+      //   genre_id: 28,
+      //   genre_name: "Action"
+      // },
+      // {
+      //   genre_id: 35,
+      //   genre_name: "Comedy"
+      // },
+      // {
+      //   genre_id: 53,
+      //   genre_name: "Thriller"
+      // },
+      // {
+      //   genre_id: 878,
+      //   genre_name: "Science Fiction"
+      // },
+      // {
+      //   genre_id: 9648,
+      //   genre_name: "Mystery"
+      // },
+      // {
+      //   genre_id: 10749,
+      //   genre_name: "Romance"
+      // },
+      // {
+      //   genre_id: 10751,
+      //   genre_name: "Family"
+      // } ]
     };
   },
 
@@ -113,11 +160,16 @@ export default {
     selectGenre(event) {
       if (event.target.id) {
         this.selectedGenreIDs.push(parseInt(event.target.id));
+      } else {
+        this.selectedGenreIDs = this.selectedGenreIDs.filter((genre) => {
+          return genre !== parseInt(event.target.id)
+        })
       }
     },
     clearSelectedGenres() {
       this.selectedGenreIDs = [];
     },
+  
   },
 };
 </script>

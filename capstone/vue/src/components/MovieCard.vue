@@ -21,7 +21,7 @@
       </button>
     
       <button v-on:click="favoriteFunction()" class="heart-button">
-        <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
+        <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" class="heart-filled" />
         <font-awesome-icon v-else icon="fa-regular fa-heart" />
       </button>
     </div>
@@ -110,7 +110,8 @@ div.card {
   font-size: 12px;
   display: flex;
   flex-direction: column;
-  background-color: lavender;
+  background-color: #1B1B1B;
+  /* background-color: white; */
   border: 2px solid black;
   border-radius: 10px;
   width: 350px;
@@ -119,6 +120,8 @@ div.card {
   justify-content: center;
   align-items: center;
   margin-inline: auto;
+  /* color: #484848; */
+  color: white;
 }
 
 .vote-average {
@@ -132,7 +135,7 @@ div.card {
 .star{
   color: gold;
   height: 25px;
-  background: black;
+  background: #1B1B1B;
   /* border: 3px solid pink; */
   margin: 5% 20% 5% 10%;
 }
@@ -192,6 +195,10 @@ h2#date.date {
 
 .heart-button {
   cursor: pointer;
+}
+
+.heart-filled{
+  color: red;
 }
 
 

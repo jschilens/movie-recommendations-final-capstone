@@ -41,12 +41,24 @@ public class MovieController {
     @RequestMapping(path ="/movies/filter", method = RequestMethod.POST)
     @ResponseBody
     public List<Movie> getMoviesWithFilters(@Valid @RequestBody(required = false) FilterForm filterForm, Principal principal) {
-        List<Movie> movies = movieService.getFilteredMovies(filterForm.getOriginal_title());
+        List<Movie> movieTitles = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
+        List<Movie> movieMinDates = movieService.getMinYearFilteredMovies(filterForm.getMin_release_date());
+        List<Movie> movieMaxDates = movieService.getMaxYearFilteredMovies(filterForm.getMax_release_date());
+        List<Movie> movieGenres = movieService.getGenreFilteredMovies(filterForm.getGenre_ids());
         List<Movie> filteredMovies = new ArrayList<>();
-        for(Movie movie : movies) {
-            if(movie.getOriginal_title().toLowerCase().contains(filterForm.getOriginal_title().toLowerCase())) {
-                filteredMovies.add(movie);
+
+        for(Movie movie : movieTitles) {
+            for(Movie movie1 : movieMinDates) {
+                if(movie.getMovie_id() == movie1.getMovie_id()) {
+                    filteredMovies.add(movie);
+                }
             }
+        }
+
+
+        for (Movie filteredMovie : filteredMovies) {
+            filteredMovie.setPoster("https://image.tmdb.org/t/p/w200" + filteredMovie.getPoster());
+
         }
         //        for(Movie movie : movies) {
 //            if (movie.getGenre_name().equalsIgnoreCase(filterForm.getGenre_name()) || movie.getOriginal_title().equalsIgnoreCase(filterForm.getOriginal_title()) || (movie.getRelease_date().isEqual(filterForm.getMin_release_date()) && movie.getRelease_date().isAfter(filterForm.getMin_release_date())) || (movie.getRelease_date().isEqual(filterForm.getMax_release_date()) && movie.getRelease_date().isBefore(filterForm.getMax_release_date()))) {

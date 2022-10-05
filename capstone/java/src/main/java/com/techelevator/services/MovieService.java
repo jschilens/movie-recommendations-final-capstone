@@ -27,6 +27,7 @@ public class MovieService {
     public Movie getMovie(int movieId) {
         Movie movie = new Movie();
         movie = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US/", Movie.class);
+        assert movie != null;
         movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
         int[] genreIds = new int[movie.getGenres().length];
         Genre[] genres = movie.getGenres();
@@ -44,14 +45,50 @@ public class MovieService {
         return movie;
     }
 
-    public List<Movie> getFilteredMovies(String original_title) {
+    public List<Movie> getTitleFilteredMovies(String original_title) {
         Movie[] movies = null;
 //        System.out.println("list movies");
         MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&query=" + original_title , MovieGeneral.class);
 //        System.out.println(movieGeneral);
+        assert movieGeneral != null;
         movies = movieGeneral.getResults();
-        for (int i = 0; i < movies.length; i++) {
-            movies[i].setPoster("https://image.tmdb.org/t/p/w200" + movies[i].getPoster());
+        for (Movie movie : movies) {
+            movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+            System.out.println(movie);
+        }
+        return Arrays.asList(movies);
+    }
+
+    public List<Movie> getMinYearFilteredMovies(LocalDate min_release_date) {
+        Movie[] movies = null;
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=original_title.asc&release_date.gte=" + min_release_date.toString(), MovieGeneral.class);
+        assert movieGeneral != null;
+        movies = movieGeneral.getResults();
+        for (Movie movie : movies) {
+            movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+            System.out.println(movie);
+        }
+        return Arrays.asList(movies);
+    }
+    public List<Movie> getMaxYearFilteredMovies(LocalDate max_release_date) {
+        Movie[] movies = null;
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=original_title.asc&release_date.lte=" + max_release_date.toString(), MovieGeneral.class);
+        assert movieGeneral != null;
+        movies = movieGeneral.getResults();
+        for (Movie movie : movies) {
+            movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+            System.out.println(movie);
+        }
+        return Arrays.asList(movies);
+    }
+    public List<Movie> getGenreFilteredMovies(int[] genre_ids) {
+        Movie[] movies = null;
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=original_title.asc&with_genres=" + Arrays.toString(genre_ids), MovieGeneral.class);
+        assert movieGeneral != null;
+        movies = movieGeneral.getResults();
+        for (Movie movie : movies) {
+            movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
+            System.out.println(movie);
         }
         return Arrays.asList(movies);
     }
@@ -67,9 +104,12 @@ public class MovieService {
     public List<Movie> getAllMovies() {
         Movie[] movies = null;
         MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL, MovieGeneral.class);
+        movieGeneral = restTemplate.getForObject(API_BASE_URL + "&page=2", MovieGeneral.class);
+        assert movieGeneral != null;
         movies = movieGeneral.getResults();
-        for (int i = 0; i < movies.length; i++) {
-            movies[i].setPoster("https://image.tmdb.org/t/p/w200" + movies[i].getPoster());
+
+        for (Movie movie : movies) {
+            movie.setPoster("https://image.tmdb.org/t/p/w200" + movie.getPoster());
 
         }
         return Arrays.asList(movies);
@@ -79,6 +119,7 @@ public class MovieService {
         Movie[] movies = null;
         Movie[] currentFour = new Movie[4];
         MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/movie/now_playing?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&page=1", MovieGeneral.class);
+        assert movieGeneral != null;
         movies = movieGeneral.getResults();
         for (int i =0; i < 4; i++) {
             movies[i].setPoster("https://image.tmdb.org/t/p/w200" + movies[i].getPoster());

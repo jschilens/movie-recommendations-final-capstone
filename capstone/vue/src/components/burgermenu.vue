@@ -13,7 +13,6 @@
             <li><router-link id="list" v-bind:to="{ name: 'home' }" >Home</router-link></li>
             <li><router-link id="list" v-bind:to="{ name: 'movies' }" >Browse</router-link></li>
             <li><router-link id="list" v-bind:to="{ name: 'my-movies' }" >My Movies</router-link></li>
-            <li><router-link id="list" v-bind:to="{ name: 'my-movies' }" >Account</router-link></li>
             <li> <router-link id="list" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" >Logout</router-link></li>
           </div>
         </div>
@@ -64,7 +63,7 @@ body {
 
 .menu-list {
   display: flex;
-  background: white;
+  background: #1B1B1B;
   font-family: 'Allerta Stencil';
   
 }
@@ -75,7 +74,7 @@ body {
 
 .navbar .nav-container #list {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
@@ -123,7 +122,7 @@ body {
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: red;
+  background: white;
 }
 
  #line-one {
@@ -151,7 +150,7 @@ body {
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
-  border: 3px solid hotpink;
+  /* border: 3px solid hotpink; */
 }
 
 .menu-list li {
@@ -179,5 +178,9 @@ body {
 .nav-container input[type="checkbox"]:checked ~ .hamburger #line-three {
   transform: rotate(-45deg);
 }
+.watch-filled{
+  color: aqua;
+}
+
 
 </style>
