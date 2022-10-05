@@ -64,7 +64,7 @@ body {
 
 .menu-list {
   display: flex;
-  background: white;
+  background: #1B1B1B;
   font-family: 'Allerta Stencil';
   
 }
@@ -75,7 +75,7 @@ body {
 
 .navbar .nav-container #list {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
@@ -123,7 +123,7 @@ body {
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: red;
+  background: white;
 }
 
  #line-one {
@@ -151,7 +151,7 @@ body {
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
-  border: 3px solid hotpink;
+  /* border: 3px solid hotpink; */
 }
 
 .menu-list li {

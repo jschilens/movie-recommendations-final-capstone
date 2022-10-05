@@ -25,26 +25,32 @@ export default {
 }
 
 body {
-  width: 100%;
-  background-image: url("/movie-poster-background.jpg");
+    display: flex;
+    width: 100% !important;
+    background-image: url('https://cutewallpaper.org/21/movie-collage-wallpapers/Collage,-Poster,-Human,-People,-Person-resized-by-Ze-Robot.jpg');
   background-repeat: repeat-y;
+  background-size: 100%;
 }
 
-body {
-  background-image: url("/movie-poster-background.jpg");
-  background-repeat: repeat-x;
-  background-size: 100% !important;
+
+site-title{
+  width: 100%;
 }
 
 #sidebar {
-  font-family: "Bungee Spice";
-  background: #484848;
+  font-family: 'Bungee Spice';
+  
+  /* color: white; */
+  background: #1B1B1B;
+  
 }
 
 #menu {
   display: flex;
   justify-content: flex-start;
-  background-color: #484848;
+  background-color: #1B1B1B;
+  width: 100%;
+  
 }
 #site-title {
   display: flex;

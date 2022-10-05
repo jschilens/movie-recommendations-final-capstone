@@ -1,8 +1,8 @@
 <template>
   <div class="carousel-container">
     <div>
-      <h2>Saved Movies: </h2>
-      <v-app id="saved">
+      <v-app id="main">
+        <h2 class="saved">WATCH LATER  </h2>
         <v-carousel
           height="auto"
           class="container"
@@ -22,8 +22,8 @@
     </div>
 
     <div>
-      <h2>Favorited Movies: </h2>
-      <v-app id="favorited">
+      <v-app id="main2">
+        <h2 class="saved">FAVORITED </h2>
         <v-carousel
           height="auto"
           class="container"
@@ -97,9 +97,16 @@ div.carousel-container {
   /* height: 100px; */
 }
 
-#saved {
-  width: 500px;
-  background: white;
+#main {
+  width: 360px;
+  /* background: white; */
+  /* height: 600px */
+}
+
+#main2 {
+  width: 360px;
+  /* background: white; */
+  /* border: 3px solid hotpink; */
   /* height: 600px */
 }
 
