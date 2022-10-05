@@ -1,10 +1,12 @@
 <template>
-  <div class="search-container">
+<div>
+  <button v-on:click="showForm = !showForm" class="button-dropdown">Search Movies</button>
+<div class="search-container" v-show="showForm === true">
     <form id="search-form">
       <div class="form-element">
         <p class="title-search">Movie Title:</p>
         <input
-          class="title-search"
+          class="title-search1"
           type="text"
           v-model="filters.original_title"
           placeholder="Search movie titles"
@@ -79,10 +81,18 @@
         />
       </div>
     </form>
-    <button input="submit" type="submit" v-on:click.prevent="filterMovies()">
-      Submit
+    
+    <button input="submit" type="submit" 
+    v-on:click.prevent="filterMovies()"
+    class="submit-button">
+      Search
     </button>
   </div>
+
+
+
+</div>
+  
 </template>
 
 <script>
@@ -96,7 +106,7 @@ export default {
   },
   data() {
     return {
-      
+      showForm: false,
       filters: {
         original_title: "",
         selectedGenreIDs: [],
@@ -175,61 +185,106 @@ export default {
 </script>
 
 <style scoped>
+
+.button-dropdown{
+  /* display: flex; */
+  background: white;
+  font-size: 20px;
+  /* justify-content: center; */
+  /* align-content: center; */
+
+}
+
 div.search-container {
-  width: 50% !important;
+  /* width: 100%; */
+  width: 65% !important;
   white-space: normal;
   display: flex;
   margin-inline: auto;
-  background-color: grey;
+  background-color: #1B1B1B;
   width: 30%;
   justify-content: center;
   justify-content: space-evenly;
-  border: 3px solid hotpink;
+  border: 3px solid black;
+  height: 50px;
+  color: white;
 }
 
 form#search-form {
   display: flex;
   justify-content: space-between;
+  width: 95%;
+  color: white;
+  border-radius: 10px;
 }
 
 p.title-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  color: white;
+  margin-top: 3px;
+  
+  /* border: 3px solid hotpink; */
 }
+
+.title-search1{
+  font-size: smaller;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+input.title-search1{
+  color: white;
+}
+
 p.genre-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  
+  /* border: 3px solid hotpink; */
 }
 p.min-date-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  margin-top: 3px;
+  
+  /* border: 3px solid hotpink; */
 }
 p.max-date-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  margin-top: 3px;
+  
+  /* border: 3px solid hotpink; */
 }
 input.title-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  color: white;
+  /* border: 3px solid hotpink; */
 }
 input.genre-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  /* border: 3px solid hotpink; */
 }
 input.min-date-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  border: 1px solid white;
+  color: white;
+  color-scheme: dark;
 }
 input.max-date-search {
   font-size: smaller;
   font-weight: bold;
-  border: 3px solid hotpink;
+  border: 1px solid white;
+  color: white;
+  color-scheme: dark;
+}
+
+.submit-button{
+  margin-left: 80px;
+  border: 1px solid white;
 }
 </style>
