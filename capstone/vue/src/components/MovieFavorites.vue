@@ -2,6 +2,7 @@
   <div>
     <div>
       <v-app id="main">
+        <h2 class="saved">WATCH LATER  </h2>
         <v-carousel
           height="auto"
           class="container"
@@ -11,8 +12,6 @@
           <v-carousel-item
             v-for="movie in savedMovies"
             :key="movie.id"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
             hide-delimiter
           >
             <movie-card :movie="movie" class="cell" />
@@ -22,7 +21,8 @@
     </div>
 
     <div>
-      <v-app id="main">
+      <v-app id="main2">
+        <h2 class="saved">FAVORITED </h2>
         <v-carousel
           height="auto"
           class="container"
@@ -32,8 +32,6 @@
           <v-carousel-item
             v-for="movie in favoritedMovies"
             :key="movie.id"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
             hide-delimiter
           >
             <movie-card :movie="movie" class="cell" />
@@ -93,8 +91,15 @@ export default {
 }
 
 #main {
-  width: 500px;
-  background: white;
+  width: 360px;
+  /* background: white; */
+  /* height: 600px */
+}
+
+#main2 {
+  width: 360px;
+  /* background: white; */
+  /* border: 3px solid hotpink; */
   /* height: 600px */
 }
 
