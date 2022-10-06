@@ -62,7 +62,7 @@ public class MovieController {
         if (filterForm.getGenre_ids() != null && filterForm.getMin_release_date() != null && filterForm.getMax_release_date() != null && !isTitleOnly) {
             filteredMovies = movieService.getGenreAndDateFilteredMovies(filterForm.getGenre_ids(), filterForm.getMin_release_date(), filterForm.getMax_release_date());
         }
-        else if (!Objects.equals(filterForm.getOriginal_title(), "") && !isTitleOnly) {
+        if (!Objects.equals(filterForm.getOriginal_title(), "") && !isTitleOnly) {
             titleMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
             for (Movie filteredMovie : filteredMovies) {
 //                filteredMovie.setPoster("https://image.tmdb.org/t/p/w200" + filteredMovie.getPoster());
