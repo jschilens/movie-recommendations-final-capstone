@@ -187,6 +187,7 @@ h2#date.date {
   margin-bottom: -10px;
   width: 90px;
   justify-content: space-around;
+  border: 3px solid #1B1B1B;
 }
 
 .watch-button {
@@ -202,7 +203,7 @@ h2#date.date {
 }
 
 .watch-filled{
-  color: aqua;
+  color: cyan;
 }
 
 
