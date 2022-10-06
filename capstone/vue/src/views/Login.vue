@@ -1,14 +1,16 @@
 <template>
   <div id="login-page">
     <div class="name" id="name">
-        <h1>ReelDB</h1>
-      </div>
+      <h1>ReelDB</h1>
+    </div>
     <div id="site-info" class="site-info">
       <div class="information" id="information">
         <p id="description" class="description">
-          This project was created by Joseph Schilens, Alain Delgado, Nick Harter and Sean Kunkemoeller as our final project for Tech Elevator.
-          Check out the latest movies from our database, favorite and select movies to watch later. Credit to The
-          Movie Database for providing our movies and details.
+          This project was created by Joseph Schilens, Alain Delgado, Nick
+          Harter and Sean Kunkemoeller as our final project for Tech Elevator.
+          Check out the latest movies from our database, favorite and select
+          movies to watch later. Credit to The Movie Database for providing our
+          movies and details.
         </p>
       </div>
     </div>
@@ -26,7 +28,6 @@
         >
           Thank you for registering, please sign in.
         </div>
-        <!-- username between label>< -->
         <label for="username" class="sr-only"></label>
         <input
           type="text"
@@ -38,7 +39,6 @@
           autofocus
         />
         <br />
-        <!-- Password between label><label/ -->
         <label for="password" class="sr-only"></label>
         <input
           type="password"
@@ -98,15 +98,12 @@ export default {
 </script>
 
 <style scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap");
 
 * {
-
   font-weight: 540;
   margin: 0;
   padding: 0;
-
 }
 
 #login-page {
@@ -115,7 +112,6 @@ export default {
   align-items: center;
   justify-content: center;
   height: 96vh;
-  
 }
 
 #flex {
@@ -125,7 +121,7 @@ export default {
 }
 
 .name {
-  font-family: 'Bungee Spice';
+  font-family: "Bungee Spice";
   font-size: 30px;
   background: #1b1b1b;
   border-radius: 40px;
@@ -134,7 +130,6 @@ export default {
   padding: 20px;
   color: white;
   border: 2px solid white;
-  
 }
 
 .information {
@@ -146,31 +141,23 @@ export default {
   padding: 20px;
   color: white;
   border: 2px solid white;
-  
-
 }
 
-
 #login {
-  /* box */
   color: black;
   display: flex;
   justify-content: center;
 }
 
 .form-signin {
-  /* box that has everything in it */
   width: 450px;
   border-radius: 15px;
   background: #fff;
   padding: 20px;
   margin: 0 auto;
-  
-  
 }
 
 .h3 {
-  /* title that has "Please sign in" */
   text-align: center;
   font-size: 35px;
   padding: 20px 20px 0;
@@ -178,7 +165,6 @@ export default {
 }
 
 .form-control {
-  /* forms to fill out username and password */
   padding: 15px 15px 2px;
   margin: 15px 15px 0;
   border-radius: 3px;

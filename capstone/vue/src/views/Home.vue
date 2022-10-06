@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <div id="flex"> 
-    <h1 class="header">Welcome, {{$store.state.user.username}}!</h1>
-    <h2 class="now-playing"> Now Playing </h2>
-    <now-playing class="movieDetails"/>
+    <div id="flex">
+      <h1 class="header">Welcome, {{ $store.state.user.username }}!</h1>
+      <h2 class="now-playing">Now Playing</h2>
+      <now-playing class="movieDetails" />
     </div>
   </div>
 </template>
@@ -11,23 +11,20 @@
 
 
 <script>
-import NowPlaying from '../components/NowPlaying.vue';
-
+import NowPlaying from "../components/NowPlaying.vue";
 
 export default {
-
-  components: { 
-    NowPlaying 
-    },
+  components: {
+    NowPlaying,
+  },
 
   name: "home",
 };
 </script>
 
 <style scoped>
-
 * {
-  font-family: 'Allerta Stencil';
+  font-family: "Allerta Stencil";
   margin: 0;
   padding: 0;
 }
@@ -39,17 +36,17 @@ export default {
   height: 96vh;
 }
 
-.header{
+.header {
   color: white;
   justify-content: center;
-  margin: 1% ;
-  background: #1B1B1B;
+  margin: 1%;
+  background: #1b1b1b;
   margin-top: -56px;
   margin-left: 250px;
   width: 400px;
 }
 
-.movieDetails{
+.movieDetails {
   display: flex;
 }
 

@@ -14,7 +14,7 @@
       <div class="bar8"></div>
       <div class="bar9"></div>
       <div class="bar10"></div>
-      <div class="bar11" ></div>
+      <div class="bar11"></div>
     </div>
 
     <section class="dropdownMenu" v-if="isOpen">
@@ -27,37 +27,31 @@
 <script>
 export default {
   name: "drop-down-menu",
-  props: ["menuTitle"], // Menu title from the parent
+  props: ["menuTitle"],
   data() {
     return {
-      isOpen: false, // Variable if the menu is open or closed
+      isOpen: false,
     };
   },
   methods: {
     openClose() {
-
       this.isOpen = !this.isOpen;
     },
 
     catchOutsideClick(event, dropdown) {
       if (dropdown == event.target) return false;
-
-      // When user clicks outside of the menu — close the menu
       if (this.isOpen && dropdown != event.target) return true;
     },
   },
-  created: function() {
-  let self = this;
+  created: function () {
+    let self = this;
 
-  window.addEventListener('click', function(e){
-    // close dropdown when clicked outside
-    if (!self.$el.contains(e.target)){
-      self.isOpen = false
-    } 
-  })
-}
-
-
+    window.addEventListener("click", function (e) {
+      if (!self.$el.contains(e.target)) {
+        self.isOpen = false;
+      }
+    });
+  },
 };
 </script>
 
@@ -67,10 +61,9 @@ export default {
   width: 150px;
   height: 30px;
   border-radius: 8px;
-  background: #1B1B1B;
+  background: #1b1b1b;
   border: 1px solid #eee;
   margin-top: 8px;
-  /* box-shadow: 10px 10px 0 0 rgba(255, 255, 255, 0.03); */
   -webkit-tap-highlight-color: rgba(255, 6, 6, 0.945);
 }
 .dropDownMenuWrapper * {
@@ -132,7 +125,7 @@ export default {
   width: 100%;
   max-width: 28px;
   height: 3px;
-  background:white;
+  background: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -185,7 +178,7 @@ export default {
   border-radius: 8px;
   border: 3px solid white;
   box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.03);
-  background: #1B1B1B;
+  background: #1b1b1b;
   padding: 10px 30px;
   animation: menu 0.3s ease forwards;
 }
@@ -197,7 +190,7 @@ export default {
   left: 20px;
   border-left: 3px solid white;
   border-top: 3px solid white;
-  background: #1B1B1B;
+  background: #1b1b1b;
   transform: rotate(45deg);
   border-radius: 4px 0 0 0;
 }

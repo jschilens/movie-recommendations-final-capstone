@@ -10,14 +10,10 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import {faStar} from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import vuetify from './plugins/vuetify'
 
 
-
-
-
-/* add icons to the library */
 library.add(faUserSecret)
 library.add(faHeart)
 library.add(faEye)
@@ -26,12 +22,7 @@ library.add(faEyeSlash)
 library.add(faStar)
 
 
-
-/* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
-
-
 
 
 Vue.config.productionTip = false

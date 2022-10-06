@@ -1,31 +1,38 @@
 <template>
   <div class="card">
     <div class="container">
-      <h1 class="title" id="title" v-on:click.prevent="openDetails()" >{{ movie.original_title }}</h1>
+      <h1 class="title" id="title" v-on:click.prevent="openDetails()">
+        {{ movie.original_title }}
+      </h1>
       <h2 class="date" id="date">{{ movie.release_date }}</h2>
-          <img v-bind:src="movie.poster_path" class="poster" />
-          
-      <div class="vote-average">
-      <font-awesome-icon  icon="fa-solid fa-star" class="star"/>
-      <p class="vote-number">{{movie.vote_average}}</p>
-      </div>
-     
+      <img v-bind:src="movie.poster_path" class="poster" />
 
+      <div class="vote-average">
+        <font-awesome-icon icon="fa-solid fa-star" class="star" />
+        <p class="vote-number">{{ movie.vote_average }}</p>
+      </div>
 
       <p class="overview">{{ movie.overview }}</p>
-      
-    <div class="icon">
-      <button v-on:click="saveFunction()" class="watch-button">
-        <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" class="watch-filled" />
-        <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
-      </button>
-    
-      <button v-on:click="favoriteFunction()" class="heart-button">
-        <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" class="heart-filled" />
-        <font-awesome-icon v-else icon="fa-regular fa-heart" />
-      </button>
-    </div>
 
+      <div class="icon">
+        <button v-on:click="saveFunction()" class="watch-button">
+          <font-awesome-icon
+            v-if="watch"
+            icon="fa-solid fa-eye"
+            class="watch-filled"
+          />
+          <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
+        </button>
+
+        <button v-on:click="favoriteFunction()" class="heart-button">
+          <font-awesome-icon
+            v-if="heart"
+            icon="fa-solid fa-heart"
+            class="heart-filled"
+          />
+          <font-awesome-icon v-else icon="fa-regular fa-heart" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +40,7 @@
 
 <script>
 import MovieService from "../services/MovieService";
-import DbService from "../services/DbService"
+import DbService from "../services/DbService";
 
 export default {
   name: "movie-card",
@@ -41,10 +48,10 @@ export default {
     movie: Object,
   },
   data() {
-      return {
-        heart: this.movie.favorited,
-        watch: this.movie.saved,
-      }
+    return {
+      heart: this.movie.favorited,
+      watch: this.movie.saved,
+    };
   },
 
   methods: {
@@ -79,13 +86,11 @@ export default {
         this.watch = true;
       }
     },
-
-    // may not be passing in the correct parameters to Movie Details
     openDetails() {
-      {this.$router.push(`/movies/${this.movie.id}`)}
-    }
-
-
+      {
+        this.$router.push(`/movies/${this.movie.id}`);
+      }
+    },
   },
 };
 </script>
@@ -94,7 +99,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Allerta Stencil';
+  font-family: "Allerta Stencil";
 }
 
 div.container {
@@ -102,20 +107,13 @@ div.container {
   flex-direction: column;
   align-items: center;
   margin-inline: auto;
-  
-  
-}
-
-body{
-  
 }
 
 div.card {
   font-size: 12px;
   display: flex;
   flex-direction: column;
-  background-color: #1B1B1B;
-  /* background-color: white; */
+  background-color: #1b1b1b;
   border: 2px solid white;
   border-radius: 25px;
   width: 350px;
@@ -125,27 +123,23 @@ div.card {
   align-items: center;
   margin-inline: auto;
   color: white;
-  /* padding: 100px; */
-
 }
 
 .vote-average {
-    display: flex;
-   /* border: 3px solid hotpink; */
-   margin-top: 5px;
-   margin-bottom: 5px;
-   justify-content: center;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: center;
 }
 
-.star{
+.star {
   color: gold;
   height: 25px;
-  background: #1B1B1B;
-  /* border: 3px solid pink; */
+  background: #1b1b1b;
   margin: 5% 20% 5% 10%;
 }
 
-.vote-number{
+.vote-number {
   font-size: 20px;
   margin-top: 2px;
 }
@@ -163,16 +157,15 @@ p.overview {
   text-overflow: ellipsis;
   font-size: 15px;
   margin-bottom: 5px;
-  
 }
 
-h1#title{
+h1#title {
   text-align: center;
   width: 200px;
   margin-top: -50px;
 }
 
-.title{
+.title {
   cursor: pointer;
 }
 
@@ -188,11 +181,10 @@ h2#date.date {
 .icon {
   display: flex;
   height: 5%;
-  /* margin-top: 8px; */
   margin-bottom: -10px;
   width: 90px;
   justify-content: space-around;
-  border: 3px solid #1B1B1B;
+  border: 3px solid #1b1b1b;
 }
 
 .watch-button {
@@ -203,13 +195,11 @@ h2#date.date {
   cursor: pointer;
 }
 
-.heart-filled{
+.heart-filled {
   color: red;
 }
 
-.watch-filled{
+.watch-filled {
   color: cyan;
 }
-
-
 </style>

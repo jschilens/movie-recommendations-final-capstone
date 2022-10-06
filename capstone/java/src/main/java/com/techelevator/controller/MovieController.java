@@ -62,6 +62,7 @@ public class MovieController {
             titleMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
             for (Movie movie : titleMovies) {
                 boolean emptyGenres = false;
+                boolean isAddMovie = false;
                 for (int i = 0; i < movie.getGenre_ids().length; i++) {
                     IntStream genre_ids = IntStream.of(filterForm.getGenre_ids());
                     int finalI = i;
@@ -71,9 +72,13 @@ public class MovieController {
                         emptyGenres = true;
                     }
                     if ((emptyGenres || answer.isPresent()) && movie.getRelease_date().compareTo(filterForm.getMin_release_date()) >= 0 && movie.getRelease_date().compareTo(filterForm.getMax_release_date()) <= 0) {
-                        returnMovies.add(movie);
+                        isAddMovie = true;
+
                     }
 
+                }
+                if(isAddMovie) {
+                    returnMovies.add(movie);
                 }
             }
         } else if (filterForm.getMin_release_date() != null && filterForm.getMax_release_date() != null && !isTitleOnly) {

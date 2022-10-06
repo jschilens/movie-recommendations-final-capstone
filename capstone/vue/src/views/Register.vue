@@ -5,7 +5,6 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <!-- removed >Username:< -->
       <label for="username" class="sr-only"></label>
       <input
         type="text"
@@ -16,7 +15,6 @@
         required
         autofocus
       />
-      <!-- removed >Password:< -->
       <label for="password" class="sr-only"></label>
       <input
         type="password"
@@ -38,41 +36,43 @@
         Create Account
       </button>
       <br />
-      <router-link :to="{ name: 'login' }" class="have-an-account">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }" class="have-an-account"
+        >Have an account?</router-link
+      >
     </form>
   </div>
 </template>
 
 <script>
-import authService from '../services/AuthService';
+import authService from "../services/AuthService";
 
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "user",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: "/login",
+                query: { registration: "success" },
               });
             }
           })
@@ -80,14 +80,14 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
 };
@@ -100,46 +100,39 @@ export default {
 }
 
 #register {
-  /* box */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* font-family: 'Times New Roman', Times, serif; */
-  color:black;
+  color: black;
   background: #fcde67;
 }
 
-.form-register{
-  /* box that has everything in it */
-  display: flex;  
+.form-register {
+  display: flex;
   flex-direction: column;
-  width:450px;
+  width: 450px;
   border-radius: 15px;
   background: #fff;
   padding: 20px;
 }
 
-.h3{
-  /* title that has "Please sign in" */
+.h3 {
   text-align: center;
   font-size: 35px;
   padding: 20px 20px 0;
   margin: 0;
 }
 
-.form-control{
-  /* forms to fill out username and password */
-  
+.form-control {
   padding: 15px 15px 2px;
-  margin: 15px 15px 0;	
-	border-radius: 3px;
+  margin: 15px 15px 0;
+  border-radius: 3px;
   font-size: 20px;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   border: black;
   text-align: center;
   padding-bottom: 20px;
-
 }
 
 input {
@@ -151,23 +144,23 @@ input {
   padding: 0;
 }
 
-.form-control[type=text]:focus{
-  outline: none;     
-  box-shadow: 0 0 0 2px #484848; 
+.form-control[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #484848;
 }
 
-.form-control[type=password]:focus{
-  outline: none;     
-  box-shadow: 0 0 0 2px #484848; 
+.form-control[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #484848;
 }
 
-.btn{
+.btn {
   display: flex;
   justify-content: center;
   align-content: center;
   padding: 23px 23px 0;
-  margin: 20px 20px 0;	
-	border-radius: 3px;
+  margin: 20px 20px 0;
+  border-radius: 3px;
   font-size: 20px;
   background-color: #484848;
   color: white;
@@ -177,10 +170,9 @@ input {
   padding-bottom: 15px;
 }
 
-.have-an-account{
+.have-an-account {
   font-size: 20px;
   text-align: center;
-  color:black;
+  color: black;
 }
-
 </style>

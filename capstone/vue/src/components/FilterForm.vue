@@ -4,7 +4,6 @@
       src="../assets/pngegg.png"
       v-on:click="showForm = !showForm"
       class="button-dropdown"
-      
     />
     <div class="search-container" v-show="showForm === true">
       <form id="search-form">
@@ -19,7 +18,14 @@
         </div>
         <div class="form-element">
           <drop-down-menu menu-title="">
-            <section class="option" id="action" :style="{'background-image':'url(https://media.tenor.com/K5auNNuuWy4AAAAC/action-light-camera-action.gif)'}">
+            <section
+              class="option"
+              id="action"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/K5auNNuuWy4AAAAC/action-light-camera-action.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="action"
@@ -29,7 +35,14 @@
               />
               <label id="action" for="action"> Action </label>
             </section>
-            <section class="option" id="adventure" :style="{'background-image':'url(https://media.tenor.com/k-LrIqE73LAAAAAC/to-rule.gif)'}">
+            <section
+              class="option"
+              id="adventure"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/k-LrIqE73LAAAAAC/to-rule.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="adventure"
@@ -39,7 +52,14 @@
               />
               <label id="adventure" for="adventure"> Adventure </label>
             </section>
-            <section class="option" id="animation" :style="{'background-image':'url(https://media.tenor.com/K0HvlMWx0L8AAAAC/toy-story-woody.gif)'}">
+            <section
+              class="option"
+              id="animation"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/K0HvlMWx0L8AAAAC/toy-story-woody.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="animation"
@@ -49,7 +69,14 @@
               />
               <label id="animation" for="animation"> Animation </label>
             </section>
-            <section class="option" id="comedy" :style="{'background-image':'url(https://media.tenor.com/OwIL5ZWvMb4AAAAM/parks-and-rec-andy-dywer.gif)'}">
+            <section
+              class="option"
+              id="comedy"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/OwIL5ZWvMb4AAAAM/parks-and-rec-andy-dywer.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="comedy"
@@ -59,7 +86,14 @@
               />
               <label id="comedy" for="comedy"> Comedy </label>
             </section>
-            <section class="option" id="family" :style="{'background-image':'url(https://media.tenor.com/YBFq9a-jDI0AAAAd/i-dont-have-friends-i-have-family.gif)'}">
+            <section
+              class="option"
+              id="family"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/YBFq9a-jDI0AAAAd/i-dont-have-friends-i-have-family.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="family"
@@ -69,8 +103,14 @@
               />
               <label id="family" for="family"> Family </label>
             </section>
-            <section class="option" id="fantasy" :style="{'background-image':'url(https://media.tenor.com/1afM2qT0HaUAAAAM/in-a-world-of-pure-imagination-willy-wonka-and-the-chocolate-factory.gif)'}">
-              
+            <section
+              class="option"
+              id="fantasy"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/1afM2qT0HaUAAAAM/in-a-world-of-pure-imagination-willy-wonka-and-the-chocolate-factory.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="fantasy"
@@ -79,9 +119,15 @@
                 v-model="filters.genre_ids"
               />
               <label id="fantasy" for="fantasy"> Fantasy </label>
-            
             </section>
-            <section class="option" id="horror" :style="{'background-image':'url(https://media.tenor.com/9cNJVhQsby4AAAAC/dancing-spooky.gif)'}">
+            <section
+              class="option"
+              id="horror"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/9cNJVhQsby4AAAAC/dancing-spooky.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="horror"
@@ -91,7 +137,14 @@
               />
               <label id="horror" for="horror"> Horror </label>
             </section>
-            <section class="option" id="mystery" :style="{'background-image':'url(https://media.tenor.com/_InqREP0TIkAAAAM/steve-urkel-detective.gif)'}">
+            <section
+              class="option"
+              id="mystery"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/_InqREP0TIkAAAAM/steve-urkel-detective.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="mystery"
@@ -101,7 +154,14 @@
               />
               <label id="mystery" for="mystery"> Mystery </label>
             </section>
-            <section class="option" id="romance" :style="{'background-image':'url(https://media.tenor.com/vN1dLIphWe8AAAAC/the-notebook-notebook.gif)'}">
+            <section
+              class="option"
+              id="romance"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/vN1dLIphWe8AAAAC/the-notebook-notebook.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="romance"
@@ -110,9 +170,15 @@
                 v-model="filters.genre_ids"
               />
               <label id="romance" for="romance"> Romance </label>
-              
             </section>
-            <section class="option" id="science-fiction" :style="{'background-image':'url(https://media.tenor.com/ang0VzOwbdAAAAAC/the-matrix-reloaded-matrix.gif)'}">
+            <section
+              class="option"
+              id="science-fiction"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/ang0VzOwbdAAAAAC/the-matrix-reloaded-matrix.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="science-fiction"
@@ -120,20 +186,26 @@
                 value="878"
                 v-model="filters.genre_ids"
               />
-              <label id="science-fiction" for="science-fiction"> Science Fiction </label>
-              
+              <label id="science-fiction" for="science-fiction">
+                Science Fiction
+              </label>
             </section>
-            <section class="option" id="thriller" :style="{'background-image':'url(https://media.tenor.com/PSYhnv2F6IcAAAAC/moonwalk-michael-jackson.gif)'}" >
+            <section
+              class="option"
+              id="thriller"
+              :style="{
+                'background-image':
+                  'url(https://media.tenor.com/PSYhnv2F6IcAAAAC/moonwalk-michael-jackson.gif)',
+              }"
+            >
               <input
                 type="checkbox"
                 id="thriller"
                 class="thriller"
                 value="53"
                 v-model="filters.genre_ids"
-               
               />
               <label id="thriller" for="thriller"> Thriller </label>
-              
             </section>
           </drop-down-menu>
         </div>
@@ -169,11 +241,6 @@
       </button>
     </div>
   </div>
-
-
-
-</div>
-  
 </template>
 
 <script>
@@ -190,55 +257,10 @@ export default {
       showForm: false,
       filters: {
         original_title: "",
-        selectedGenreIDs: [],
+        genre_ids: [],
         min_release_date: "",
-        max_release_date: ""
+        max_release_date: "",
       },
-      // genres: [
-      // {
-      //   genre_id: 12,
-      //   genre_name: "Adventure"
-      // },
-      // {
-      //   genre_id: 14,
-      //   genre_name: "Fantasy"
-      // },
-      // {
-      //   genre_id: 16,
-      //   genre_name: "Animation"
-      // },
-      // {
-      //   genre_id: 27,
-      //   genre_name: "Horror"
-      // },
-      // {
-      //   genre_id: 28,
-      //   genre_name: "Action"
-      // },
-      // {
-      //   genre_id: 35,
-      //   genre_name: "Comedy"
-      // },
-      // {
-      //   genre_id: 53,
-      //   genre_name: "Thriller"
-      // },
-      // {
-      //   genre_id: 878,
-      //   genre_name: "Science Fiction"
-      // },
-      // {
-      //   genre_id: 9648,
-      //   genre_name: "Mystery"
-      // },
-      // {
-      //   genre_id: 10749,
-      //   genre_name: "Romance"
-      // },
-      // {
-      //   genre_id: 10751,
-      //   genre_name: "Family"
-      // } ]
     };
   },
 
@@ -253,46 +275,36 @@ export default {
         this.selectedGenreIDs.push(parseInt(event.target.id));
       } else {
         this.selectedGenreIDs = this.selectedGenreIDs.filter((genre) => {
-          return genre !== parseInt(event.target.id)
-        })
+          return genre !== parseInt(event.target.id);
+        });
       }
     },
     clearSelectedGenres() {
       this.selectedGenreIDs = [];
     },
-  
   },
 };
 </script>
 
 <style scoped>
-
-.button-dropdown{
+.button-dropdown {
   height: 50px;
   display: flex;
   margin-left: 49%;
   margin-top: 5px;
   margin-bottom: 5px;
-  /* background: white; */
-  /* font-size: 20px; */
-  /* justify-items: center; */
-  /* align-content: center; */
-  /* margin-inline: auto; */
-  /* text-align: center; */
-  /* transform: left 50%; */
 }
 
-.button-dropdown:hover{
+.button-dropdown:hover {
   cursor: pointer;
 }
 
 div.search-container {
-  /* width: 100%; */
   width: 65% !important;
   white-space: normal;
   display: flex;
   margin-inline: auto;
-  background-color: #1B1B1B;
+  background-color: #1b1b1b;
   width: 30%;
   justify-content: center;
   justify-content: space-evenly;
@@ -314,50 +326,40 @@ p.title-search {
   font-weight: bold;
   color: white;
   margin-top: 3px;
-  
-  /* border: 3px solid hotpink; */
 }
 
-.title-search1{
+.title-search1 {
   font-size: smaller;
   font-weight: bold;
   border: 1px solid white;
 }
 
-input.title-search1{
+input.title-search1 {
   color: white;
 }
 
 p.genre-search {
   font-size: smaller;
   font-weight: bold;
-  
-  /* border: 3px solid hotpink; */
 }
 p.min-date-search {
   font-size: smaller;
   font-weight: bold;
   margin-top: 3px;
-  
-  /* border: 3px solid hotpink; */
 }
 p.max-date-search {
   font-size: smaller;
   font-weight: bold;
   margin-top: 3px;
-  
-  /* border: 3px solid hotpink; */
 }
 input.title-search {
   font-size: smaller;
   font-weight: bold;
   color: white;
-  /* border: 3px solid hotpink; */
 }
 input.genre-search {
   font-size: smaller;
   font-weight: bold;
-  /* border: 3px solid hotpink; */
 }
 input.min-date-search {
   font-size: smaller;
@@ -374,72 +376,58 @@ input.max-date-search {
   color-scheme: dark;
 }
 
-.submit-button{
+.submit-button {
   margin-left: 80px;
   border: 1px solid white;
 }
-<<<<<<< HEAD
-=======
-section#thriller.option { 
- background-size: 100% 95%;
+section#thriller.option {
+  background-size: 100% 95%;
 }
 
-section#science-fiction.option { 
- background-size: 100% 95%;
- font-weight: bolder;
+section#science-fiction.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
 
-section#romance.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#romance.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
 
-section#family.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#family.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
 
-section#horror.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#horror.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
 
-section#mystery.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#mystery.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
-section#fantasy.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#fantasy.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
-section#adventure.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#adventure.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
-section#comedy.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#comedy.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
 
-section#action.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#action.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
 
-section#animation.option { 
- background-size: 100% 95%;
- font-weight: bolder;
- 
+section#animation.option {
+  background-size: 100% 95%;
+  font-weight: bolder;
 }
-
-
->>>>>>> main
 </style>

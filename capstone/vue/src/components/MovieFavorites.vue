@@ -2,7 +2,7 @@
   <div class="carousel-container">
     <div>
       <v-app id="main">
-          <h2 class="watch-later">WATCH LATER</h2>
+        <h2 class="watch-later">WATCH LATER</h2>
         <v-carousel
           height="auto"
           class="container"
@@ -79,7 +79,7 @@ export default {
   padding: 0;
 }
 
-.movie-icon{
+.movie-icon {
   height: 50px;
   color: white;
 }

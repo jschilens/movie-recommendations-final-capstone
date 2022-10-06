@@ -75,14 +75,12 @@ export default {
   margin: 0;
   padding: 0;
   display: block;
-  /* color: white; */
 }
 
 .star {
   color: gold;
   height: 25px;
   background: #1b1b1b;
-  /* margin: 5% 20% 10% 10%; */
 }
 
 .vote-number {
@@ -96,13 +94,11 @@ export default {
   margin-top: 5%;
   border-radius: 10px;
   width: 100vh;
-  /* max-width: 90vh; */
   margin-inline: auto;
   border: 8px solid #1b1b1b;
 }
 
 .information-section {
-  /* display: flex; */
   flex-direction: column;
   color: white;
 }
@@ -110,7 +106,6 @@ export default {
 .info-additional {
   flex-direction: column;
   align-items: center;
-  /* border: 3px solid rgb(3, 39, 243); */
 }
 
 .poster {
@@ -137,10 +132,8 @@ export default {
 .info-additional {
   display: flex;
   margin-inline: auto;
-  /* border: 3px solid hotpink; */
   margin-left: 40px;
   justify-content: center;
-  /* margin-bottom: 10px; */
 }
 .date {
   margin-right: 10px;
@@ -149,39 +142,27 @@ export default {
 
 .text {
   border-radius: 10px;
-  /* max-width: 400px; */
   margin: 50px 40px 30px 40px;
   font-size: 20px;
-  /* border: 3px solid hotpink; */
 }
 
 .runtime {
   margin-right: 10px;
 }
 
-.links{
+.links {
   display: flex;
   justify-content: center;
   margin-top: 50px;
   justify-content: space-evenly;
 }
-
-.browse-link{
-  /* margin-right: 15px; */
-}
-
-.home-page{
-  /* margin-left: 15px; */
-}
-
-.browse-link:hover{
-  cursor: pointer;
-  color: red
-}
-
-.home-page:hover{
+.browse-link:hover {
   cursor: pointer;
   color: red;
 }
 
+.home-page:hover {
+  cursor: pointer;
+  color: red;
+}
 </style>

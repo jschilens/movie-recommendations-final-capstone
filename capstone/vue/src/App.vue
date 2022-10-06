@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="sidebar">
-      <burger-menu v-if="!$store.state.user.currentUser" id="menu" />
+      <burger-menu id="menu" />
       <h1 id="site-title">ReelDB</h1>
     </div>
     <router-view />
@@ -25,32 +25,27 @@ export default {
 }
 
 body {
-    display: flex;
-    width: 100% !important;
-    background-image: url('https://cutewallpaper.org/21/movie-collage-wallpapers/Collage,-Poster,-Human,-People,-Person-resized-by-Ze-Robot.jpg');
+  display: flex;
+  width: 100% !important;
+  background-image: url("https://cutewallpaper.org/21/movie-collage-wallpapers/Collage,-Poster,-Human,-People,-Person-resized-by-Ze-Robot.jpg");
   background-repeat: repeat-y;
   background-size: 100%;
 }
 
-
-site-title{
+site-title {
   width: 100%;
 }
 
 #sidebar {
-  font-family: 'Bungee Spice';
-  
-  /* color: white; */
-  background: #1B1B1B;
-  
+  font-family: "Bungee Spice";
+  background: #1b1b1b;
 }
 
 #menu {
   display: flex;
   justify-content: flex-start;
-  background-color: #1B1B1B;
+  background-color: #1b1b1b;
   width: 100%;
-  
 }
 #site-title {
   display: flex;

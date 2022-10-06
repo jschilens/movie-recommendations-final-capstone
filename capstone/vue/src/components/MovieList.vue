@@ -1,6 +1,10 @@
 <template>
   <div class="movie-container">
-    <movie-card v-bind:movie="movie" v-for="movie in $store.state.movies" v-bind:key="movie.id"/>
+    <movie-card
+      v-bind:movie="movie"
+      v-for="movie in $store.state.movies"
+      v-bind:key="movie.id"
+    />
   </div>
 </template>
 
@@ -9,15 +13,11 @@
 import MovieCard from "../components/MovieCard.vue";
 import MovieService from "../services/MovieService";
 
-
-
 export default {
   name: "movie-list",
   components: {
     MovieCard,
-    
   },
-  
 
   methods: {
     getMovies() {
@@ -26,7 +26,7 @@ export default {
           this.$store.commit("SET_MOVIES", response.data);
         }
       });
-      },
+    },
     retrieveMovie() {
       MovieService.getMovie(this.$route.params.id);
     },
