@@ -72,11 +72,9 @@ public class MovieController {
                     if ((emptyGenres || answer.isPresent()) && movie.getRelease_date().compareTo(filterForm.getMin_release_date()) >= 0 && movie.getRelease_date().compareTo(filterForm.getMax_release_date()) <= 0) {
                         isAddMovie = true;
                     }
+
                 }
                 if (isAddMovie) {
-                    returnMovies.add(movie);
-                }
-                if(isAddMovie) {
                     returnMovies.add(movie);
                 }
             }

@@ -159,9 +159,9 @@ p.overview {
   margin-bottom: 5px;
 }
 
-h1#title {
+h1#title.title {
   text-align: center;
-  width: 200px;
+  width: 340px;
   margin-top: -50px;
 }
 
