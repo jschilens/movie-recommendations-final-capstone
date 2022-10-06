@@ -32,7 +32,6 @@ public class JdbcMovieDao implements MovieDao {
     private JdbcUserDao jdbcUserDao;
     private User user;
 
-
     public JdbcMovieDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
@@ -59,11 +58,6 @@ public class JdbcMovieDao implements MovieDao {
         String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie.getRating(), movie.getPoster());
-//        String genres = "INSERT INTO genres (genre_ids, movie_id)" +
-//                "VALUES (?, ?) ON CONFLICT DO NOTHING";
-//        for (Integer genreId: movie.getGenre_id()) {
-//            jdbcTemplate.update(genres, genreId, movie.getMovie_id());
-//        }
     }
 
     @Override
@@ -87,13 +81,8 @@ public class JdbcMovieDao implements MovieDao {
         Movie movie = movieService.getMovie(id);
         List<Integer> acceptableGenreIds = getAcceptableGenreIds();
         addMovie(movie);
-//        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
-//        "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         String sql = "INSERT INTO movie_favorited (user_id, favorite_movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
-//        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
         jdbcTemplate.update(sql, userId,movie.getMovie_id());
-//        System.out.println(movie);
-//        int[] genres = movie.getGenre_ids();
         for (int genreId: movie.getGenre_ids()) {
             if (acceptableGenreIds.contains(genreId)) {
                 addGenreId(genreId, movie.getMovie_id());
@@ -117,10 +106,7 @@ public class JdbcMovieDao implements MovieDao {
         Movie movie = movieService.getMovie(id);
         List<Integer> acceptableGenreIds = getAcceptableGenreIds();
         addMovie(movie);
-//        String sql = "INSERT INTO movies (id, original_title, overview, release_date, vote_average, poster_path)\n" +
-//                "VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING";
         String sql = "INSERT INTO movie_saved (user_id, saved_movie_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
-//        jdbcTemplate.update(sql, movie.getMovie_id(), movie.getOriginal_title(), movie.getOverview(), movie.getRelease_date(), movie. getRating(), movie.getPoster());
         jdbcTemplate.update(sql, userId,movie.getMovie_id());
         for (int genreId: movie.getGenre_ids()) {
             if (acceptableGenreIds.contains(genreId)) {
@@ -184,8 +170,6 @@ public class JdbcMovieDao implements MovieDao {
         }
         movie.setGenre_ids(genreIds);
     }
-
-
 
     public Movie mapRowToMovie(SqlRowSet rowSet) {
         Movie movie = new Movie();

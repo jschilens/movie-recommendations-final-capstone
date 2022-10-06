@@ -5,8 +5,6 @@ public class MovieGeneral {
     Movie[] results;
     Movie movie;
 
-
-
     public Movie[] getResults() {
         return results;
     }
@@ -22,4 +20,5 @@ public class MovieGeneral {
     public void setResults(Movie[] results) {
         this.results = results;
     }
+
 }

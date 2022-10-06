@@ -26,14 +26,12 @@ public class JdbcUserDao implements UserDao {
     @Override
     public int findIdByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
-
         int userId;
         try {
             userId = jdbcTemplate.queryForObject("select user_id from users where username = ?", int.class, username);
         } catch (EmptyResultDataAccessException e) {
             throw new UsernameNotFoundException("User " + username + " was not found.");
         }
-
         return userId;
     }
 
@@ -52,20 +50,17 @@ public class JdbcUserDao implements UserDao {
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         String sql = "select * from users";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             User user = mapRowToUser(results);
             users.add(user);
         }
-
         return users;
     }
 
     @Override
     public User findByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
-
         for (User user : this.findAll()) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 return user;
@@ -79,7 +74,6 @@ public class JdbcUserDao implements UserDao {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
-
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 

@@ -22,7 +22,6 @@ import java.util.stream.IntStream;
 @CrossOrigin
 public class MovieController {
 
-
     MovieService movieService;
     @Autowired
     private MovieDao movieDao;
@@ -30,7 +29,6 @@ public class MovieController {
     private UserDao userDao;
     @Autowired
     private JdbcMovieDao jdbcMovieDao;
-
 
     public MovieController(MovieDao movieDao, UserDao userDao) {
         this.movieDao = movieDao;
@@ -73,9 +71,10 @@ public class MovieController {
                     }
                     if ((emptyGenres || answer.isPresent()) && movie.getRelease_date().compareTo(filterForm.getMin_release_date()) >= 0 && movie.getRelease_date().compareTo(filterForm.getMax_release_date()) <= 0) {
                         isAddMovie = true;
-
                     }
-
+                }
+                if (isAddMovie) {
+                    returnMovies.add(movie);
                 }
                 if(isAddMovie) {
                     returnMovies.add(movie);
@@ -83,7 +82,6 @@ public class MovieController {
             }
         } else if (filterForm.getMin_release_date() != null && filterForm.getMax_release_date() != null && !isTitleOnly) {
             returnMovies = movieService.getGenreAndDateFilteredMovies(filterForm.getGenre_ids(), filterForm.getMin_release_date(), filterForm.getMax_release_date());
-            System.out.println("isTitleOnly");
         }
         return returnMovies;
     }
@@ -121,9 +119,7 @@ public class MovieController {
             } else {
                 movie.setFavorited(false);
             }
-
         }
-
         return movies;
     }
 
@@ -192,19 +188,6 @@ public class MovieController {
                 movie.setFavorited(false);
             }
         }
-
         return savedMovies;
-
     }
-//
-//    @RequestMapping(path = "/movies/{userId}/favorites", method = RequestMethod.GET)
-//    public List<Movie> getSavedMovies(@Valid @PathVariable int userId, Principal principal) {
-//        List<Movie> savedMovies = new ArrayList<>();
-//        if(userId == userDao.findIdByUsername(principal.getName())) {
-//
-//        }
-//        return savedMovies;
-//    }
-
-
 }

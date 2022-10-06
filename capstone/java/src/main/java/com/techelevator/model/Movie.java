@@ -50,7 +50,6 @@ public class Movie {
     }
 
     public Movie() {
-
     }
 
     public LocalDate getRelease_date() {
@@ -141,7 +140,7 @@ public class Movie {
         this.runtime = runtime;
     }
 
-        public String getGenre_name() {
+    public String getGenre_name() {
         return genre_name;
     }
 

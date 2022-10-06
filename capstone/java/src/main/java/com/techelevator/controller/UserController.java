@@ -21,8 +21,4 @@ public class UserController {
     public User getCurrentUser(Principal principal) {
         return userDao.findByUsername(principal.getName());
     }
-
-
-
-
 }
