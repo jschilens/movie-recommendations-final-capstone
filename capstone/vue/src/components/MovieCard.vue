@@ -101,8 +101,12 @@ div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* might not need this */
   margin-inline: auto;
+  
+  
+}
+
+body{
   
 }
 
@@ -112,16 +116,17 @@ div.card {
   flex-direction: column;
   background-color: #1B1B1B;
   /* background-color: white; */
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 2px solid white;
+  border-radius: 25px;
   width: 350px;
-  height: 550px;
+  height: 560px;
   margin: 20px;
   justify-content: center;
   align-items: center;
   margin-inline: auto;
-  /* color: #484848; */
   color: white;
+  /* padding: 100px; */
+
 }
 
 .vote-average {

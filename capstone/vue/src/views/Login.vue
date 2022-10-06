@@ -1,7 +1,6 @@
 <template>
   <div id="login-page">
     <div class="name" id="name">
-        <h1>TBD</h1>
       </div>
     <div id="site-info" class="site-info">
       <div class="information" id="information">
