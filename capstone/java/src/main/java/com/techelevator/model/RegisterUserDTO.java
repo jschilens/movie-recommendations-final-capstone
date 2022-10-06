@@ -44,4 +44,5 @@ public class RegisterUserDTO {
     public void setRole(String role) {
         this.role = role;
     }
+
 }
