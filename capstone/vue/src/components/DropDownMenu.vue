@@ -35,15 +35,6 @@ export default {
   },
   methods: {
     openClose() {
-      // var _this = this;
-
-      // const closeListener = (e) => {
-      //   if (_this.catchOutsideClick(e, _this.$refs.menu))
-      //     window.removeEventListener("click", closeListener),
-      //       (_this.isOpen = false);
-      // };
-
-      // window.addEventListener("click", closeListener);
 
       this.isOpen = !this.isOpen;
     },
@@ -55,6 +46,18 @@ export default {
       if (this.isOpen && dropdown != event.target) return true;
     },
   },
+  created: function() {
+  let self = this;
+
+  window.addEventListener('click', function(e){
+    // close dropdown when clicked outside
+    if (!self.$el.contains(e.target)){
+      self.isOpen = false
+    } 
+  })
+}
+
+
 };
 </script>
 
