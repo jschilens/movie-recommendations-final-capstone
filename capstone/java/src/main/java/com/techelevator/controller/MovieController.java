@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.IntStream;
 
 @RestController
 @CrossOrigin
@@ -43,8 +41,6 @@ public class MovieController {
     @RequestMapping(path = "/movies/filter", method = RequestMethod.POST)
     @ResponseBody
     public List<Movie> getMoviesWithFilters(@RequestBody(required = false) FilterForm filterForm) {
-        System.out.println(filterForm.toString());
-        List<Movie> filteredMovies = new ArrayList<>();
         List<Movie> titleMovies = new ArrayList<>();
         List<Movie> returnMovies = new ArrayList<>();
         boolean isTitleOnly = false;
@@ -57,60 +53,33 @@ public class MovieController {
             filterForm.setGenre_ids(new int[]{});
         }
         if (filterForm.getMin_release_date() == null) {
-            filterForm.setMin_release_date(LocalDate.ofEpochDay(1900-01-01));
+            filterForm.setMin_release_date(LocalDate.ofEpochDay(1900 - 01 - 01));
         }
         if (filterForm.getMax_release_date() == null) {
             filterForm.setMax_release_date(LocalDate.now());
         }
-        if (filterForm.getGenre_ids() != null && filterForm.getMin_release_date() != null && filterForm.getMax_release_date() != null && !isTitleOnly) {
-            filteredMovies = movieService.getGenreAndDateFilteredMovies(filterForm.getGenre_ids(), filterForm.getMin_release_date(), filterForm.getMax_release_date());
-        }
-        if (!Objects.equals(filterForm.getOriginal_title(), "") && !isTitleOnly) {
-<<<<<<< HEAD
-=======
-            System.out.println("in compare");
->>>>>>> main
+        if (!filterForm.getOriginal_title().equalsIgnoreCase("")) {
             titleMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
-            for (Movie filteredMovie : filteredMovies) {
-//                filteredMovie.setPoster("https://image.tmdb.org/t/p/w200" + filteredMovie.getPoster());
-                for (Movie titleMovie: titleMovies) {
-                    if (filteredMovie.getMovie_id() == titleMovie.getMovie_id()) {
-                        System.out.println("addmovie");
-                        returnMovies.add(filteredMovie);
+            for (Movie movie : titleMovies) {
+                boolean emptyGenres = false;
+                for (int i = 0; i < movie.getGenre_ids().length; i++) {
+                    IntStream genre_ids = IntStream.of(filterForm.getGenre_ids());
+                    int finalI = i;
+                    IntStream genreStream = genre_ids.filter(x -> x == movie.getGenre_ids()[finalI]);
+                    OptionalInt answer = genreStream.findAny();
+                    if (genres.equals("[]")) {
+                        emptyGenres = true;
                     }
+                    if ((emptyGenres || answer.isPresent()) && movie.getRelease_date().compareTo(filterForm.getMin_release_date()) >= 0 && movie.getRelease_date().compareTo(filterForm.getMax_release_date()) <= 0) {
+                        returnMovies.add(movie);
+                    }
+
                 }
             }
-        } else {
-            titleMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
-            returnMovies = titleMovies;
-            //            for (Movie titleMovie : titleMovies) {
-//                titleMovie.setPoster("https://image.tmdb.org/t/p/w200" + titleMovie.getPoster())
+        } else if (filterForm.getMin_release_date() != null && filterForm.getMax_release_date() != null && !isTitleOnly) {
+            returnMovies = movieService.getGenreAndDateFilteredMovies(filterForm.getGenre_ids(), filterForm.getMin_release_date(), filterForm.getMax_release_date());
+            System.out.println("isTitleOnly");
         }
-        if (returnMovies.size() == 0) {
-            System.out.println("in setmovies");
-            System.out.println(returnMovies.toString());
-            System.out.println(filteredMovies.toString());
-            returnMovies = filteredMovies;
-        }
-        for (Movie returnMovie : returnMovies) {
-            returnMovie.setPoster("https://image.tmdb.org/t/p/w200" + returnMovie.getPoster());
-            }
-//        } else if (filterForm.getGenre_ids() != null) {
-//            filteredMovies = movieService.getGenreFilteredMovies(filterForm.getGenre_ids());
-//        } else if(filterForm.getOriginal_title() != null) {
-//            System.out.println("hello");
-//            filteredMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
-//        }
-
-
-
-        //        for(Movie movie : movies) {
-//            if (movie.getGenre_name().equalsIgnoreCase(filterForm.getGenre_name()) || movie.getOriginal_title().equalsIgnoreCase(filterForm.getOriginal_title()) || (movie.getRelease_date().isEqual(filterForm.getMin_release_date()) && movie.getRelease_date().isAfter(filterForm.getMin_release_date())) || (movie.getRelease_date().isEqual(filterForm.getMax_release_date()) && movie.getRelease_date().isBefore(filterForm.getMax_release_date()))) {
-//                moviesWithFilters.add(movie);
-//            } else {
-//                System.out.println("No matching movies");
-//            }
-//        }
         return returnMovies;
     }
 
