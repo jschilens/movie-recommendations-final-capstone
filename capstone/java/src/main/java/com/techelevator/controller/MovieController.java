@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,7 +48,9 @@ public class MovieController {
         List<Movie> titleMovies = new ArrayList<>();
         List<Movie> returnMovies = new ArrayList<>();
         boolean isTitleOnly = false;
-        if (filterForm.getGenre_ids() == null && filterForm.getMin_release_date() == null && filterForm.getMax_release_date() == null) {
+        String genres = "";
+        genres = Arrays.toString(filterForm.getGenre_ids());
+        if (genres.equals("[]") && filterForm.getMin_release_date() == null && filterForm.getMax_release_date() == null) {
             isTitleOnly = true;
         }
         if (filterForm.getGenre_ids() == null) {
@@ -63,22 +66,30 @@ public class MovieController {
             filteredMovies = movieService.getGenreAndDateFilteredMovies(filterForm.getGenre_ids(), filterForm.getMin_release_date(), filterForm.getMax_release_date());
         }
         if (!Objects.equals(filterForm.getOriginal_title(), "") && !isTitleOnly) {
+<<<<<<< HEAD
+=======
+            System.out.println("in compare");
+>>>>>>> main
             titleMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
             for (Movie filteredMovie : filteredMovies) {
 //                filteredMovie.setPoster("https://image.tmdb.org/t/p/w200" + filteredMovie.getPoster());
                 for (Movie titleMovie: titleMovies) {
                     if (filteredMovie.getMovie_id() == titleMovie.getMovie_id()) {
+                        System.out.println("addmovie");
                         returnMovies.add(filteredMovie);
                     }
                 }
             }
         } else {
             titleMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
-            returnMovies =titleMovies;
+            returnMovies = titleMovies;
             //            for (Movie titleMovie : titleMovies) {
 //                titleMovie.setPoster("https://image.tmdb.org/t/p/w200" + titleMovie.getPoster())
         }
-        if (returnMovies.size() < 1) {
+        if (returnMovies.size() == 0) {
+            System.out.println("in setmovies");
+            System.out.println(returnMovies.toString());
+            System.out.println(filteredMovies.toString());
             returnMovies = filteredMovies;
         }
         for (Movie returnMovie : returnMovies) {
