@@ -19,7 +19,7 @@
         </div>
         <div class="form-element">
           <drop-down-menu menu-title="">
-            <section class="option">
+            <section class="option" id="action" :style="{'background-image':'url(https://media.tenor.com/K5auNNuuWy4AAAAC/action-light-camera-action.gif)'}">
               <input
                 type="checkbox"
                 id="action"
@@ -27,9 +27,9 @@
                 value="28"
                 v-model="filters.genre_ids"
               />
-              <label for="action"> Action </label>
+              <label id="action" for="action"> Action </label>
             </section>
-            <section class="option">
+            <section class="option" id="adventure" :style="{'background-image':'url(https://media.tenor.com/k-LrIqE73LAAAAAC/to-rule.gif)'}">
               <input
                 type="checkbox"
                 id="adventure"
@@ -37,9 +37,9 @@
                 value="12"
                 v-model="filters.genre_ids"
               />
-              <label for="adventure"> Adventure </label>
+              <label id="adventure" for="adventure"> Adventure </label>
             </section>
-            <section class="option">
+            <section class="option" id="animation" :style="{'background-image':'url(https://media.tenor.com/K0HvlMWx0L8AAAAC/toy-story-woody.gif)'}">
               <input
                 type="checkbox"
                 id="animation"
@@ -47,9 +47,9 @@
                 value="16"
                 v-model="filters.genre_ids"
               />
-              <label for="animation"> Animation </label>
+              <label id="animation" for="animation"> Animation </label>
             </section>
-            <section class="option">
+            <section class="option" id="comedy" :style="{'background-image':'url(https://media.tenor.com/OwIL5ZWvMb4AAAAM/parks-and-rec-andy-dywer.gif)'}">
               <input
                 type="checkbox"
                 id="comedy"
@@ -57,9 +57,9 @@
                 value="35"
                 v-model="filters.genre_ids"
               />
-              <label for="comedy"> Comedy </label>
+              <label id="comedy" for="comedy"> Comedy </label>
             </section>
-            <section class="option">
+            <section class="option" id="family" :style="{'background-image':'url(https://media.tenor.com/YBFq9a-jDI0AAAAd/i-dont-have-friends-i-have-family.gif)'}">
               <input
                 type="checkbox"
                 id="family"
@@ -67,9 +67,10 @@
                 value="10751"
                 v-model="filters.genre_ids"
               />
-              <label for="family"> Family </label>
+              <label id="family" for="family"> Family </label>
             </section>
-            <section class="option">
+            <section class="option" id="fantasy" :style="{'background-image':'url(https://media.tenor.com/1afM2qT0HaUAAAAM/in-a-world-of-pure-imagination-willy-wonka-and-the-chocolate-factory.gif)'}">
+              
               <input
                 type="checkbox"
                 id="fantasy"
@@ -77,9 +78,10 @@
                 value="14"
                 v-model="filters.genre_ids"
               />
-              <label for="fantasy"> Fantasy </label>
+              <label id="fantasy" for="fantasy"> Fantasy </label>
+            
             </section>
-            <section class="option">
+            <section class="option" id="horror" :style="{'background-image':'url(https://media.tenor.com/9cNJVhQsby4AAAAC/dancing-spooky.gif)'}">
               <input
                 type="checkbox"
                 id="horror"
@@ -87,9 +89,9 @@
                 value="27"
                 v-model="filters.genre_ids"
               />
-              <label for="horror"> Horror </label>
+              <label id="horror" for="horror"> Horror </label>
             </section>
-            <section class="option">
+            <section class="option" id="mystery" :style="{'background-image':'url(https://media.tenor.com/_InqREP0TIkAAAAM/steve-urkel-detective.gif)'}">
               <input
                 type="checkbox"
                 id="mystery"
@@ -97,9 +99,9 @@
                 value="9648"
                 v-model="filters.genre_ids"
               />
-              <label for="mystery"> Mystery </label>
+              <label id="mystery" for="mystery"> Mystery </label>
             </section>
-            <section class="option">
+            <section class="option" id="romance" :style="{'background-image':'url(https://media.tenor.com/vN1dLIphWe8AAAAC/the-notebook-notebook.gif)'}">
               <input
                 type="checkbox"
                 id="romance"
@@ -107,9 +109,10 @@
                 value="10749"
                 v-model="filters.genre_ids"
               />
-              <label for="romance"> Romance </label>
+              <label id="romance" for="romance"> Romance </label>
+              
             </section>
-            <section class="option">
+            <section class="option" id="science-fiction" :style="{'background-image':'url(https://media.tenor.com/ang0VzOwbdAAAAAC/the-matrix-reloaded-matrix.gif)'}">
               <input
                 type="checkbox"
                 id="science-fiction"
@@ -117,7 +120,8 @@
                 value="878"
                 v-model="filters.genre_ids"
               />
-              <label for="science-fiction"> Science Fiction </label>
+              <label id="science-fiction" for="science-fiction"> Science Fiction </label>
+              
             </section>
             <section class="option" id="thriller" :style="{'background-image':'url(https://media.tenor.com/PSYhnv2F6IcAAAAC/moonwalk-michael-jackson.gif)'}" >
               <input
@@ -320,18 +324,64 @@ input.max-date-search {
   border: 1px solid white;
 }
 section#thriller.option { 
- 
  background-size: 100% 95%;
+}
+
+section#science-fiction.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+}
+
+section#romance.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
  
 }
 
-label#thriller {
-  margin: auto;
+section#family.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
 }
 
-img.thriller-gif {
-  display: flex;
-  width: auto;
-  height: 50px;
+section#horror.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
 }
+
+section#mystery.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+section#fantasy.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+section#adventure.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+section#comedy.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#action.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#animation.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+
 </style>
