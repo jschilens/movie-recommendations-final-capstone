@@ -86,12 +86,9 @@ public class MovieService {
         System.out.println("hello");
         Movie[] movies = null;
         String genres = "";
-        if(genre_ids.length > 1) {
-            genres = String.join(",", Arrays.toString(genre_ids));
-        } else {
-            genres = Arrays.toString(genre_ids);
-                    genres = genres.substring(1, genres.length() -1);
-        }
+        genres = Arrays.toString(genre_ids);
+        genres = genres.substring(1, genres.length() -1);
+
         System.out.println(genres);
         MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&with_genres=" + genres, MovieGeneral.class);
         assert movieGeneral != null;
@@ -136,7 +133,6 @@ public class MovieService {
 
     public List<Movie> getAllMovies() {
         Movie[] movies = null;
-//        System.out.println("list movies");
         MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL, MovieGeneral.class);
         movieGeneral = restTemplate.getForObject(API_BASE_URL + "&page=2", MovieGeneral.class);
         assert movieGeneral != null;
