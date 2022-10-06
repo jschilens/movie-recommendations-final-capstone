@@ -162,7 +162,7 @@
       <button
         input="submit"
         type="submit"
-        v-on:click.prevent="filterMovies()"
+        v-on:click="filterMovies()"
         class="submit-button"
       >
         Search

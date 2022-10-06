@@ -1,6 +1,6 @@
 <template>
       <div class="navbar">
-        <div class="container nav-container">
+        <div class="container nav-container" v-if="$store.state.token != ''">
             <input class="checkbox" type="checkbox" />
             <div class="hamburger">
               <span class="line" id="line-one"></span>

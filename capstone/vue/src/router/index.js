@@ -61,7 +61,7 @@ const router = new Router({
       name: "movies",
       component: BrowseMovies,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -69,7 +69,7 @@ const router = new Router({
       name: "my-movies",
       component: MyMovies,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -77,7 +77,7 @@ const router = new Router({
       name: "details",
       component: MovieDetails,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]

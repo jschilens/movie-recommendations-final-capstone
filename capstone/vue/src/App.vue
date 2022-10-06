@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="sidebar">
-      <burger-menu id="menu" />
+      <burger-menu v-if="!$store.state.user.currentUser" id="menu" />
       <h1 id="site-title">ReelDB</h1>
     </div>
     <router-view />
