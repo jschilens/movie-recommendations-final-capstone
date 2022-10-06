@@ -129,7 +129,7 @@ export default {
   font-size: 30px;
   background: #1b1b1b;
   border-radius: 40px;
-  margin-top: -100px;
+  margin-top: 30px;
   margin-bottom: 10px;
   padding: 20px;
   color: white;

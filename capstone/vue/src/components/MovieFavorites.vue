@@ -2,17 +2,16 @@
   <div class="carousel-container">
     <div>
       <v-app id="main">
-        <h2 class="saved">WATCH LATER  </h2>
+          <h2 class="watch-later">WATCH LATER</h2>
         <v-carousel
           height="auto"
           class="container"
-           v-model="model"
+          v-model="model"
           hide-delimiters
         >
           <v-carousel-item
             v-for="movie in savedMovies"
             :key="movie.id"
-           
             hide-delimiter
           >
             <movie-card :movie="movie" class="cell" />
@@ -23,7 +22,7 @@
 
     <div>
       <v-app id="main2">
-        <h2 class="saved">FAVORITED </h2>
+        <h2 class="heart">FAVORITED</h2>
         <v-carousel
           height="auto"
           class="container"
@@ -33,7 +32,6 @@
           <v-carousel-item
             v-for="movie in favoritedMovies"
             :key="movie.id"
-           
             hide-delimiter
           >
             <movie-card :movie="movie" class="cell" />
@@ -59,8 +57,7 @@ export default {
       savedMovies: [],
       favoritedMovies: [],
       model: [],
-      anotherModel: []
-      
+      anotherModel: [],
     };
   },
   methods: {},
@@ -80,39 +77,62 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  margin-inline: auto;
-  /* -webkit-box-sizing: border-box; */
-  /* box-sizing: border-box; */
+}
+
+.movie-icon{
+  height: 50px;
+  color: white;
 }
 
 div.carousel-container {
   display: flex;
-  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+div .card.cell {
+  height: 580px;
+  width: 350px;
+  border: 2px solid white;
+  border-radius: 40px;
 }
 
 .container {
   width: 700px;
-  /* background: white; */
-  /* border: 3px solid hotpink; */
-  /* height: 100px; */
+  /* height: 5000px; */
+}
+
+.watch-later {
+  font-size: 30px;
+  background: #1b1b1b;
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: white;
+  border: 2px solid white;
+}
+
+.heart {
+  font-size: 30px;
+  background: #1b1b1b;
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: white;
+  border: 2px solid white;
 }
 
 #main {
   width: 360px;
-  /* background: white; */
-  /* height: 600px */
+  margin-left: 200px;
 }
 
 #main2 {
   width: 360px;
-  /* background: white; */
-  /* border: 3px solid hotpink; */
-  /* height: 600px */
-}
-
-#favorited {
-  width: 500px;
-  background: white;
+  margin-right: 200px;
 }
 
 ::v-deep .v-application--wrap {

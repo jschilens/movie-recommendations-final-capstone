@@ -45,25 +45,36 @@ body {
   /* this messes with the width of the menu */
   max-width: 15%;
   min-width: 10%;
-  width: 20%;
-  
+  width: 50%;
 }
 
+
 .navbar {
-  width: 100%;
+  width: 100% !important;
+  
+  /* border: 3px solid red; */
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 62px;
+  height: 64px;
+  /* padding: 100px; */
+  /* border: 3px solid hotpink; */
 }
 
 .menu-list {
   display: flex;
   background: #1B1B1B;
   font-family: 'Allerta Stencil';
+  /* position: -webkit-sticky;  */
+  position: fixed;
+  top: 0;
+  /* border: 3px solid hotpink; */
+  width: 250px;
+  
+  
   
 }
 
@@ -77,21 +88,25 @@ body {
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
+  
+  /* border: 3px solid hotpink; */
 }
 
 /* makes the font bold when hovered over */
 .navbar .nav-container #list:hover{
     font-weight: bolder;
+    /* border: 3px solid hotpink; */
 }
 
 .nav-container {
   display: block;
   position: relative;
   height: 60px;
+  /* border: 3px solid hotpink; */
 }
 
 .nav-container .checkbox {
-  position: absolute;
+  position: fixed;
   display: block;
   height: 32px;
   width: 32px;
@@ -100,6 +115,8 @@ body {
   z-index: 3;
   opacity: 0;
   cursor: pointer;
+  padding: 100px;
+  /* border: 3px solid green; */
 }
 
 .nav-container .hamburger{
@@ -139,8 +156,9 @@ body {
 }
 
 .menu-list {
+  /* position: fixed; */
   padding-top: 120px;
-  height: 100vh;
+  height: 101vh;
   transform: translate(-150%);
   display: flex;
   flex-direction: column;
@@ -149,7 +167,7 @@ body {
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
-  /* border: 3px solid hotpink; */
+  /* padding-right:400px; */
 }
 
 .menu-list li {

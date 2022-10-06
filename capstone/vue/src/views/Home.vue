@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div id="flex"> 
-    <h1 class="header">Hello {{$store.state.user.username}}!</h1>
+    <h1 class="header">Welcome, {{$store.state.user.username}}!</h1>
+    <h2 class="now-playing"> Now Playing </h2>
     <now-playing class="movieDetails"/>
     </div>
   </div>
@@ -26,11 +27,10 @@ export default {
 <style scoped>
 
 * {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Allerta Stencil';
   margin: 0;
   padding: 0;
 }
-
 
 #flex {
   display: flex;
@@ -40,16 +40,28 @@ export default {
 }
 
 .header{
-  color: black;
-  text-align: center;
+  color: white;
+  justify-content: center;
   margin: 1% ;
-  border: 3px solid red;
-  background: white;
+  background: #1B1B1B;
+  margin-top: -56px;
+  margin-left: 250px;
+  width: 400px;
 }
 
 .movieDetails{
   display: flex;
-  justify-content: center;
-  /* justify-content: space-between; */
+}
+
+.now-playing {
+  font-size: 30px;
+  background: #1b1b1b;
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  border: 5px solid white;
 }
 </style>

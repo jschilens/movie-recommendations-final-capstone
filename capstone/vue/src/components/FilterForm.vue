@@ -169,6 +169,11 @@
       </button>
     </div>
   </div>
+
+
+
+</div>
+  
 </template>
 
 <script>
@@ -185,11 +190,55 @@ export default {
       showForm: false,
       filters: {
         original_title: "",
-        genre_ids: [],
+        selectedGenreIDs: [],
         min_release_date: "",
-        max_release_date: "",
+        max_release_date: ""
       },
-      
+      // genres: [
+      // {
+      //   genre_id: 12,
+      //   genre_name: "Adventure"
+      // },
+      // {
+      //   genre_id: 14,
+      //   genre_name: "Fantasy"
+      // },
+      // {
+      //   genre_id: 16,
+      //   genre_name: "Animation"
+      // },
+      // {
+      //   genre_id: 27,
+      //   genre_name: "Horror"
+      // },
+      // {
+      //   genre_id: 28,
+      //   genre_name: "Action"
+      // },
+      // {
+      //   genre_id: 35,
+      //   genre_name: "Comedy"
+      // },
+      // {
+      //   genre_id: 53,
+      //   genre_name: "Thriller"
+      // },
+      // {
+      //   genre_id: 878,
+      //   genre_name: "Science Fiction"
+      // },
+      // {
+      //   genre_id: 9648,
+      //   genre_name: "Mystery"
+      // },
+      // {
+      //   genre_id: 10749,
+      //   genre_name: "Romance"
+      // },
+      // {
+      //   genre_id: 10751,
+      //   genre_name: "Family"
+      // } ]
     };
   },
 
@@ -201,34 +250,40 @@ export default {
     },
     selectGenre(event) {
       if (event.target.id) {
-        this.genre_ids.push(parseInt(event.target.id));
+        this.selectedGenreIDs.push(parseInt(event.target.id));
       } else {
-        this.genre_ids = this.genre_ids.filter((genre) => {
-          return genre !== parseInt(event.target.id);
-        });
+        this.selectedGenreIDs = this.selectedGenreIDs.filter((genre) => {
+          return genre !== parseInt(event.target.id)
+        })
       }
     },
     clearSelectedGenres() {
-      this.genre_ids = [];
+      this.selectedGenreIDs = [];
     },
-    
+  
   },
 };
 </script>
 
 <style scoped>
-.button-dropdown {
+
+.button-dropdown{
   height: 50px;
-  filter: invert(100%);
+  display: flex;
   margin-left: 49%;
-  /* display: flex; */
+  margin-top: 5px;
+  margin-bottom: 5px;
   /* background: white; */
   /* font-size: 20px; */
-  /* justify-content: center; */
+  /* justify-items: center; */
   /* align-content: center; */
   /* margin-inline: auto; */
   /* text-align: center; */
   /* transform: left 50%; */
+}
+
+.button-dropdown:hover{
+  cursor: pointer;
 }
 
 div.search-container {
@@ -237,7 +292,7 @@ div.search-container {
   white-space: normal;
   display: flex;
   margin-inline: auto;
-  background-color: #1b1b1b;
+  background-color: #1B1B1B;
   width: 30%;
   justify-content: center;
   justify-content: space-evenly;
@@ -259,38 +314,38 @@ p.title-search {
   font-weight: bold;
   color: white;
   margin-top: 3px;
-
+  
   /* border: 3px solid hotpink; */
 }
 
-.title-search1 {
+.title-search1{
   font-size: smaller;
   font-weight: bold;
   border: 1px solid white;
 }
 
-input.title-search1 {
+input.title-search1{
   color: white;
 }
 
 p.genre-search {
   font-size: smaller;
   font-weight: bold;
-
+  
   /* border: 3px solid hotpink; */
 }
 p.min-date-search {
   font-size: smaller;
   font-weight: bold;
   margin-top: 3px;
-
+  
   /* border: 3px solid hotpink; */
 }
 p.max-date-search {
   font-size: smaller;
   font-weight: bold;
   margin-top: 3px;
-
+  
   /* border: 3px solid hotpink; */
 }
 input.title-search {
@@ -319,10 +374,12 @@ input.max-date-search {
   color-scheme: dark;
 }
 
-.submit-button {
+.submit-button{
   margin-left: 80px;
   border: 1px solid white;
 }
+<<<<<<< HEAD
+=======
 section#thriller.option { 
  background-size: 100% 95%;
 }
@@ -384,4 +441,5 @@ section#animation.option {
 }
 
 
+>>>>>>> main
 </style>
