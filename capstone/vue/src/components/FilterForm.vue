@@ -4,6 +4,7 @@
       src="../assets/pngegg.png"
       v-on:click="showForm = !showForm"
       class="button-dropdown"
+      
     />
     <div class="search-container" v-show="showForm === true">
       <form id="search-form">
@@ -214,6 +215,8 @@ export default {
 <style scoped>
 .button-dropdown {
   height: 50px;
+  filter: invert(100%);
+  margin-left: 49%;
   /* display: flex; */
   /* background: white; */
   /* font-size: 20px; */
