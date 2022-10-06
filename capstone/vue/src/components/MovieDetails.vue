@@ -3,42 +3,32 @@
     <div class="gradient">
       <img class="poster" v-bind:src="movie.poster_path" />
     </div>
-    
-  <div class="information-section">
 
-    <h1 class="title">{{ movie.original_title }}</h1>
-    <div class="info-additional">
-      <div class="voting-average">
-        <font-awesome-icon  icon="fa-solid fa-star" class="star"/>
-        <p class="vote-number">{{movie.vote_average.toFixed(2)}}</p>
-        </div> <br>
-    <p class="date"> Release Date: {{movie.release_date}}</p>
-    <p class="runtime">Runtime: {{movie.runtime}} minutes</p >
-    <p class="genre">Genre: {{movie.genre_name}}</p>
-    
-    </div>
-    
-    <p class="text">{{ movie.overview }}</p>
-  
-  
-    <div class="icon">
-      <button v-on:click="saveFunction()" class="watch-button">
-        <font-awesome-icon v-if="watch" icon="fa-solid fa-eye" />
-        <font-awesome-icon v-else icon="fa-solid fa-eye-slash" />
-      </button>
-    
-      <button v-on:click="favoriteFunction()" class="heart-button">
-        <font-awesome-icon v-if="heart" icon="fa-solid fa-heart" />
-        <font-awesome-icon v-else icon="fa-regular fa-heart" />
-      </button>
-    </div>
+    <div class="information-section">
+      <h1 class="title">{{ movie.original_title }}</h1>
+      <div class="info-additional">
+        <div class="voting-average">
+          <font-awesome-icon icon="fa-solid fa-star" class="star" />
+          <p class="vote-number">{{ movie.vote_average.toFixed(2) }}</p>
+        </div>
+        <br />
+        <p class="date">Release Date: {{ movie.release_date }}</p>
+        <p class="runtime">Runtime: {{ movie.runtime }} minutes</p>
+        <p class="genre">Genre: {{ movie.genre_name }}</p>
+      </div>
+
+      <p class="text">{{ movie.overview }}</p>
+
+      <div class="links">
+        <p v-on:click="browseMovies()" class="browse-link">Browse Movies</p>
+        <p v-on:click="browseMovies()" class="home-page">Home Page</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import MovieService from "../services/MovieService";
-
 
 export default {
   data() {
@@ -66,6 +56,13 @@ export default {
         }
       });
     },
+    browseMovies() {
+      this.$router.push({ name: "movies" });
+    },
+
+    homePage() {
+      this.$router.push({ name: "home" });
+    },
   },
   created() {
     this.retrieveMovie();
@@ -79,47 +76,44 @@ export default {
   padding: 0;
   display: block;
   /* color: white; */
-
 }
 
-.star{
+.star {
   color: gold;
   height: 25px;
-  background: #1B1B1B;
+  background: #1b1b1b;
   /* margin: 5% 20% 10% 10%; */
-  
 }
 
-.vote-number{
+.vote-number {
   font-size: 25px;
   margin-top: 2px;
 }
 
 .movie-card {
   display: flex;
-  background: #1B1B1B;
+  background: #1b1b1b;
   margin-top: 5%;
-  border-radius:10px;
+  border-radius: 10px;
   width: 100vh;
   /* max-width: 90vh; */
   margin-inline: auto;
-  border: 8px solid #1B1B1B
+  border: 8px solid #1b1b1b;
 }
 
-.information-section{
+.information-section {
   /* display: flex; */
   flex-direction: column;
   color: white;
-  
 }
 
-.info-additional{
+.info-additional {
   flex-direction: column;
   align-items: center;
   /* border: 3px solid rgb(3, 39, 243); */
 }
 
-.poster{
+.poster {
   height: 450px;
 }
 
@@ -127,9 +121,11 @@ export default {
   display: flex;
 }
 
+.runtime {
+  margin-bottom: 5px;
+}
 
-
-.title{
+.title {
   text-align: center;
   align-content: center;
   margin-inline: auto;
@@ -138,16 +134,17 @@ export default {
   font-size: 40px;
 }
 
-.info-additional{
+.info-additional {
   display: flex;
   margin-inline: auto;
   /* border: 3px solid hotpink; */
   margin-left: 40px;
   justify-content: center;
-  
+  /* margin-bottom: 10px; */
 }
-.date{
+.date {
   margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 .text {
@@ -162,28 +159,29 @@ export default {
   margin-right: 10px;
 }
 
-.icon {
+.links{
   display: flex;
-  height: 7%;
-  /* border: 3px solid hotpink; */
-  margin-bottom: -10px;
-  /* width: 90px; */
-  justify-content: center
+  justify-content: center;
+  margin-top: 50px;
+  justify-content: space-evenly;
 }
 
-.watch-button{
-  width: 20px;
-  margin-right: 5px;
-  background: #1B1B1B;
-  color: white;
+.browse-link{
+  /* margin-right: 15px; */
 }
 
-.heart-button{
-  width: 20px;
-  margin-left: 5px;
-  background: #1B1B1B;
-  color: white;
+.home-page{
+  /* margin-left: 15px; */
 }
 
+.browse-link:hover{
+  cursor: pointer;
+  color: red
+}
+
+.home-page:hover{
+  cursor: pointer;
+  color: red;
+}
 
 </style>

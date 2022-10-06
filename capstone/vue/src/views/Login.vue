@@ -1,17 +1,14 @@
 <template>
   <div id="login-page">
     <div class="name" id="name">
-        <h1>TBD</h1>
+        <h1>ReelDB</h1>
       </div>
     <div id="site-info" class="site-info">
       <div class="information" id="information">
         <p id="description" class="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud exercitation
+          This project was created by Joseph Schilens, Alain Delgado, Nick Harter and Sean Kunkemoeller as our final project for Tech Elevator.
+          Check out the latest movies from our database, favorite and select movies to watch later. Credit to The
+          Movie Database for providing our movies and details.
         </p>
       </div>
     </div>
@@ -129,24 +126,29 @@ export default {
 
 .name {
   font-family: 'Bungee Spice';
-  text-align: center;
-  border-radius: 10px;
-  max-width: 450px;
-  margin: 1% 0% 3% 0%;
+  font-size: 30px;
+  background: #1b1b1b;
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: white;
+  border: 2px solid white;
   
 }
 
 .information {
-  background: #fcde67;
-  text-align: center;
-  margin: 1% 0% 3% 0%;
-  font-size: 25px;
-  border-radius: 10px;
-  max-width: 450px;
+  font-size: 30px;
+  background: #1b1b1b;
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: white;
+  border: 2px solid white;
   
 
 }
-
 
 
 #login {
