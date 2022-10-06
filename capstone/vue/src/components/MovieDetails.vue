@@ -61,6 +61,8 @@ export default {
       MovieService.getMovie(this.$route.params.id).then((response) => {
         if (response.status == 200) {
           this.movie = response.data;
+          const poster = this.movie.poster_path;
+          this.movie.poster_path = poster.replace(/w200/g, "w500");
         }
       });
     },
