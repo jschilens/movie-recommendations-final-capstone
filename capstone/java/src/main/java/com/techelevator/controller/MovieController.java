@@ -74,7 +74,9 @@ public class MovieController {
                     }
 
                 }
+
                 if (isAddMovie) {
+
                     returnMovies.add(movie);
                 }
             }

@@ -21,7 +21,7 @@
 
       <div class="links">
         <p v-on:click="browseMovies()" class="browse-link">Browse Movies</p>
-        <p v-on:click="browseMovies()" class="home-page">Home Page</p>
+        <p v-on:click="homePage()" class="home-page">Home Page</p>
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@ export default {
   border-radius: 10px;
   width: 100vh;
   margin-inline: auto;
-  border: 8px solid #1b1b1b;
+  border: 8px solid white;
 }
 
 .information-section {

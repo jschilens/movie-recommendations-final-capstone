@@ -105,7 +105,7 @@ export default {
   align-items: center;
   height: 100vh;
   color: black;
-  background: #fcde67;
+  /* background: #fcde67; */
 }
 
 .form-register {
