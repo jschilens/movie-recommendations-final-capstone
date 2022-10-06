@@ -49,6 +49,9 @@ public class MovieController {
 
         } else if (filterForm.getGenre_ids() != null) {
             filteredMovies = movieService.getGenreFilteredMovies(filterForm.getGenre_ids());
+        } else if(filterForm.getOriginal_title() != null) {
+            System.out.println("hello");
+            filteredMovies = movieService.getTitleFilteredMovies(filterForm.getOriginal_title());
         }
 
 
