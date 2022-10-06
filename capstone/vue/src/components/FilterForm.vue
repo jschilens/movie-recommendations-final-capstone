@@ -297,4 +297,68 @@ input.max-date-search {
   margin-left: 80px;
   border: 1px solid white;
 }
+<<<<<<< HEAD
+=======
+section#thriller.option { 
+ background-size: 100% 95%;
+}
+
+section#science-fiction.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+}
+
+section#romance.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#family.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#horror.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#mystery.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+section#fantasy.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+section#adventure.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+section#comedy.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#action.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+section#animation.option { 
+ background-size: 100% 95%;
+ font-weight: bolder;
+ 
+}
+
+
+>>>>>>> main
 </style>

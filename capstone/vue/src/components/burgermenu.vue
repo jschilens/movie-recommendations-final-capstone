@@ -24,9 +24,8 @@
 export default {
     // name: 'sidemenu__item',
     
-    
-};
 
+}
 
 </script>
 
