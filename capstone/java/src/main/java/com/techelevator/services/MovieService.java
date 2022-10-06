@@ -34,7 +34,6 @@ public class MovieService {
         Genre[] genres = movie.getGenres();
         String genreNames = "";
         for (int i = 0; i < movie.getGenres().length; i++) {
-
             genreIds[i] = genres[i].getGenreId();
             genreNames += genres[i].getGenreName() + ", ";
         }
@@ -48,7 +47,7 @@ public class MovieService {
 
     public List<Movie> getTitleFilteredMovies(String original_title) {
         Movie[] movies = null;
-//        System.out.println("list movies");
+        System.out.println("getTitleFilteredMovies");
         MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&query=" + original_title , MovieGeneral.class);
 //        System.out.println(movieGeneral);
         assert movieGeneral != null;
@@ -62,7 +61,7 @@ public class MovieService {
 
     public List<Movie> getMinYearFilteredMovies(LocalDate min_release_date) {
         Movie[] movies = null;
-        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=original_title.asc&release_date.gte=" + min_release_date.toString(), MovieGeneral.class);
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=popularity.desc&release_date.gte=" + min_release_date.toString(), MovieGeneral.class);
         assert movieGeneral != null;
         movies = movieGeneral.getResults();
         for (Movie movie : movies) {
@@ -73,7 +72,7 @@ public class MovieService {
     }
     public List<Movie> getMaxYearFilteredMovies(LocalDate max_release_date) {
         Movie[] movies = null;
-        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=original_title.asc&release_date.lte=" + max_release_date.toString(), MovieGeneral.class);
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=popularity.desc&release_date.lte=" + max_release_date.toString(), MovieGeneral.class);
         assert movieGeneral != null;
         movies = movieGeneral.getResults();
         for (Movie movie : movies) {
@@ -83,12 +82,11 @@ public class MovieService {
         return Arrays.asList(movies);
     }
     public List<Movie> getGenreFilteredMovies(int[] genre_ids) {
-        System.out.println("hello");
+        System.out.println("getGenreFilteredMovies");
         Movie[] movies = null;
         String genres = "";
         genres = Arrays.toString(genre_ids);
         genres = genres.substring(1, genres.length() -1);
-
         System.out.println(genres);
         MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&with_genres=" + genres, MovieGeneral.class);
         assert movieGeneral != null;
@@ -100,16 +98,14 @@ public class MovieService {
         return Arrays.asList(movies);
     }
     public List<Movie> getGenreAndDateFilteredMovies(int[] genre_ids, LocalDate min_release_date, LocalDate max_release_date) {
-        System.out.println("hello");
+        System.out.println("getGenreAndDateFilteredMovies");
+        System.out.println(min_release_date + ", " + max_release_date);
         Movie[] movies = null;
         String genres = "";
-        if(genre_ids.length > 1) {
-            genres = String.join(",", Arrays.toString(genre_ids));
-        } else {
-            genres = Arrays.toString(genre_ids);
-        }
+        genres = Arrays.toString(genre_ids);
+        genres = genres.substring(1, genres.length() -1);
         System.out.println(genres);
-        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=original_title.asc&with_genres=" + genres + "&release_date.gte=" + min_release_date + "&release_date.lte=" + max_release_date, MovieGeneral.class);
+        MovieGeneral movieGeneral = restTemplate.getForObject("https://api.themoviedb.org/3/discover/movie?api_key=1860d7aac96c2d5d65b5d6760a855c9b&language=en-US&sort_by=popularity.desc&with_genres=" + genres + "&release_date.gte=" + min_release_date + "&release_date.lte=" + max_release_date, MovieGeneral.class);
         assert movieGeneral != null;
         movies = movieGeneral.getResults();
         for (Movie movie : movies) {
