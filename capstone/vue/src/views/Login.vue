@@ -136,6 +136,7 @@ export default {
   font-size: 30px;
   background: #1b1b1b;
   border-radius: 40px;
+  width: 450px;
   margin-top: 30px;
   margin-bottom: 10px;
   padding: 20px;
