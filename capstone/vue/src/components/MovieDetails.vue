@@ -40,7 +40,7 @@ export default {
         id: this.id,
         poster_path: "",
         genre_ids: "",
-        vote_average: "",
+        vote_average: -1,
         runtime: "",
         genre_name: "",
       },

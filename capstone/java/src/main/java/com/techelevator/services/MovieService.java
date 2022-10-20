@@ -82,7 +82,7 @@ public class MovieService {
     public List<Movie> getAllMovies() {
         Movie[] movies = null;
         MovieGeneral movieGeneral = restTemplate.getForObject(API_BASE_URL, MovieGeneral.class);
-        movieGeneral = restTemplate.getForObject(API_BASE_URL + "&page=2", MovieGeneral.class);
+        movieGeneral = restTemplate.getForObject(API_BASE_URL + "&page=1", MovieGeneral.class);
         assert movieGeneral != null;
         movies = movieGeneral.getResults();
         for (Movie movie : movies) {

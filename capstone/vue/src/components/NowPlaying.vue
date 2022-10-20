@@ -42,11 +42,11 @@ export default {
   },
 
   created() {
-    MovieService.getMovie(this.movie.id).then((response) => {
-      if (response.status == 200) {
-        this.movie = response.data;
-      }
-    }),
+    // MovieService.getMovie(this.movie.id).then((response) => {
+    //   if (response.status == 200) {
+    //     this.movie = response.data;
+    //   }
+    // }),
       this.getMovies();
   },
 };

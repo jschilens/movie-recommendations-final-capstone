@@ -91,7 +91,7 @@ div.carousel-container {
   justify-content: space-evenly;
 }
 
-div .card.cell {
+div.card.cell {
   height: 580px;
   width: 350px;
   border: 2px solid white;
@@ -100,6 +100,7 @@ div .card.cell {
 
 .container {
   width: 700px;
+  max-width: 100%;
   /* height: 5000px; */
 }
 
